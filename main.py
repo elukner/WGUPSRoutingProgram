@@ -1,10 +1,10 @@
-#TODO loadPackageData()
+#TODO loadPackageData(HashTable)
 #TODO 3-Create loadPackageData(HashTable) to
 # - read packages from packageCSV file (see C950 - Webinar-2 - Getting Greedy, who moved my data  webinar)
 # - update Package object
 # - insert Package object into HashTable with the key=PackageID and Item=Package
 
-#TODO loadDistanceData()
+#TODO loadDistanceData(distanceData)
 # B.1) Upload Distances:
 # 4-Create distanceData List
 # 5-Define loadDistanceData(distanceData) to read distanceCSV file
@@ -12,15 +12,15 @@
 # - append row to distanceData (two-dimensional list.
 # See C950 WGUPS Distance Table Matrix)
 
-#TODO loadAddressData()
+#TODO loadAddressData(addressData)
 # B.2) Upload Addresses:
 # 6-Create addressData List
 # 7-Define loadAddressData(addressData) to read addressCSV file
 # - read only addresses from addressCSV file
 # - append address to addressData.
 
-#TODO truckLoadPackages()
-#TODO truckDeliverPackages()
+#TODO truckLoadPackages() ?? does this function need to be here or only in truck object
+#TODO truckDeliverPackages(truck) ?? does this function need to be here or only in truck object
 
 #TODO UI interaction
 # 18-Create an UI to interact and report the results based on the requirements.
