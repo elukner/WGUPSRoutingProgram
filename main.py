@@ -5,7 +5,20 @@
 # - insert Package object into HashTable with the key=PackageID and Item=Package
 
 #TODO loadDistanceData()
+# B.1) Upload Distances:
+# 4-Create distanceData List
+# 5-Define loadDistanceData(distanceData) to read distanceCSV file
+# - read distances from distanceCSV file; row by row
+# - append row to distanceData (two-dimensional list.
+# See C950 WGUPS Distance Table Matrix)
+
 #TODO loadAddressData()
+# B.2) Upload Addresses:
+# 6-Create addressData List
+# 7-Define loadAddressData(addressData) to read addressCSV file
+# - read only addresses from addressCSV file
+# - append address to addressData.
+
 #TODO truckLoadPackages()
 #TODO truckDeliverPackages()
 
