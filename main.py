@@ -1,3 +1,25 @@
+#TODO loadPackageData()
+#TODO 3-Create loadPackageData(HashTable) to
+# - read packages from packageCSV file (see C950 - Webinar-2 - Getting Greedy, who moved my data  webinar)
+# - update Package object
+# - insert Package object into HashTable with the key=PackageID and Item=Package
+
+#TODO loadDistanceData()
+#TODO loadAddressData()
+#TODO truckLoadPackages()
+#TODO truckDeliverPackages()
+
+#TODO UI interaction
+# 18-Create an UI to interact and report the results based on the requirements.
+# Menu Options:
+# ***************************************
+# 1. Print All Package Status and Total Mileage
+# 2. Get a Single Package Status with a Time
+# 3. Get All Package Status with a Time
+# 4. Exit the Program
+# ***************************************
+
+
 # This is a sample Python script.
 
 # Press Shift+F10 to execute it or replace it with your code.
