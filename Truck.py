@@ -27,3 +27,4 @@
 # timeToDeliver(h) = distance(miles)/18(mph) where 18 mph average Truck speed.
 # time_obj = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s)).
 # time_obj could be cumulated to keep track of time.
+
