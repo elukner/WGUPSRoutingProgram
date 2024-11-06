@@ -14,4 +14,4 @@
 # 11-Return min distance address to fromAddress
 # i.e. call distanceBetween(address1, address2) in a loop for all the addresses in the Truck
 
-#TODO timeToDeliver()
+#TODO minDistanceFrom(fromAddress, truckPackages)
