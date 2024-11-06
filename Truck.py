@@ -1,8 +1,7 @@
 #TODO 2-Create Package and Truck objects
 # and have packageCSV and distanceCSV and addressCSV files ready
 
-#TODO + truckID
-#TODO + packages: List[Package]
+#TODO + packages: List[Package] ??? Because step 4,6 lists
 
 #TODO + truckLoadPackages()
 # C.3) Function to load packages into Trucks:
@@ -21,7 +20,7 @@
 # 16-Loop truck package addresses
 # and call minDistanceFrom(fromAddress, truckPackages)
 # for all the addresses not visited yet
-# D.2) Keep track of miles and time delivered:
+# D.2) Keep track of miles and time delivered: (remember funtion in package.py for update status)
 # 17-Update delivery status and time delivered in Hash Table for the package
 # delivered and keep up with total mileage and delivery times.
 # i.e. How to keep track of the time?:
