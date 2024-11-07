@@ -1,5 +1,6 @@
 from datetime import timedelta
-from CSV import distanceBetween, timeToDeliver
+from CSV import *
+
 #TODO 2-Create Package and Truck objects
 # and have packageCSV and distanceCSV and addressCSV files ready
 class Truck:
