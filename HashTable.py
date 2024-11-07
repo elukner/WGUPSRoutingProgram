@@ -2,6 +2,15 @@ import csv
 import math
 
 #TODO 1-Create HashTable data structure
+# A.  Develop a hash table, without using any additional libraries or classes,
+# that has an insertion function that takes the package ID as input and inserts
+# each of the following data components into the hash table:
+# delivery address
+# delivery deadline
+# delivery city
+# delivery zip code
+# package weight
+# delivery status (i.e., at the hub, en route, or delivered), including the delivery time
 class HashTable:
     # Constructor to initialize the hash table, with an optional parameter for the initial capacity.
     def __init__(self, initial_capacity=40):
