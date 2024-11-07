@@ -22,7 +22,16 @@ class HashTable:
 
     # TODO + insert(key, item)
     def insert(self, key, item):
-        pass  # TODO delete later
+        '''
+        function inserts a new item
+        :param key: packageID
+        :param item: package object
+        :return: boolean
+        '''
+        index = hash(key) % len(self.table)
+        #self.table[index].append(item)
+        self.table[index]=item
+
 
     # TODO + lookUp(self, key)
     # B.  Develop a look-up function that takes the package ID as input and returns
