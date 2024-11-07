@@ -1,8 +1,12 @@
 import unittest
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
+class TruckTestCase(unittest.TestCase):
+    def test__init__(self):
+        self.assertEqual(True, False)  # add assertion here
+    def testTruckLoadPackages(self):
+        self.assertEqual(True, False)  # add assertion here
+    def testTruckDeliverPackages(self):
         self.assertEqual(True, False)  # add assertion here
 
 
