@@ -1,4 +1,15 @@
+#TODO don't submit to github this part
+# Create an identifying comment within the first line of a file named “main.py” that includes your student ID.
 from HashTable import *
+
+#TODO C.  Write an original program that will deliver all packages and meet all
+# requirements using the attached supporting documents
+# “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
+# D.  Provide an intuitive interface for the user to view the delivery status
+# (including the delivery time) of any package at any time and the total mileage traveled by all trucks.
+# (The delivery status should report the package as at the hub, en route,
+# or delivered. Delivery status must include the time.)
+
 
 #TODO loadPackageData(HashTable)
 #TODO 3-Create loadPackageData(HashTable) to
