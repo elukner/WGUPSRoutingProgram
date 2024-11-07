@@ -1,11 +1,25 @@
+from datetime import timedelta
+from CSV import distanceBetween, timeToDeliver
 #TODO 2-Create Package and Truck objects
 # and have packageCSV and distanceCSV and addressCSV files ready
+class Truck:
 
 #TODO + packages: List[Package] ??? Because step 4,6 lists
+    def __init__(self, truck_id, hash_table):
+        self.truck_id = truck_id
+        self.packages = []  # List of packages assigned to the truck
+        self.current_location = "Hub Address"  # Replace with actual starting hub address
+        self.total_mileage = 0
+        self.current_time = timedelta(hours=8)  # Start at 8:00 AM
+        self.hash_table = hash_table  # Reference to hash table for updating package status
+        self.capacity = 16  # Each truck can carry a maximum of 16 packages
+
 
 #TODO + truckLoadPackages()
 # C.3) Function to load packages into Trucks:
-# 12-Define truckLoadPackages()
+# 12-Define truckLoadPackages() //DONE
+    def truckLoadPackages(self):
+        pass #TODO delete later
 # 13-Load Trucks based on assumptions provided
 # (ex. Truck-2 must have some packages, some packages go together,
 # some packages are delayed, ...)
@@ -17,6 +31,8 @@
 #TODO + truckDeliverPackages(truck)
 # D.1) Function to deliver packages in a Truck:
 # 15-Define truckDeliverPackages(truck)
+    def truckDeliverPackages(self, truck):
+        pass #TODO delete later
 # 16-Loop truck package addresses
 # and call minDistanceFrom(fromAddress, truckPackages)
 # for all the addresses not visited yet
