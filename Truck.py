@@ -1,7 +1,8 @@
 from datetime import timedelta
 from CSV import *
 
-#TODO C.  Write an original program that will deliver all packages and meet all
+
+# TODO C.  Write an original program that will deliver all packages and meet all
 # requirements using the attached supporting documents
 # “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
 # D.  Provide an intuitive interface for the user to view the delivery status
@@ -9,11 +10,11 @@ from CSV import *
 # (The delivery status should report the package as at the hub, en route,
 # or delivered. Delivery status must include the time.)
 
-#TODO 2-Create Package and Truck objects
+# TODO 2-Create Package and Truck objects
 # and have packageCSV and distanceCSV and addressCSV files ready
 class Truck:
 
-#TODO + packages: List[Package] ??? Because step 4,6 lists
+    # TODO + packages: List[Package] ??? Because step 4,6 lists
     def __init__(self, truck_id, hash_table):
         self.truck_id = truck_id
         self.packages = []  # List of packages assigned to the truck
@@ -23,25 +24,25 @@ class Truck:
         self.hash_table = hash_table  # Reference to hash table for updating package status
         self.capacity = 16  # Each truck can carry a maximum of 16 packages
 
-
-#TODO + truckLoadPackages()
-# C.3) Function to load packages into Trucks:
-# 12-Define truckLoadPackages() //DONE
+    # TODO + truckLoadPackages()
+    # C.3) Function to load packages into Trucks:
+    # 12-Define truckLoadPackages() //DONE
     def truckLoadPackages(self):
-        pass #TODO delete later
-# 13-Load Trucks based on assumptions provided
-# (ex. Truck-2 must have some packages, some packages go together,
-# some packages are delayed, ...)
-# 14-And closest addresses/packages until there is 16 packages in a Truck
-# i.e. Load manually/heuristically or Loop package addresses
-# and call minDistanceFrom(fromAddress, truckPackages)
-# for all the addresses in the Truck not visited yet
+        pass  # TODO delete later
 
-#TODO + truckDeliverPackages(truck)
-# D.1) Function to deliver packages in a Truck:
-# 15-Define truckDeliverPackages(truck)
+    # 13-Load Trucks based on assumptions provided
+    # (ex. Truck-2 must have some packages, some packages go together,
+    # some packages are delayed, ...)
+    # 14-And closest addresses/packages until there is 16 packages in a Truck
+    # i.e. Load manually/heuristically or Loop package addresses
+    # and call minDistanceFrom(fromAddress, truckPackages)
+    # for all the addresses in the Truck not visited yet
+
+    # TODO + truckDeliverPackages(truck)
+    # D.1) Function to deliver packages in a Truck:
+    # 15-Define truckDeliverPackages(truck)
     def truckDeliverPackages(self, truck):
-        pass #TODO delete later
+        pass  # TODO delete later
 # 16-Loop truck package addresses
 # and call minDistanceFrom(fromAddress, truckPackages)
 # for all the addresses not visited yet
@@ -52,4 +53,3 @@ class Truck:
 # timeToDeliver(h) = distance(miles)/18(mph) where 18 mph average Truck speed.
 # time_obj = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s)).
 # time_obj could be cumulated to keep track of time.
-

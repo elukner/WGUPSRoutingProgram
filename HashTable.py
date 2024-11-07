@@ -1,7 +1,8 @@
 import csv
 import math
 
-#TODO 1-Create HashTable data structure
+
+# TODO 1-Create HashTable data structure
 # A.  Develop a hash table, without using any additional libraries or classes,
 # that has an insertion function that takes the package ID as input and inserts
 # each of the following data components into the hash table:
@@ -19,24 +20,23 @@ class HashTable:
         for i in range(initial_capacity):
             self.table.append([])
 
-#TODO + insert(key, item)
+    # TODO + insert(key, item)
     def insert(self, key, item):
-        pass #TODO delete later
+        pass  # TODO delete later
 
-#TODO + lookUp(self, key)
-# B.  Develop a look-up function that takes the package ID as input and returns
-# each of the following corresponding data components:
-# delivery address
-# delivery deadline
-# delivery city
-# delivery zip code
-# package weight
-# delivery status (i.e., at the hub, en route, or delivered), including the delivery time
+    # TODO + lookUp(self, key)
+    # B.  Develop a look-up function that takes the package ID as input and returns
+    # each of the following corresponding data components:
+    # delivery address
+    # delivery deadline
+    # delivery city
+    # delivery zip code
+    # package weight
+    # delivery status (i.e., at the hub, en route, or delivered), including the delivery time
 
     def lookUp(self, key):
-        pass #TODO delete later
+        pass  # TODO delete later
 
-#TODO + update(self, key, item)
+    # TODO + update(self, key, item)
     def update(self, key, item):
-        pass #TODO delete later
-
+        pass  # TODO delete later

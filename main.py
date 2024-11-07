@@ -1,8 +1,9 @@
-#TODO don't submit to github this part
+# TODO don't submit to github this part
 # Create an identifying comment within the first line of a file named “main.py” that includes your student ID.
 from HashTable import *
 
-#TODO C.  Write an original program that will deliver all packages and meet all
+
+# TODO C.  Write an original program that will deliver all packages and meet all
 # requirements using the attached supporting documents
 # “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
 # D.  Provide an intuitive interface for the user to view the delivery status
@@ -11,15 +12,16 @@ from HashTable import *
 # or delivered. Delivery status must include the time.)
 
 
-#TODO loadPackageData(HashTable)
-#TODO 3-Create loadPackageData(HashTable) to
+# TODO loadPackageData(HashTable)
+# TODO 3-Create loadPackageData(HashTable) to
 # - read packages from packageCSV file (see C950 - Webinar-2 - Getting Greedy, who moved my data  webinar)
 # - update Package object
 # - insert Package object into HashTable with the key=PackageID and Item=Package
 def loadPackageData(HashTable):
-    pass #TODO delete later
+    pass  # TODO delete later
 
-#TODO loadDistanceData(distanceData)
+
+# TODO loadDistanceData(distanceData)
 # B.1) Upload Distances:
 # 4-Create distanceData List
 # 5-Define loadDistanceData(distanceData) to read distanceCSV file
@@ -27,21 +29,23 @@ def loadPackageData(HashTable):
 # - append row to distanceData (two-dimensional list.
 # See C950 WGUPS Distance Table Matrix)
 def loadDistanceData(distanceData):
-    pass #TODO delete later
+    pass  # TODO delete later
 
-#TODO loadAddressData(addressData)
+
+# TODO loadAddressData(addressData)
 # B.2) Upload Addresses:
 # 6-Create addressData List
 # 7-Define loadAddressData(addressData) to read addressCSV file
 # - read only addresses from addressCSV file
 # - append address to addressData.
 def loadAddressData(addressData):
-    pass #TODO delete later
+    pass  # TODO delete later
 
-#TODO truckLoadPackages() ?? does this function need to be here or only in truck object
-#TODO truckDeliverPackages(truck) ?? does this function need to be here or only in truck object
 
-#TODO UI interaction
+# TODO truckLoadPackages() ?? does this function need to be here or only in truck object
+# TODO truckDeliverPackages(truck) ?? does this function need to be here or only in truck object
+
+# TODO UI interaction
 # 18-Create an UI to interact and report the results based on the requirements.
 # Menu Options:
 # ***************************************
@@ -58,6 +62,7 @@ def printUI():
     print(f'4. Exit the Program')
     print(f'***************************************')
 
+
 # This is a sample Python script.
 
 # Press Shift+F10 to execute it or replace it with your code.
@@ -72,6 +77,6 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     printUI()
-    #print_hi('PyCharm')
+    # print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
