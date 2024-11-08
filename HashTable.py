@@ -21,16 +21,29 @@ class HashTable:
             self.table.append([])
 
     # TODO + insert(key, item)
+    # TODO + update(self, key, item)
     def insert(self, key, item):
         '''
-        function inserts a new item
+        function inserts a new item and updates items
         :param key: packageID
         :param item: package object
         :return: boolean
         '''
         index = hash(key) % len(self.table)
-        #self.table[index].append(item)
-        self.table[index]=item
+        index_list = self.table[index]
+
+        #updates key if it exists already in index
+        for kV in index_list:
+            #print(key_value)
+            if kV[0] == key:
+                kV[1] = item
+                return True
+
+        #if key does not exist already in index
+        keyValue = [key, item]
+        index_list.append(keyValue)
+        return True
+
 
 
     # TODO + lookUp(self, key)
@@ -46,6 +59,4 @@ class HashTable:
     def lookUp(self, key):
         pass  # TODO delete later
 
-    # TODO + update(self, key, item)
-    def update(self, key, item):
-        pass  # TODO delete later
+
