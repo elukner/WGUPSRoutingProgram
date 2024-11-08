@@ -11,22 +11,37 @@
 # TODO + deliveryTime
 # TODO + updateStatus(status)
 class Package:
-    def __init__(self, packageID, address, city, state, zip, deliveryDeadline,
-                 massKilo, pageSpecialNotes, status="At Hub", deliveryTime=None):
+    def __init__(self, packageID, deliveryAddress, city, state, zip, deliveryDeadline,
+                 packageWeight, pageSpecialNotes, deliveryStatus="At Hub", deliveryTime=None):
         self.packageID = packageID
-        self.address = address
+        self.deliveryAddress = deliveryAddress
         self.city = city
         self.state = state
         self.zip = zip
         self.deliveryDeadline = deliveryDeadline
-        self.massKilo = massKilo
+        self.packageWeight = packageWeight
         self.pageSpecialNotes = pageSpecialNotes
-        self.status = status  # Initial status
+        self.deliveryStatus = deliveryStatus  # Initial status  (i.e., at the hub, en route, or delivered)
         self.deliveryTime = deliveryTime  # Time when the package is delivered
 
     # TODO + updateStatus(status)
-    def updateStatus(self, status):
-        pass  # TODO delete later
+    def updateStatus(self, status, deliveryTime=None):
+        """
+        Update the delivery status of the package.
+        :param status: Current status of the package (e.g., 'At Hub', 'En Route', 'Delivered').
+        :return: Time of delivery
+        """
+        self.deliveryStatus = status
+        if status == "Delivered" and deliveryTime:
+            self.deliveryTime = deliveryTime
 
     def __str__(self):
-        pass  # TODO delete later
+        """
+        Function that returns a string representation of the package.
+        :return: string representation of the package
+        """
+        return (
+            f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime"
+            f"{self.packageID}, {self.deliveryAddress}, {self.city}, {self.state}, {self.zip}, "
+            f"{self.deliveryDeadline}, {self.packageWeight}, {self.pageSpecialNotes}, {self.deliveryStatus}, "
+            f"{self.deliveryTime if self.deliveryTime else 'Not Delivered'}")
