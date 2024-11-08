@@ -41,7 +41,6 @@ class Package:
         :return: string representation of the package
         """
         return (
-            f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime"
             f"{self.packageID}, {self.deliveryAddress}, {self.city}, {self.state}, {self.zip}, "
             f"{self.deliveryDeadline}, {self.packageWeight}, {self.pageSpecialNotes}, {self.deliveryStatus}, "
             f"{self.deliveryTime if self.deliveryTime else 'Not Delivered'}")

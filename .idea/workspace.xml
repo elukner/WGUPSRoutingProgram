@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementation of lookUp function and added unit test cases correlated to the lookUp function in testHashTable.py.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementation of package object in Package.py.">
       <change beforePath="$PROJECT_DIR$/Package.py" beforeDir="false" afterPath="$PROJECT_DIR$/Package.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/testPackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testPackage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,7 @@
     "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem.executor": "Run",
     "Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem.executor": "Run",
     "Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor": "Run",
+    "Python tests.Python tests for testPackage.PackageTestCase.test_str_method.executor": "Run",
     "Python tests.Python tests in testHashTable.py.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -67,7 +68,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Python tests for testPackage.PackageTestCase.test_str_method">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
@@ -155,8 +156,25 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for testPackage.PackageTestCase.test_str_method" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="WGUPSRoutingProgram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;testPackage.PackageTestCase.test_str_method&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for testPackage.PackageTestCase.test_str_method" />
         <item itemvalue="Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem" />
         <item itemvalue="Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem" />
         <item itemvalue="Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem" />
@@ -184,7 +202,7 @@
       <workItem from="1730925941860" duration="41000" />
       <workItem from="1730925988630" duration="8880000" />
       <workItem from="1730937182120" duration="439000" />
-      <workItem from="1730937900135" duration="31378000" />
+      <workItem from="1730937900135" duration="31774000" />
     </task>
     <task id="LOCAL-00001" summary="Setting up project with main.py">
       <option name="closed" value="true" />
@@ -418,14 +436,21 @@
       <option name="project" value="LOCAL" />
       <updated>1731037106562</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Finished implementation of package object in Package.py.">
+      <option name="closed" value="true" />
+      <created>1731045130771</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1731045130771</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added remaining object classes without code (Truck.py and Package.py). Also, added required packageCSV and distanceCSV and addressCSV files. Imported data into packageCSV and distanceCSV files from corresponding WGUPS Distance Table.xlsx and WGUPS Package File.xlsx (that can be downloaded from WGU task 2 instructions)." />
     <MESSAGE value="Added todo comments from part A of C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document. Started working on main.py todo comments." />
     <MESSAGE value="Added CSV.py for the helper methods that will be used for the supporting functions distanceBetween(), minDistanceFrom(), and timeToDeliver(). Added todo comments in this python file as well." />
     <MESSAGE value="Added todo comments from part B using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into main.py." />
@@ -450,10 +475,11 @@
     <MESSAGE value="Created and implemented unitTest cases to test insert function in HashTable.py to ensure that this function inserts new item, updates existing item, and could add multiple items as intended." />
     <MESSAGE value="Started working on implementation of lookUp function and deleted old update unit test function in testHashTable.py." />
     <MESSAGE value="Finished implementation of lookUp function and added unit test cases correlated to the lookUp function in testHashTable.py." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementation of lookUp function and added unit test cases correlated to the lookUp function in testHashTable.py." />
+    <MESSAGE value="Finished implementation of package object in Package.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementation of package object in Package.py." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731026548688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731037021995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731045417739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
