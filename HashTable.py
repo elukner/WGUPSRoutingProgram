@@ -24,10 +24,10 @@ import math
 
 class HashTable:
     # Constructor to initialize the hash table, with an optional parameter for the initial capacity.
-    def __init__(self, initial_capacity=40):
+    def __init__(self, initialCapacity=40):
         # Create the hash table with empty bucket lists, each bucket represented by an empty list.
         self.table = []
-        for i in range(initial_capacity):
+        for i in range(initialCapacity):
             self.table.append([])
 
     def insert(self, key, item):
@@ -42,7 +42,7 @@ class HashTable:
 
         #updates key if it exists already in index
         for kV in index_list:
-            #print(key_value)
+            #print(key_value) TODO delete later?
             if kV[0] == key:
                 kV[1] = item
                 return True
@@ -58,6 +58,16 @@ class HashTable:
         :param key: packageID
         :return: package object
         '''
+        index = hash(key) % len(self.table)
+        index_list = self.table[index]
+        #print(index_list) TODO delete later?
+
+        #searches for the key in the index_list
+        for kV in index_list:
+            #print(key_value) TODO delete later?
+            if kV[0] == key:
+                return kV[1] #this is the value
+        return None
 
 
 
