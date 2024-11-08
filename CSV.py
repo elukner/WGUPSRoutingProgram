@@ -10,16 +10,34 @@
 def distanceBetween(address1, address2):
     pass  # TODO delete later
 
-
-# TODO minDistanceFrom(fromAddress, truckPackages)
 # C.2) Function to find min distance/address:
 # 10-Define minDistanceFrom(fromAddress, truckPackages)
 # 11-Return min distance address to fromAddress
 # i.e. call distanceBetween(address1, address2) in a loop for all the addresses in the Truck
 def minDistanceFrom(fromAddress, truckPackages):
-    pass  # TODO delete later
+    """
+    Function to find min distance/address
+    :param fromAddress: The address to calculate distances from.
+    :param truckPackages: List of packages that need to be delivered.
+    :return: Return min distance address to fromAddress
+    """
+    minDistance = float("inf")
+    closestPackage = None
 
+    for truckPackage in truckPackages:
+        #i.e. call distanceBetween(address1, address2) in a loop for all the addresses in the Truck
+        distance = distanceBetween(fromAddress, truckPackage.deliveryAddress)
+        if distance < minDistance:
+            minDistance = distance
+            closestPackage = truckPackage
 
-# TODO timeToDeliver(h)
-def timeToDeliver(h):
-    pass  # TODO delete later
+    return closestPackage
+
+def timeToDeliver(distance):
+    """
+    function calculates distance(miles)/18(mph) where 18 mph average Truck speed
+    :param distance: Distance that will be traveled in miles.
+    :return: Time in hours required to travel the given distance.
+    """
+    averageSpeedMph = 18 #Assumption that trucks travel at an average speed of 18 miles per hour
+    return distance/averageSpeedMph

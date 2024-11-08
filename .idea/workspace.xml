@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementation of package object in Package.py.">
-      <change beforePath="$PROJECT_DIR$/Package.py" beforeDir="false" afterPath="$PROJECT_DIR$/Package.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/testPackage.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testPackage.py" afterDir="false" />
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implemented unit Tests for Package.py in testPackage.py.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +55,7 @@
     "Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor": "Run",
     "Python tests.Python tests for testPackage.PackageTestCase.test_str_method.executor": "Run",
     "Python tests.Python tests in testHashTable.py.executor": "Run",
+    "Python tests.Python tests in testPackage.py.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -68,7 +70,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
@@ -202,7 +204,7 @@
       <workItem from="1730925941860" duration="41000" />
       <workItem from="1730925988630" duration="8880000" />
       <workItem from="1730937182120" duration="439000" />
-      <workItem from="1730937900135" duration="31774000" />
+      <workItem from="1730937900135" duration="35889000" />
     </task>
     <task id="LOCAL-00001" summary="Setting up project with main.py">
       <option name="closed" value="true" />
@@ -444,15 +446,29 @@
       <option name="project" value="LOCAL" />
       <updated>1731045130771</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Updated str function in Package.py to match implementation steps given for Task 2. Started implemented unit Tests for Package.py in testPackage.py.">
+      <option name="closed" value="true" />
+      <created>1731045590814</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1731045590814</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Finished implemented unit Tests for Package.py in testPackage.py.">
+      <option name="closed" value="true" />
+      <created>1731045893077</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1731045893077</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added todo comments from part A of C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document. Started working on main.py todo comments." />
-    <MESSAGE value="Added CSV.py for the helper methods that will be used for the supporting functions distanceBetween(), minDistanceFrom(), and timeToDeliver(). Added todo comments in this python file as well." />
     <MESSAGE value="Added todo comments from part B using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into main.py." />
     <MESSAGE value="Added todo comments from part C using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into Truck.py and CSV.py." />
     <MESSAGE value="Added todo comments from part D using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into Truck.py and CSV.py." />
@@ -476,10 +492,12 @@
     <MESSAGE value="Started working on implementation of lookUp function and deleted old update unit test function in testHashTable.py." />
     <MESSAGE value="Finished implementation of lookUp function and added unit test cases correlated to the lookUp function in testHashTable.py." />
     <MESSAGE value="Finished implementation of package object in Package.py." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementation of package object in Package.py." />
+    <MESSAGE value="Updated str function in Package.py to match implementation steps given for Task 2. Started implemented unit Tests for Package.py in testPackage.py." />
+    <MESSAGE value="Finished implemented unit Tests for Package.py in testPackage.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implemented unit Tests for Package.py in testPackage.py." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731026548688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731045417739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731046088676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731045883763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

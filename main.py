@@ -1,7 +1,11 @@
 # TODO don't submit to github this part
 # Create an identifying comment within the first line of a file named “main.py” that includes your student ID.
-from HashTable import *
 
+from HashTable import *
+from Package import *
+from HashTable import *
+from Truck import *
+from CSV import *
 
 # TODO C.  Write an original program that will deliver all packages and meet all
 # requirements using the attached supporting documents
@@ -17,8 +21,29 @@ from HashTable import *
 # - read packages from packageCSV file (see C950 - Webinar-2 - Getting Greedy, who moved my data  webinar)
 # - update Package object
 # - insert Package object into HashTable with the key=PackageID and Item=Package
-def loadPackageData(HashTable):
-    pass  # TODO delete later
+def loadPackageData(fileName):
+    with open(fileName) as packageCSV:
+        packageData = csv.reader(packageCSV, delimiter=',')
+        next(packageData)
+        for package in packageData:
+            packageID = int(package[0])
+            deliveryAddress = package[1]
+            city = package[2]
+            state = package[3]
+            zip = package[4]
+            deliveryDeadline = package[5]
+            packageWeight = package[6]
+            pageSpecialNotes = package[7]
+            deliveryStatus = "not delivered" #what do I set this too?
+            deliveryTime = timeToDeliver() #where do I get distance from?
+
+            # movie object
+            package = Package(packageID, deliveryAddress, city, state, zip,deliveryDeadline,
+                              packageWeight, pageSpecialNotes, deliveryStatus, deliveryTime)
+            # print(m)
+
+            # insert it into the hash table
+            HashTable.insert(packageID,m)
 
 
 # TODO loadDistanceData(distanceData)
