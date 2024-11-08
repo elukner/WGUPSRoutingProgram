@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Worked on hashtable data structure by working on insert method in HashTable.py">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/testHashTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testHashTable.py" afterDir="false" />
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Created and implemented unitTest cases to test insert function in HashTable.py to ensure that this function inserts new item, updates existing item, and could add multiple items as intended.">
+      <change beforePath="$PROJECT_DIR$/HashTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +47,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertMultipleItems.executor": "Run",
     "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem.executor": "Run",
     "Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor": "Run",
+    "Python tests.Python tests in testHashTable.py.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -164,7 +165,7 @@
       <workItem from="1730925941860" duration="41000" />
       <workItem from="1730925988630" duration="8880000" />
       <workItem from="1730937182120" duration="439000" />
-      <workItem from="1730937900135" duration="22423000" />
+      <workItem from="1730937900135" duration="22868000" />
     </task>
     <task id="LOCAL-00001" summary="Setting up project with main.py">
       <option name="closed" value="true" />
@@ -374,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731024857211</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Created and implemented unitTest cases to test insert function in HashTable.py to ensure that this function inserts new item, updates existing item, and could add multiple items as intended.">
+      <option name="closed" value="true" />
+      <created>1731025284605</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1731025284605</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,10 +413,11 @@
     <MESSAGE value="Reformatted all code in all python files" />
     <MESSAGE value="Started working on hashtable data structure in HashTable.py" />
     <MESSAGE value="Worked on hashtable data structure by working on insert method in HashTable.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked on hashtable data structure by working on insert method in HashTable.py" />
+    <MESSAGE value="Created and implemented unitTest cases to test insert function in HashTable.py to ensure that this function inserts new item, updates existing item, and could add multiple items as intended." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created and implemented unitTest cases to test insert function in HashTable.py to ensure that this function inserts new item, updates existing item, and could add multiple items as intended." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731001223542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731025082508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731025186184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

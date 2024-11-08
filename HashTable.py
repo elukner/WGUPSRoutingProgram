@@ -12,6 +12,16 @@ import math
 # delivery zip code
 # package weight
 # delivery status (i.e., at the hub, en route, or delivered), including the delivery time
+# TODO + lookUp(self, key)
+# B.  Develop a look-up function that takes the package ID as input and returns
+# each of the following corresponding data components:
+# delivery address
+# delivery deadline
+# delivery city
+# delivery zip code
+# package weight
+# delivery status (i.e., at the hub, en route, or delivered), including the delivery time
+
 class HashTable:
     # Constructor to initialize the hash table, with an optional parameter for the initial capacity.
     def __init__(self, initial_capacity=40):
@@ -20,8 +30,6 @@ class HashTable:
         for i in range(initial_capacity):
             self.table.append([])
 
-    # TODO + insert(key, item)
-    # TODO + update(self, key, item)
     def insert(self, key, item):
         '''
         function inserts a new item and updates items
@@ -44,19 +52,12 @@ class HashTable:
         index_list.append(keyValue)
         return True
 
-
-
-    # TODO + lookUp(self, key)
-    # B.  Develop a look-up function that takes the package ID as input and returns
-    # each of the following corresponding data components:
-    # delivery address
-    # delivery deadline
-    # delivery city
-    # delivery zip code
-    # package weight
-    # delivery status (i.e., at the hub, en route, or delivered), including the delivery time
-
     def lookUp(self, key):
-        pass  # TODO delete later
+        '''
+        function searches for a key and returns its value
+        :param key: packageID
+        :return: package object
+        '''
+
 
 
