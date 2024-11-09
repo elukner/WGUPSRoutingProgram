@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Started implementing loadPackageData in main.py. Also, started implementing CSV.py correlated functions needed for this method.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementing loadPackageData in main.py.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/testMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testMain.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,7 @@
     "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem.executor": "Run",
     "Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem.executor": "Run",
     "Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor": "Run",
+    "Python tests.Python tests for testMain.MainTestCase.testLoadPackageData.executor": "Run",
     "Python tests.Python tests for testPackage.PackageTestCase.test_str_method.executor": "Run",
     "Python tests.Python tests in testHashTable.py.executor": "Run",
     "Python tests.Python tests in testPackage.py.executor": "Run",
@@ -69,7 +70,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests for testMain.MainTestCase.testLoadPackageData">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
@@ -91,22 +92,6 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for testHashTable.HashTableTestCase.testInsertMultipleItems" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="WGUPSRoutingProgram" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testHashTable.HashTableTestCase.testInsertMultipleItems&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests for testHashTable.HashTableTestCase.testInsertNewItem" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -157,6 +142,22 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for testMain.MainTestCase.testLoadPackageData" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="WGUPSRoutingProgram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;testMain.MainTestCase.testLoadPackageData&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for testPackage.PackageTestCase.test__str__" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
@@ -175,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for testMain.MainTestCase.testLoadPackageData" />
         <item itemvalue="Python tests.Python tests for testPackage.PackageTestCase.test__str__" />
         <item itemvalue="Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem" />
         <item itemvalue="Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem" />
         <item itemvalue="Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem" />
-        <item itemvalue="Python tests.Python tests for testHashTable.HashTableTestCase.testInsertMultipleItems" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +204,7 @@
       <workItem from="1730925941860" duration="41000" />
       <workItem from="1730925988630" duration="8880000" />
       <workItem from="1730937182120" duration="439000" />
-      <workItem from="1730937900135" duration="43166000" />
+      <workItem from="1730937900135" duration="45730000" />
     </task>
     <task id="LOCAL-00001" summary="Setting up project with main.py">
       <option name="closed" value="true" />
@@ -469,14 +470,21 @@
       <option name="project" value="LOCAL" />
       <updated>1731049851520</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Finished implementing loadPackageData in main.py.">
+      <option name="closed" value="true" />
+      <created>1731122888137</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1731122888137</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added todo comments from part C using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into Truck.py and CSV.py." />
     <MESSAGE value="Added todo comments from part D using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into Truck.py and CSV.py." />
     <MESSAGE value="Checked and corrected all todo comments to ensure that all todo comments match the steps in the document C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor." />
     <MESSAGE value="Finished skeleton code for Truck.py" />
@@ -501,10 +509,11 @@
     <MESSAGE value="Updated str function in Package.py to match implementation steps given for Task 2. Started implemented unit Tests for Package.py in testPackage.py." />
     <MESSAGE value="Finished implemented unit Tests for Package.py in testPackage.py." />
     <MESSAGE value="Started implementing loadPackageData in main.py. Also, started implementing CSV.py correlated functions needed for this method." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started implementing loadPackageData in main.py. Also, started implementing CSV.py correlated functions needed for this method." />
+    <MESSAGE value="Finished implementing loadPackageData in main.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing loadPackageData in main.py." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731046088676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731045883763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731123058829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731125242818" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
