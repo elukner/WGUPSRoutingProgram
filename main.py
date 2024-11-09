@@ -7,6 +7,9 @@ from HashTable import *
 from Truck import *
 from CSV import *
 
+distanceData = [] #Create distanceData List
+addressData = [] #Create addressData List
+
 # TODO C.  Write an original program that will deliver all packages and meet all
 # requirements using the attached supporting documents
 # “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
@@ -14,37 +17,6 @@ from CSV import *
 # (including the delivery time) of any package at any time and the total mileage traveled by all trucks.
 # (The delivery status should report the package as at the hub, en route,
 # or delivered. Delivery status must include the time.)
-
-
-# TODO loadPackageData(HashTable)
-# TODO 3-Create loadPackageData(HashTable) to
-# - read packages from packageCSV file (see C950 - Webinar-2 - Getting Greedy, who moved my data  webinar)
-# - update Package object
-# - insert Package object into HashTable with the key=PackageID and Item=Package
-def loadPackageData(fileName):
-    with open(fileName) as packageCSV:
-        packageData = csv.reader(packageCSV, delimiter=',')
-        next(packageData)
-        for package in packageData:
-            packageID = int(package[0])
-            deliveryAddress = package[1]
-            city = package[2]
-            state = package[3]
-            zip = package[4]
-            deliveryDeadline = package[5]
-            packageWeight = package[6]
-            pageSpecialNotes = package[7]
-            deliveryStatus = "not delivered" #what do I set this too?
-            deliveryTime = timeToDeliver() #where do I get distance from?
-
-            # movie object
-            package = Package(packageID, deliveryAddress, city, state, zip,deliveryDeadline,
-                              packageWeight, pageSpecialNotes, deliveryStatus, deliveryTime)
-            # print(m)
-
-            # insert it into the hash table
-            HashTable.insert(packageID,m)
-
 
 # TODO loadDistanceData(distanceData)
 # B.1) Upload Distances:
@@ -65,6 +37,56 @@ def loadDistanceData(distanceData):
 # - append address to addressData.
 def loadAddressData(addressData):
     pass  # TODO delete later
+
+
+def loadPackageData(fileName, hashTable):
+    """
+    This function reads package data from the provided CSV file, creates and updates
+    Package objects for each entry, and inserts them into a hash table.
+
+    Steps:
+    1. Reads the package data from the packageCSV file.
+    2. Updates each Package object with its respective data, including address, deadline, weight, etc.
+    3. Inserts each Package object into the hash table using the package ID as the key.
+    :param fileName: The name of the CSV file containing package data.
+    :param hashTable: The hash table into which Package objects will be inserted, with the package ID as the key.
+    """
+    with open(fileName) as packageCSV:
+        packageData = csv.reader(packageCSV, delimiter=',')
+        next(packageData) #skip the header row
+        for package in packageData:
+            packageID = int(package[0])
+            deliveryAddress = package[1]
+            city = package[2]
+            state = package[3]
+            zip = package[4]
+            deliveryDeadline = package[5]
+            packageWeight = package[6]
+            pageSpecialNotes = package[7]
+            deliveryStatus = "At Hub" # Setting initial status to be "At Hub"
+
+            #calculate the distance from teh hub to the package address
+            hubAddress = "Hub"
+            try:
+                indexFrom = addressData.index(hubAddress)
+                indexTo = addressData.index(hubAddress)
+                distance = distanceData[indexFrom][indexTo]
+                deliveryTime = timeToDeliver(distance)
+            except ValueError:
+                # If address is not found, set deliveryTime to None
+                deliveryTime = None
+
+            # Create Package object
+            # - insert Package object into HashTable with the key=PackageID and Item=Package
+            package = Package(packageID, deliveryAddress, city, state, zip, deliveryDeadline,
+                              packageWeight, pageSpecialNotes, deliveryStatus, deliveryTime)
+            # print(package) TODO delete later?
+
+            # Insert it into the hash table
+            hashTable.insert(packageID,package)
+
+
+
 
 
 # TODO truckLoadPackages() ?? does this function need to be here or only in truck object
@@ -101,6 +123,10 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+#    loadDistanceData('distanceCSV.csv') TODO uncomment when these functions are complete
+#    loadAddressData('addressCSV.csv') TODO uncomment when these functions are complete
+#    hashTable = HashTable() TODO uncomment when these functions are complete
+#    loadPackageData('packageCSV.csv', hashTable) TODO uncomment when these functions are complete
     printUI()
     # print_hi('PyCharm')
 
