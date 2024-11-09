@@ -1,32 +1,46 @@
 # TODO don't submit to github this part
 # Create an identifying comment within the first line of a file named “main.py” that includes your student ID.
 
-from HashTable import *
 from Package import *
 from HashTable import *
 from Truck import *
 from CSV import *
 
-distanceData = [] #Create distanceData List
-addressData = [] #Create addressData List
+distanceData = []
+addressData = []  # Create addressData List
 
-# TODO C.  Write an original program that will deliver all packages and meet all
-# requirements using the attached supporting documents
-# “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
-# D.  Provide an intuitive interface for the user to view the delivery status
-# (including the delivery time) of any package at any time and the total mileage traveled by all trucks.
-# (The delivery status should report the package as at the hub, en route,
-# or delivered. Delivery status must include the time.)
 
-# TODO loadDistanceData(distanceData)
-# B.1) Upload Distances:
-# 4-Create distanceData List
-# 5-Define loadDistanceData(distanceData) to read distanceCSV file
-# - read distances from distanceCSV file; row by row
-# - append row to distanceData (two-dimensional list.
-# See C950 WGUPS Distance Table Matrix)
-def loadDistanceData(distanceData):
-    pass  # TODO delete later
+def loadDistanceData(fileName):
+    """
+    This function reads distance data from the provided CSV file and appends each row to the distanceData list.
+
+    Steps:
+    1. Reads the distance data from the distanceCSV file.
+    2. Appends each row to the distanceData list.
+
+    :param fileName: The name of the CSV file containing distance data.
+    :return: A 2D list containing distances between addresses.
+    """
+    currentDistanceData = distanceData  # Create distanceData List
+
+    with (open(fileName) as csvfile):
+        distanceDataReader = csv.reader(csvfile, delimiter=',')
+
+        # Skip the first row
+        next(distanceDataReader)
+
+        for row in distanceDataReader:
+            # Convert each distance value to float, replacing empty strings with 0.0
+            cleanedRow = []
+            for value in row[1:]:
+                try:
+                    cleanedRow.append(float(value))
+                except ValueError:
+                    cleanedRow.append(0.0)
+
+            currentDistanceData.append(cleanedRow)
+
+    return currentDistanceData
 
 
 # TODO loadAddressData(addressData)
@@ -53,7 +67,7 @@ def loadPackageData(fileName, hashTable):
     """
     with open(fileName) as packageCSV:
         packageData = csv.reader(packageCSV, delimiter=',')
-        next(packageData) #skip the header row
+        next(packageData)  # skip the header row
         for package in packageData:
             packageID = int(package[0])
             deliveryAddress = package[1]
@@ -63,9 +77,9 @@ def loadPackageData(fileName, hashTable):
             deliveryDeadline = package[5]
             packageWeight = package[6]
             pageSpecialNotes = package[7]
-            deliveryStatus = "At Hub" # Setting initial status to be "At Hub"
+            deliveryStatus = "At Hub"  # Setting initial status to be "At Hub"
 
-            #calculate the distance from teh hub to the package address
+            # calculate the distance from teh hub to the package address
             hubAddress = "Hub"
             try:
                 indexFrom = addressData.index(hubAddress)
@@ -83,14 +97,19 @@ def loadPackageData(fileName, hashTable):
             # print(package) TODO delete later?
 
             # Insert it into the hash table
-            hashTable.insert(packageID,package)
-
-
-
+            hashTable.insert(packageID, package)
 
 
 # TODO truckLoadPackages() ?? does this function need to be here or only in truck object
 # TODO truckDeliverPackages(truck) ?? does this function need to be here or only in truck object
+
+# TODO C.  Write an original program that will deliver all packages and meet all
+# requirements using the attached supporting documents
+# “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
+# D.  Provide an intuitive interface for the user to view the delivery status
+# (including the delivery time) of any package at any time and the total mileage traveled by all trucks.
+# (The delivery status should report the package as at the hub, en route,
+# or delivered. Delivery status must include the time.)
 
 # TODO UI interaction
 # 18-Create an UI to interact and report the results based on the requirements.
@@ -123,10 +142,10 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-#    loadDistanceData('distanceCSV.csv') TODO uncomment when these functions are complete
-#    loadAddressData('addressCSV.csv') TODO uncomment when these functions are complete
-#    hashTable = HashTable() TODO uncomment when these functions are complete
-#    loadPackageData('packageCSV.csv', hashTable) TODO uncomment when these functions are complete
+    loadDistanceData('distanceCSV.csv')
+#    loadAddressData('addressCSV.csv')
+#    hashTable = HashTable()
+#    loadPackageData('packageCSV.csv', hashTable)
     printUI()
     # print_hi('PyCharm')
 
