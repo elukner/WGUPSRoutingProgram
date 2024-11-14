@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementing loadAddressData function (Defined loadAddressData(addressData) to read addressCSV file, reads only addresses from addressCSV file, append address to addressData).">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementing loadPackage in Truck.py. Started implementing delieverPackages in Truck.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Truck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Truck.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +205,7 @@
       <workItem from="1730925988630" duration="8880000" />
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
-      <workItem from="1731604715378" duration="14035000" />
+      <workItem from="1731604715378" duration="15233000" />
     </task>
     <task id="LOCAL-00001" summary="Setting up project with main.py">
       <option name="closed" value="true" />
@@ -504,14 +503,21 @@
       <option name="project" value="LOCAL" />
       <updated>1731616042021</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Finished implementing loadPackage in Truck.py. Started implementing delieverPackages in Truck.py">
+      <option name="closed" value="true" />
+      <created>1731622216763</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1731622216763</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finished skeleton code for Truck.py and CSV.py" />
     <MESSAGE value="Finished skeleton code for Package.py." />
     <MESSAGE value="Finished skeleton code for main.py." />
     <MESSAGE value="Finished skeleton code for HashTable.py." />
@@ -536,7 +542,8 @@
     <MESSAGE value="Finished implementing loadPackageData unit test in testMain.py." />
     <MESSAGE value="Finished implementing loadDistanceData function." />
     <MESSAGE value="Finished implementing loadAddressData function (Defined loadAddressData(addressData) to read addressCSV file, reads only addresses from addressCSV file, append address to addressData)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing loadAddressData function (Defined loadAddressData(addressData) to read addressCSV file, reads only addresses from addressCSV file, append address to addressData)." />
+    <MESSAGE value="Finished implementing loadPackage in Truck.py. Started implementing delieverPackages in Truck.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing loadPackage in Truck.py. Started implementing delieverPackages in Truck.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731616243235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
