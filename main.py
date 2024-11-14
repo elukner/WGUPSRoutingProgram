@@ -125,8 +125,35 @@ def loadPackageData(fileName, hashTable):
             hashTable.insert(packageID, package)
 
 
-# TODO truckLoadPackages() ?? does this function need to be here or only in truck object
-# TODO truckDeliverPackages(truck) ?? does this function need to be here or only in truck object
+# TODO + truckLoadPackages()
+    # C.3) Function to load packages into Trucks:
+    # 12-Define truckLoadPackages() //DONE
+    def truckLoadPackages():
+        pass  # TODO delete later
+
+    # 13-Load Trucks based on assumptions provided
+    # (ex. Truck-2 must have some packages, some packages go together,
+    # some packages are delayed, ...)
+    # 14-And closest addresses/packages until there is 16 packages in a Truck
+    # i.e. Load manually/heuristically or Loop package addresses
+    # and call minDistanceFrom(fromAddress, truckPackages)
+    # for all the addresses in the Truck not visited yet
+
+    # TODO + truckDeliverPackages(truck)
+    # D.1) Function to deliver packages in a Truck:
+    # 15-Define truckDeliverPackages(truck)
+    def truckDeliverPackages(truck):
+        pass  # TODO delete later
+# 16-Loop truck package addresses
+# and call minDistanceFrom(fromAddress, truckPackages)
+# for all the addresses not visited yet
+# D.2) Keep track of miles and time delivered: (remember funtion in package.py for update status)
+# 17-Update delivery status and time delivered in Hash Table for the package
+# delivered and keep up with total mileage and delivery times.
+# i.e. How to keep track of the time?:
+# timeToDeliver(h) = distance(miles)/18(mph) where 18 mph average Truck speed.
+# time_obj = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s)).
+# time_obj could be cumulated to keep track of time.
 
 # TODO C.  Write an original program that will deliver all packages and meet all
 # requirements using the attached supporting documents

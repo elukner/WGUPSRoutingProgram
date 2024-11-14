@@ -1,55 +1,46 @@
 from datetime import timedelta
 from CSV import *
 
-
-# TODO C.  Write an original program that will deliver all packages and meet all
-# requirements using the attached supporting documents
-# “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
-# D.  Provide an intuitive interface for the user to view the delivery status
-# (including the delivery time) of any package at any time and the total mileage traveled by all trucks.
-# (The delivery status should report the package as at the hub, en route,
-# or delivered. Delivery status must include the time.)
-
-# TODO 2-Create Package and Truck objects
-# and have packageCSV and distanceCSV and addressCSV files ready
 class Truck:
-
-    # TODO + packages: List[Package] ??? Because step 4,6 lists
-    def __init__(self, truck_id, hash_table):
-        self.truck_id = truck_id
+    def __init__(self, truckId, hashTable):
+        self.truckId = truckId
         self.packages = []  # List of packages assigned to the truck
-        self.current_location = "Hub Address"  # Replace with actual starting hub address
-        self.total_mileage = 0
-        self.current_time = timedelta(hours=8)  # Start at 8:00 AM
-        self.hash_table = hash_table  # Reference to hash table for updating package status
+        self.currentLocation = "Hub Address"  # Replace with actual starting hub address
+        self.totalMileage = 0
+        self.currentTime = timedelta(hours=8)  # Start at 8:00 AM
+        self.hashTable = hashTable  # Reference to hash table for updating package status
         self.capacity = 16  # Each truck can carry a maximum of 16 packages
 
-    # TODO + truckLoadPackages()
-    # C.3) Function to load packages into Trucks:
-    # 12-Define truckLoadPackages() //DONE
-    def truckLoadPackages(self):
-        pass  # TODO delete later
+    def loadPackage(self, package):
+        """
+        Loads a package onto the truck if capacity allows.
+        :param package: Package object to load.
+        """
+        if len(self.packages) >= self.capacity:
+            self.packages.append(package)
+            print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")
+        else:
+            print(f"Truck {self.truckId} is at full capacity, cannot load Package {package.packageID}.")
 
-    # 13-Load Trucks based on assumptions provided
-    # (ex. Truck-2 must have some packages, some packages go together,
-    # some packages are delayed, ...)
-    # 14-And closest addresses/packages until there is 16 packages in a Truck
-    # i.e. Load manually/heuristically or Loop package addresses
-    # and call minDistanceFrom(fromAddress, truckPackages)
-    # for all the addresses in the Truck not visited yet
+    def deliverPackages(self):
+        """
+        Delivers all packages loaded on the truck based on a greedy approach, choosing the nearest address first.
+        Updates the delivery status and total mileage.
+        """
+        while self.packages:
+            #Find the closest package to the current address using the nearest neighbor algorithm
+            closestPackage = minDistanceFrom(self.currentLocation, self.packages)
 
-    # TODO + truckDeliverPackages(truck)
-    # D.1) Function to deliver packages in a Truck:
-    # 15-Define truckDeliverPackages(truck)
-    def truckDeliverPackages(self, truck):
-        pass  # TODO delete later
-# 16-Loop truck package addresses
-# and call minDistanceFrom(fromAddress, truckPackages)
-# for all the addresses not visited yet
-# D.2) Keep track of miles and time delivered: (remember funtion in package.py for update status)
-# 17-Update delivery status and time delivered in Hash Table for the package
-# delivered and keep up with total mileage and delivery times.
-# i.e. How to keep track of the time?:
-# timeToDeliver(h) = distance(miles)/18(mph) where 18 mph average Truck speed.
-# time_obj = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s)).
-# time_obj could be cumulated to keep track of time.
+            # Calculate the distance to the next package address
+            distanceToNext = distanceBetween(self.currentLocation, closestPackage)
+
+            #Update the truck's milage and move to the next address
+            self.totalMileage += distanceToNext
+            self.currentLocation = closestPackage #TODO is this wrong?
+
+            # Update the package delivery status and time
+            deliveryTime
+
+
+    def __str__(self):
+        return f"Truck {self.truckId} with {len(self.packages)} packages loaded."
