@@ -1,80 +1,53 @@
-# TODO don't submit to github this part
-# Create an identifying comment within the first line of a file named “main.py” that includes your student ID.
+# Student ID: 12345678  # Replace with your actual student ID; this line identifies the submission.
 
 from Package import *
 from HashTable import *
 from Truck import *
 from CSV import *
+import csv
+from datetime import timedelta
 
+# Global variables to store the data
 distanceData = []
 addressData = []
 
 
 def loadDistanceData(fileName):
     """
-    This function reads distance data from the provided CSV file and appends each row to the distanceData list.
-
-    Steps:
-    1. Reads the distance data from the distanceCSV file.
-    2. Appends each row to the distanceData list.
-
-    :param fileName: The name of the CSV file containing distance data.
-    :return: A 2D list containing distances between addresses.
+    Reads distance data from the provided CSV file and appends each row to the distanceData list.
     """
-    currentDistanceData = distanceData  # Create distanceData List
+    currentDistanceData = distanceData
 
-    with (open(fileName) as csvfile):
+    with open(fileName) as csvfile:
         distanceDataReader = csv.reader(csvfile, delimiter=',')
-
         # Skip the first row
         next(distanceDataReader)
-
         for row in distanceDataReader:
-            # Convert each distance value to float, replacing empty strings with 0.0
             cleanedRow = []
             for value in row[1:]:
                 try:
                     cleanedRow.append(float(value))
                 except ValueError:
                     cleanedRow.append(0.0)
-
-            #print(cleanedRow) TODO delete later
             currentDistanceData.append(cleanedRow)
-        #print(currentDistanceData) TODO delete later
     return currentDistanceData
+
 
 def loadAddressData(fileName):
     """
-    This function reads address data from the provided CSV file and appends each address to the addressData list.
-
-    Steps:
-    1. Reads the address data from the addressCSV file.
-    2. Appends each address to the addressData list.
-
-    :param fileName: The name of the CSV file containing address data.
-    :return: A list containing all addresses from the CSV file.
-    TODO emailed questions about "For the loadAddressData(addressData) and loadDistanceData(distanceData)
-    funtions in the nearest neighbor implementation for part C are these meant to
-    only read one line or the entire file because I was setting it up so that it reads the whole file. "
+    Reads address data from the provided CSV file and appends each address to the addressData list.
     """
     currentAddressData = addressData
 
-    with (open(fileName) as csvfile):
+    with open(fileName) as csvfile:
         addressDataReader = csv.reader(csvfile, delimiter=',')
-
-        #Skip the first row
+        # Skip the first row
         next(addressDataReader)
-
         for row in addressDataReader:
-            # Make sure the row has at least one element to avoid index out of range errors
             if len(row) > 0:
-                # Extract the address from the first column (index 0)
-                address = row[0].strip()  # Remove any leading or trailing whitespace
-                if address:  # Make sure address is not empty
+                address = row[0].strip()  # Extract the address from the first column (index 0)
+                if address:
                     addressData.append(address)
-                    #print(address) #TODO delete later
-
-    #print(currentAddressData) TODO delete later
     return currentAddressData
 
 
@@ -92,87 +65,70 @@ def loadPackageData(fileName, hashTable):
     """
     with open(fileName) as packageCSV:
         packageData = csv.reader(packageCSV, delimiter=',')
-        next(packageData)  # skip the header row
+
+        # Skip the first row if it is a header
+        next(packageData)
+
         for package in packageData:
-            packageID = int(package[0])
-            deliveryAddress = package[1]
-            city = package[2]
-            state = package[3]
-            zip = package[4]
-            deliveryDeadline = package[5]
-            packageWeight = package[6]
-            pageSpecialNotes = package[7]
-            deliveryStatus = "At Hub"  # Setting initial status to be "At Hub"
+            # Skip empty rows or rows with missing values
+            if len(package) == 0 or package[0].strip() == '' or not package[0].isdigit():
+                continue
 
-            # calculate the distance from teh hub to the package address
-            hubAddress = "Hub"
             try:
-                indexFrom = addressData.index(hubAddress)
-                indexTo = addressData.index(hubAddress)
-                distance = distanceData[indexFrom][indexTo]
-                deliveryTime = timeToDeliver(distance)
-            except ValueError:
-                # If address is not found, set deliveryTime to None
-                deliveryTime = None
+                packageID = int(package[0].strip())
+                deliveryAddress = package[1].strip()
+                city = package[2].strip()
+                state = package[3].strip()
+                zip = package[4].strip()
+                deliveryDeadline = package[5].strip()
+                packageWeight = package[6].strip()
+                pageSpecialNotes = package[7].strip() if len(package) > 7 else ""
+                deliveryStatus = "At Hub"  # Setting initial status to be "At Hub"
 
-            # Create Package object
-            # - insert Package object into HashTable with the key=PackageID and Item=Package
-            package = Package(packageID, deliveryAddress, city, state, zip, deliveryDeadline,
-                              packageWeight, pageSpecialNotes, deliveryStatus, deliveryTime)
-            # print(package) TODO delete later?
+                # Calculate the distance from the hub to the package address
+                hubAddress = "Hub Address"  # Replace with actual Hub address
+                try:
+                    indexFrom = addressData.index(hubAddress)
+                    indexTo = addressData.index(deliveryAddress)
+                    distance = distanceData[indexFrom][indexTo]
+                    deliveryTime = timeToDeliver(distance)
+                except ValueError:
+                    # If address is not found, set deliveryTime to None
+                    deliveryTime = None
 
-            # Insert it into the hash table
-            hashTable.insert(packageID, package)
+                # Create Package object
+                package = Package(packageID, deliveryAddress, city, state, zip, deliveryDeadline,
+                                  packageWeight, pageSpecialNotes, deliveryStatus, deliveryTime)
+
+                # Insert it into the hash table
+                hashTable.insert(packageID, package)
+
+            except ValueError as e:
+                print(f"Skipping invalid row in {fileName}: {package} ({e})")
 
 
-# TODO + truckLoadPackages()
-    # C.3) Function to load packages into Trucks:
-    # 12-Define truckLoadPackages() //DONE
-    def truckLoadPackages():
-        pass  # TODO delete later
+def truckLoadPackages(truck, packages):
+    """
+    Loads packages into the truck using the nearest neighbor approach until the truck is full.
+    """
+    remaining_packages = packages.copy()
+    while len(truck.packages) < truck.capacity and remaining_packages:
+        closest_package = minDistanceFrom(truck.currentLocation, remaining_packages)
+        truck.loadPackage(closest_package)
+        remaining_packages.remove(closest_package)
 
-    # 13-Load Trucks based on assumptions provided
-    # (ex. Truck-2 must have some packages, some packages go together,
-    # some packages are delayed, ...)
-    # 14-And closest addresses/packages until there is 16 packages in a Truck
-    # i.e. Load manually/heuristically or Loop package addresses
-    # and call minDistanceFrom(fromAddress, truckPackages)
-    # for all the addresses in the Truck not visited yet
 
-    # TODO + truckDeliverPackages(truck)
-    # D.1) Function to deliver packages in a Truck:
-    # 15-Define truckDeliverPackages(truck)
-    def truckDeliverPackages(truck):
-        pass  # TODO delete later
-# 16-Loop truck package addresses
-# and call minDistanceFrom(fromAddress, truckPackages)
-# for all the addresses not visited yet
-# D.2) Keep track of miles and time delivered: (remember funtion in package.py for update status)
-# 17-Update delivery status and time delivered in Hash Table for the package
-# delivered and keep up with total mileage and delivery times.
-# i.e. How to keep track of the time?:
-# timeToDeliver(h) = distance(miles)/18(mph) where 18 mph average Truck speed.
-# time_obj = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s)).
-# time_obj could be cumulated to keep track of time.
+def truckDeliverPackages(truck):
+    """
+    Delivers all packages loaded on the truck.
+    """
+    truck.deliverPackages()
 
-# TODO C.  Write an original program that will deliver all packages and meet all
-# requirements using the attached supporting documents
-# “Salt Lake City Downtown Map,” “WGUPS Distance Table,” and “WGUPS Package File.”
-# D.  Provide an intuitive interface for the user to view the delivery status
-# (including the delivery time) of any package at any time and the total mileage traveled by all trucks.
-# (The delivery status should report the package as at the hub, en route,
-# or delivered. Delivery status must include the time.)
 
-# TODO UI interaction
-# 18-Create an UI to interact and report the results based on the requirements.
-# Menu Options:
-# ***************************************
-# 1. Print All Package Status and Total Mileage
-# 2. Get a Single Package Status with a Time
-# 3. Get All Package Status with a Time
-# 4. Exit the Program
-# ***************************************
 def printUI():
+    """
+    Displays the main menu options for the user.
+    """
     print(f'***************************************')
     print(f'1. Print All Package Status and Total Mileage')
     print(f'2. Get a Single Package Status with a Time')
@@ -181,24 +137,62 @@ def printUI():
     print(f'***************************************')
 
 
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
+def main():
+    # Load data from CSV files
     loadDistanceData('distanceCSV.csv')
     loadAddressData('addressCSV.csv')
-#    hashTable = HashTable()
-#    loadPackageData('packageCSV.csv', hashTable)
-    printUI()
-    # print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Create the hash table and load package data
+    hashTable = HashTable()
+    loadPackageData('packageCSV.csv', hashTable)
+
+    # Create trucks
+    truck1 = Truck(1, hashTable)
+    truck2 = Truck(2, hashTable)
+    truck3 = Truck(3, hashTable)
+
+    # Load packages into trucks
+    packages = [hashTable.lookUp(packageID) for packageID in range(1, 41)]  # Assume there are 40 packages
+    truckLoadPackages(truck1, packages)
+    truckLoadPackages(truck2, packages)
+    truckLoadPackages(truck3, packages)
+
+    # Deliver packages
+    truckDeliverPackages(truck1)
+    truckDeliverPackages(truck2)
+    truckDeliverPackages(truck3)
+
+    # User interaction loop
+    while True:
+        printUI()
+        user_choice = input("Enter your choice: ")
+        if user_choice == '1':
+            # Print all package statuses and total mileage for all trucks
+            for truck in [truck1, truck2, truck3]:
+                print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
+                for package in truck.packages:
+                    print(package)
+        elif user_choice == '2':
+            # Get a single package status
+            package_id = int(input("Enter package ID: "))
+            package = hashTable.lookUp(package_id)
+            if package:
+                print(package)
+            else:
+                print(f"Package ID {package_id} not found.")
+        elif user_choice == '3':
+            # Get all package statuses
+            current_time = input("Enter the time to get package status (HH:MM): ")
+            # This part could involve checking which packages are delivered at the specified time
+            print("Feature under development.")
+        elif user_choice == '4':
+            # Exit the program
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice, please enter a number between 1 and 4.")
+
+
+# Run the main function
+if __name__ == '__main__':
+    main()
