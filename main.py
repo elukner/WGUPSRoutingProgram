@@ -7,7 +7,7 @@ from Truck import *
 from CSV import *
 
 distanceData = []
-addressData = []  # Create addressData List
+addressData = []
 
 
 def loadDistanceData(fileName):
@@ -38,19 +38,44 @@ def loadDistanceData(fileName):
                 except ValueError:
                     cleanedRow.append(0.0)
 
+            #print(cleanedRow) TODO delete later
             currentDistanceData.append(cleanedRow)
-
+        #print(currentDistanceData) TODO delete later
     return currentDistanceData
 
+def loadAddressData(fileName):
+    """
+    This function reads address data from the provided CSV file and appends each address to the addressData list.
 
-# TODO loadAddressData(addressData)
-# B.2) Upload Addresses:
-# 6-Create addressData List
-# 7-Define loadAddressData(addressData) to read addressCSV file
-# - read only addresses from addressCSV file
-# - append address to addressData.
-def loadAddressData(addressData):
-    pass  # TODO delete later
+    Steps:
+    1. Reads the address data from the addressCSV file.
+    2. Appends each address to the addressData list.
+
+    :param fileName: The name of the CSV file containing address data.
+    :return: A list containing all addresses from the CSV file.
+    TODO emailed questions about "For the loadAddressData(addressData) and loadDistanceData(distanceData)
+    funtions in the nearest neighbor implementation for part C are these meant to
+    only read one line or the entire file because I was setting it up so that it reads the whole file. "
+    """
+    currentAddressData = addressData
+
+    with (open(fileName) as csvfile):
+        addressDataReader = csv.reader(csvfile, delimiter=',')
+
+        #Skip the first row
+        next(addressDataReader)
+
+        for row in addressDataReader:
+            # Make sure the row has at least one element to avoid index out of range errors
+            if len(row) > 0:
+                # Extract the address from the first column (index 0)
+                address = row[0].strip()  # Remove any leading or trailing whitespace
+                if address:  # Make sure address is not empty
+                    addressData.append(address)
+                    #print(address) #TODO delete later
+
+    #print(currentAddressData) TODO delete later
+    return currentAddressData
 
 
 def loadPackageData(fileName, hashTable):
@@ -143,7 +168,7 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     loadDistanceData('distanceCSV.csv')
-#    loadAddressData('addressCSV.csv')
+    loadAddressData('addressCSV.csv')
 #    hashTable = HashTable()
 #    loadPackageData('packageCSV.csv', hashTable)
     printUI()
