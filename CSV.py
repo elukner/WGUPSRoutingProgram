@@ -1,8 +1,8 @@
 # This Python file contains supporting functions for the WGUPS Routing Program.
 from main import addressData, distanceData
 
-
 # Function to return the distance between two addresses
+#TODO distanceBetween(addressData, distanceData, address1, address2)
 def distanceBetween(address1, address2):
     """
     Function to return the distance between two addresses.
@@ -20,6 +20,7 @@ def distanceBetween(address1, address2):
 
 
 # Function to find min distance/address
+#TODO minDistanceFrom(addressData, distanceData,fromAddress, truckPackages)
 def minDistanceFrom(fromAddress, truckPackages):
     """
     Function to find the package with the minimum distance from the given address.

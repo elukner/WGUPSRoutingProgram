@@ -21,7 +21,9 @@ def loadDistanceData(fileName):
     with open(fileName) as csvfile:
         distanceDataReader = csv.reader(csvfile, delimiter=',')
         # Skip the first row
-        next(distanceDataReader)
+        for i in range(8):
+            next(distanceDataReader)
+
         for row in distanceDataReader:
             cleanedRow = []
             for value in row[1:]:
@@ -134,6 +136,7 @@ def truckLoadPackages(truck, packages):
         # If the truck reaches capacity, break the loop
         if len(truck.packages) >= truck.capacity:
             break
+    # TODO el: the packages get removed from remaining_packages but don't get removed from the global packages variable.  So then all the packages get sent to the next truck instead of just the ones that are left.
 
 
 
@@ -191,7 +194,7 @@ def main():
                 print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
                 for package in truck.packages:
                     print(package)
-        elif user_choice == '2':
+        elif user_choice == '2':  #TODO el: print the column headers for each of the rows in the printed data.  I don't know what each item represents.
             # Get a single package status
             package_id = int(input("Enter package ID: "))
             package = hashTable.lookUp(package_id)

@@ -40,7 +40,7 @@ class Package:
         Function that returns a string representation of the package.
         :return: string representation of the package
         """
-        return (
+        return ( #TODO el: update this to show what each item means so someone who didn't write the code can tell what each item is.  This will help you debug too.
             f"{self.packageID}, {self.deliveryAddress}, {self.city}, {self.state}, {self.zip}, "
             f"{self.deliveryDeadline}, {self.packageWeight}, {self.pageSpecialNotes}, {self.deliveryStatus}, "
             f"{self.deliveryTime if self.deliveryTime else 'Not Delivered'}")
