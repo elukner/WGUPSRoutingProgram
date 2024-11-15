@@ -46,7 +46,7 @@ def loadAddressData(fileName):
         next(addressDataReader)
         for row in addressDataReader:
             if len(row) > 0:
-                address = row[0].strip()  # Extract the address from the first column (index 0)
+                address = row[2].strip()  # Extract the address from the first column (index 0)
                 if address:
                     addressData.append(address)
     return currentAddressData
