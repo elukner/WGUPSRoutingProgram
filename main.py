@@ -167,17 +167,34 @@ def main():
     # Create the hash table and load package data
     hashTable = HashTable()
     loadPackageData('packageCSV.csv', hashTable)
+    # check to see if hashtable data is all there TODO delete later
+    # for packageIndex in range(1,41):
+    #     print(hashTable.lookUp(packageIndex))
 
     # Create trucks
     truck1 = Truck(1, hashTable)
     truck2 = Truck(2, hashTable)
     truck3 = Truck(3, hashTable)
+    # TODO el finish writing this to check that trucks get created and initialized correctly
+    # TODO delete later
+    # truckList = [truck1, truck2, truck3]
+    # for truck in truckList:
+    #     print(f"truckId:{truck.truckId}, truck.currentLocation{truck.currentLocation}, {truck.totalMileage}, {truck.packages}, {truck.capacity}, {truck.currentTime}")
 
     # Load packages into trucks
     packages = [hashTable.lookUp(packageID) for packageID in range(1, 41)]  # Assume there are 40 packages
     truckLoadPackages(truck1, packages)
     truckLoadPackages(truck2, packages)
     truckLoadPackages(truck3, packages)
+
+    # check to see if packages are loaded in trucks TODO delete later
+    # truckList = [truck1, truck2, truck3]
+    # for truck in truckList:
+    #     print('truck: ', truck.truckId, 'packages: ')
+    #     for package in truck.packages:
+    #         print(package)
+    #     print()
+    # TODO el packages are not loading into trucks
 
     # Deliver packages
     truckDeliverPackages(truck1)
