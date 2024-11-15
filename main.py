@@ -110,12 +110,31 @@ def loadPackageData(fileName, hashTable):
 def truckLoadPackages(truck, packages):
     """
     Loads packages into the truck using the nearest neighbor approach until the truck is full.
+    :param truck: Truck object that packages need to be loaded into.
+    :param packages: List of packages available for loading.
     """
     remaining_packages = packages.copy()
     while len(truck.packages) < truck.capacity and remaining_packages:
+        # Find the closest package from the current location
         closest_package = minDistanceFrom(truck.currentLocation, remaining_packages)
+
+        # Break the loop if no valid package is found
+        if closest_package is None:
+            print("Warning: No valid package found to load.")
+            break
+
+        # Load the package onto the truck
         truck.loadPackage(closest_package)
-        remaining_packages.remove(closest_package)
+
+        # Remove the loaded package from the remaining_packages list
+        remaining_packages = [
+            package for package in remaining_packages if package.packageID != closest_package.packageID
+        ]
+
+        # If the truck reaches capacity, break the loop
+        if len(truck.packages) >= truck.capacity:
+            break
+
 
 
 def truckDeliverPackages(truck):

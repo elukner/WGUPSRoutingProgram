@@ -16,6 +16,10 @@ class Truck:
         Loads a package onto the truck if capacity allows.
         :param package: Package object to load.
         """
+        if package is None:
+            print("Warning: Attempted to load a None package.")
+            return
+
         if len(self.packages) < self.capacity:
             self.packages.append(package)
             print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")

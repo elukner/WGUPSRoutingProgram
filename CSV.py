@@ -1,43 +1,61 @@
-# TODO this python file will be used to hold the
-# supporting functions distanceBetween(), minDistanceFrom(), and timeToDeliver()
+# This Python file contains supporting functions for the WGUPS Routing Program.
+from main import addressData, distanceData
 
 
-# TODO distanceBetween(address1, address2)
-# C.1) Function to return the distance between two addresses:
-# 8-Define distanceBetween(address1, address2)
-# 9-Return distanceData[addressData.index(address1)][addressData.index(address2)]
-# i.e. distances between addresses can be accessed via distanceData[i][j];
+# Function to return the distance between two addresses
 def distanceBetween(address1, address2):
-    pass  # TODO delete later
+    """
+    Function to return the distance between two addresses.
+    :param address1: The starting address.
+    :param address2: The destination address.
+    :return: Distance in miles between address1 and address2.
+    """
+    try:
+        index1 = addressData.index(address1)
+        index2 = addressData.index(address2)
+        return distanceData[index1][index2]
+    except ValueError:
+        # If the address is not found, return a large value (inf) to indicate it is unreachable
+        return float('inf')
 
-# C.2) Function to find min distance/address:
-# 10-Define minDistanceFrom(fromAddress, truckPackages)
-# 11-Return min distance address to fromAddress
-# i.e. call distanceBetween(address1, address2) in a loop for all the addresses in the Truck
+
+# Function to find min distance/address
 def minDistanceFrom(fromAddress, truckPackages):
     """
-    Function to find min distance/address
+    Function to find the package with the minimum distance from the given address.
     :param fromAddress: The address to calculate distances from.
     :param truckPackages: List of packages that need to be delivered.
-    :return: Return min distance address to fromAddress
+    :return: The package object with the minimum distance to fromAddress.
     """
+    # If truckPackages is empty, return None
+    if not truckPackages:
+        return None
+
     minDistance = float("inf")
     closestPackage = None
 
+    # Loop through all packages in the truck to find the closest package
     for truckPackage in truckPackages:
-        #i.e. call distanceBetween(address1, address2) in a loop for all the addresses in the Truck
         distance = distanceBetween(fromAddress, truckPackage.deliveryAddress)
+
+        # Skip the distance if it is 'inf', meaning the address is unreachable
+        if distance == float('inf'):
+            continue
+
         if distance < minDistance:
             minDistance = distance
             closestPackage = truckPackage
 
     return closestPackage
 
+
+# Function to calculate time to deliver
 def timeToDeliver(distance):
     """
-    function calculates distance(miles)/18(mph) where 18 mph average Truck speed
+    Function to calculate the time required to deliver based on distance.
+    Assumes an average speed of 18 mph.
     :param distance: Distance that will be traveled in miles.
     :return: Time in hours required to travel the given distance.
     """
-    averageSpeedMph = 18 #Assumption that trucks travel at an average speed of 18 miles per hour
-    return distance/averageSpeedMph
+    averageSpeedMph = 18  # Assumption that trucks travel at an average speed of 18 miles per hour
+    return distance / averageSpeedMph
