@@ -72,6 +72,8 @@ def main():
         printUI()
         user_choice = input("Enter your choice: ")
         if user_choice == '1':
+           # for packageIndex in range(1, 41):
+            #    print(hashTable.lookUp(packageIndex))
             # Print all package statuses and total mileage for all trucks
             for truck in [truck1, truck2, truck3]:
                 print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
