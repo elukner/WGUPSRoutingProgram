@@ -71,12 +71,15 @@ def main():
             for truck in [truck1, truck2, truck3]:
                 print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
                 for package in truck.packages:
+                    print(
+                        f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
                     print(package)
-        elif user_choice == '2':  #TODO el: print the column headers for each of the rows in the printed data.  I don't know what each item represents.
+        elif user_choice == '2':
             # Get a single package status
             package_id = int(input("Enter package ID: "))
             package = hashTable.lookUp(package_id)
             if package:
+                print(f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
                 print(package)
             else:
                 print(f"Package ID {package_id} not found.")
