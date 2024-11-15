@@ -147,8 +147,6 @@ def truckDeliverPackages(truck):
     """
     truck.deliverPackages()
 
-# Function to return the distance between two addresses
-#TODO distanceBetween(addressData, distanceData, address1, address2)
 def distanceBetween(address1, address2):
     """
     Function to return the distance between two addresses.
@@ -157,16 +155,13 @@ def distanceBetween(address1, address2):
     :return: Distance in miles between address1 and address2.
     """
     try:
-        index1 = addressData.index(address1)
-        index2 = addressData.index(address2)
-        return distanceData[index1][index2]
+        return distanceData[addressData.index(address1)][addressData.index(address2)]
     except ValueError:
         # If the address is not found, return a large value (inf) to indicate it is unreachable
         return float('inf')
 
 
 # Function to find min distance/address
-#TODO minDistanceFrom(addressData, distanceData,fromAddress, truckPackages)
 def minDistanceFrom(fromAddress, truckPackages):
     """
     Function to find the package with the minimum distance from the given address.
