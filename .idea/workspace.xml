@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Updated loadAddressData to read from a different column.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Started debugging deliverPackages function in truck.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageCSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/packageCSV.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +58,7 @@
     "Python tests.Python tests in testHashTable.py.executor": "Run",
     "Python tests.Python tests in testPackage.py.executor": "Run",
     "Python tests.Python tests in tests.executor": "Run",
-    "Python.main.executor": "Debug",
+    "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -209,15 +208,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="6813000" />
-    </task>
-    <task id="LOCAL-00002" summary="Added remaining object classes without code (Truck.py and Package.py). Also, added required packageCSV and distanceCSV and addressCSV files. Imported data into packageCSV and distanceCSV files from corresponding WGUPS Distance Table.xlsx and WGUPS Package File.xlsx (that can be downloaded from WGU task 2 instructions).">
-      <option name="closed" value="true" />
-      <created>1730926716825</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1730926716825</updated>
+      <workItem from="1731679283622" duration="10194000" />
     </task>
     <task id="LOCAL-00003" summary="Added todo comments from part A of C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document. Started working on main.py todo comments.">
       <option name="closed" value="true" />
@@ -603,14 +594,21 @@
       <option name="project" value="LOCAL" />
       <updated>1731686991351</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Started debugging deliverPackages function in truck.py">
+      <option name="closed" value="true" />
+      <created>1731693977888</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1731693977888</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Worked on hashtable data structure by working on insert method in HashTable.py" />
     <MESSAGE value="Created and implemented unitTest cases to test insert function in HashTable.py to ensure that this function inserts new item, updates existing item, and could add multiple items as intended." />
     <MESSAGE value="Started working on implementation of lookUp function and deleted old update unit test function in testHashTable.py." />
     <MESSAGE value="Finished implementation of lookUp function and added unit test cases correlated to the lookUp function in testHashTable.py." />
@@ -635,7 +633,8 @@
     <MESSAGE value="Fixed packageCSV.csv" />
     <MESSAGE value="Updated addressCSV.csv" />
     <MESSAGE value="Updated loadAddressData to read from a different column." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated loadAddressData to read from a different column." />
+    <MESSAGE value="Started debugging deliverPackages function in truck.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started debugging deliverPackages function in truck.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -647,14 +646,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>73</line>
+          <line>78</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731687394101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1731766384134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1731682005511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

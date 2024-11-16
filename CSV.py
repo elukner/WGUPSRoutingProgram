@@ -190,6 +190,36 @@ def minDistanceFrom(fromAddress, truckPackages):
 
     return closestPackage
 
+def deliverPackages(self):
+    """
+    Delivers all packages loaded on the truck based on the nearest neighbor algorithm,
+    choosing the nearest address first.
+    Updates the delivery status and total mileage.
+    """
+    while self.packages:
+        # Find the closest package to the current address using the nearest neighbor algorithm
+        closestPackage = minDistanceFrom(self.currentLocation, self.packages)
+
+        # Calculate the distance to the next package address
+        distanceToNext = distanceBetween(self.currentLocation, closestPackage.deliveryAddress)
+
+        # Update the truck's mileage and move to the next address
+        self.totalMileage += distanceToNext
+        self.currentLocation = closestPackage.deliveryAddress
+
+        # Calculate time taken for the delivery based on the average speed of 18 mph
+        timeToDeliver = timedelta(hours=distanceToNext / 18)
+        self.currentTime += timeToDeliver
+
+        # Update the package delivery status and delivery time in the hash table
+        closestPackage.updateStatus("Delivered", deliveryTime=self.currentTime)
+        self.hashTable.insert(closestPackage.packageID, closestPackage)
+
+        # Print delivery information
+        print(f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {self.currentTime}. Truck {self.truckId} total mileage: {self.totalMileage:.2f} miles.")
+
+        # Remove the delivered package from the truck's package list
+        self.packages.remove(closestPackage)
 
 # Function to calculate time to deliver
 def timeToDeliver(distance):

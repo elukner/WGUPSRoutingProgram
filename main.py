@@ -22,7 +22,10 @@ def printUI():
 
 def main():
     # Load data from CSV files
-
+ #   loadDistanceData('distanceCSV.csv')
+    #print(distanceData)
+   # loadAddressData('addressCSV.csv')
+   # print(addressData)
 
 
 
@@ -49,9 +52,9 @@ def main():
 
     # Load packages into trucks
     packages = [hashTable.lookUp(packageID) for packageID in range(1, 41)]  # Assume there are 40 packages
-    truckLoadPackages(truck1, packages)
-    truckLoadPackages(truck2, packages)
-    truckLoadPackages(truck3, packages)
+    # truckLoadPackages(truck1, packages)
+    # truckLoadPackages(truck2, packages)
+    # truckLoadPackages(truck3, packages)
 
     # check to see if packages are loaded in trucks TODO delete later
     # truckList = [truck1, truck2, truck3]
@@ -59,9 +62,11 @@ def main():
     #     print('truck: ', truck.truckId, 'packages: ')
     #     for package in truck.packages:
     #         print(package)
-    #     print()
+    #         print()
     # TODO el packages are not loading into trucks
 
+
+    print(distanceBetween('1060 Dalton Ave S','1330 2100 S'))
     # Deliver packages
     truckDeliverPackages(truck1)
     truckDeliverPackages(truck2)
