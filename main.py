@@ -93,6 +93,10 @@ def main():
     truckDeliverPackages(truck2)
     truckDeliverPackages(truck3)
 
+    # Deliver packages for each truck in the truckList
+    for truck in truckList:
+        truckDeliverPackages(truck)
+
     # User interaction loop
     while True:
         printUI()
