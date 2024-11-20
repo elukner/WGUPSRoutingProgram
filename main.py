@@ -105,6 +105,57 @@ def deliverPackages(truckList):
         truckDeliverPackages(truck)
 
 
+def userInteractionLoop(truckList, hashTable):
+    """
+    Function to handle user interaction for managing package deliveries.
+
+    Args:
+        truckList (list): A list of Truck objects containing information about the loaded packages.
+        hashTable (HashTable): A hash table containing package data for lookup.
+    """
+    while True:
+        printUI()
+        user_choice = input("Enter your choice: ")
+
+        if user_choice == '1':
+            # Print all package statuses and total mileage for all trucks
+            for truck in truckList:
+                print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
+                print("Packages on Truck:")
+                for package in truck.packages:
+                    print(
+                        "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+                    print(package)
+
+        elif user_choice == '2':
+            # Get a single package status
+            try:
+                package_id = int(input("Enter package ID: "))
+                package = hashTable.lookUp(package_id)
+                if package:
+                    print(
+                        "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+                    print(package)
+                else:
+                    print(f"Package ID {package_id} not found.")
+            except ValueError:
+                print("Invalid input. Please enter a valid package ID.")
+
+        elif user_choice == '3':
+            # Get all package statuses at a specific time
+            current_time = input("Enter the time to get package status (HH:MM): ")
+            # This part could involve checking which packages are delivered at the specified time
+            print("Feature under development.")  # TODO need to finish
+
+        elif user_choice == '4':
+            # Exit the program
+            print("Exiting the program.")
+            break
+
+        else:
+            print("Invalid choice, please enter a number between 1 and 4.")
+
+
 def main():
     # Create the hash table and load package data
     hashTable = createPackageData()
@@ -121,40 +172,7 @@ def main():
     deliverPackages(truckList)
 
     # User interaction loop
-    while True:
-        printUI()
-        user_choice = input("Enter your choice: ")
-        if user_choice == '1':
-            # for packageIndex in range(1, 41):
-            #    print(hashTable.lookUp(packageIndex))
-            # Print all package statuses and total mileage for all trucks
-            for truck in [truck1, truck2, truck3]:
-                print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
-                for package in truck.packages:
-                    print(
-                        f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
-                    print(package)
-        elif user_choice == '2':
-            # Get a single package status
-            package_id = int(input("Enter package ID: "))
-            package = hashTable.lookUp(package_id)
-            if package:
-                print(
-                    f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
-                print(package)
-            else:
-                print(f"Package ID {package_id} not found.")
-        elif user_choice == '3':
-            # Get all package statuses
-            current_time = input("Enter the time to get package status (HH:MM): ")
-            # This part could involve checking which packages are delivered at the specified time
-            print("Feature under development.")  # TODO need to finish
-        elif user_choice == '4':
-            # Exit the program
-            print("Exiting the program.")
-            break
-        else:
-            print("Invalid choice, please enter a number between 1 and 4.")
+    userInteractionLoop(truckList, hashTable)
 
 
 # Run the main function
