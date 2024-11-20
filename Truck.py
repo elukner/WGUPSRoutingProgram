@@ -58,4 +58,8 @@ class Truck:
     #         self.packages.remove(closestPackage)
 
     def __str__(self):
+        '''
+        TODO do we need this to string?????????
+        :return:
+        '''
         return f"Truck {self.truckId} with {len(self.packages)} packages loaded."

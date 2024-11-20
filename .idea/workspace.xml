@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Started implementing deliverTruckPackages function">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Commented load package and deliver package in truck.py to continue to implement deliverTruckPackages function in csv.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,15 +205,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="16293000" />
-    </task>
-    <task id="LOCAL-00005" summary="Added todo comments from part B using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into main.py.">
-      <option name="closed" value="true" />
-      <created>1730931395187</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1730931395187</updated>
+      <workItem from="1731679283622" duration="16619000" />
     </task>
     <task id="LOCAL-00006" summary="Added todo comments from part C using steps from the C950 WGUPS Project Implementation Steps - Example - Nearest Neighbor document into Truck.py and CSV.py.">
       <option name="closed" value="true" />
@@ -601,14 +591,21 @@
       <option name="project" value="LOCAL" />
       <updated>1731767637961</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Commented load package and deliver package in truck.py to continue to implement deliverTruckPackages function in csv.py">
+      <option name="closed" value="true" />
+      <created>1732129446937</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1732129446937</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finished implementation of lookUp function and added unit test cases correlated to the lookUp function in testHashTable.py." />
     <MESSAGE value="Finished implementation of package object in Package.py." />
     <MESSAGE value="Updated str function in Package.py to match implementation steps given for Task 2. Started implemented unit Tests for Package.py in testPackage.py." />
     <MESSAGE value="Finished implemented unit Tests for Package.py in testPackage.py." />
@@ -633,16 +630,12 @@
     <MESSAGE value="Started debugging deliverPackages function in truck.py" />
     <MESSAGE value="Moved deliverPackages from truck.py to CSV.py to be used by the functions in CSV.py" />
     <MESSAGE value="Started implementing deliverTruckPackages function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started implementing deliverTruckPackages function" />
+    <MESSAGE value="Commented load package and deliver package in truck.py to continue to implement deliverTruckPackages function in csv.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commented load package and deliver package in truck.py to continue to implement deliverTruckPackages function in csv.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Truck.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
           <line>78</line>
