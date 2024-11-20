@@ -19,6 +19,7 @@ def printUI():
     print(f'4. Exit the Program')
     print(f'***************************************')
 
+
 def createPackageData():
     # Create the hash table and load package data
     hashTable = HashTable()
@@ -33,6 +34,7 @@ def createPackageData():
     loadAddressData('addressCSV.csv')
     print(addressData)
     return hashTable
+
 
 def initializeTrucks(numTrucks, hashTable):
     """
@@ -64,6 +66,45 @@ def initializeTrucks(numTrucks, hashTable):
     return trucks
 
 
+def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
+    """
+    Function to load packages into trucks using the nearest neighbor approach.
+
+    Args:
+        hashTable (HashTable): The hash table containing all the package information.
+        truckList (list): A list of Truck objects to load packages into.
+        totalPackages (int): Total number of packages to be loaded. Default is 40.
+    """
+    # Get all packages from the hash table based on the package IDs
+    packages = [hashTable.lookUp(packageID) for packageID in range(1, totalPackages + 1)]
+
+    # Load packages into each truck
+    for truck in truckList:
+        truckLoadPackages(truck, packages)
+
+    # TODO delete later Check to see if packages are loaded into trucks (for debugging purposes)
+    # for truck in truckList:
+    #     print('Truck ID:', truck.truckId, 'Packages:')
+    #     for package in truck.packages:
+    #         print(package)
+    #         print()
+    # TODO el packages are not loading into trucks
+
+
+def deliverPackages(truckList):
+    """
+    Function to deliver packages for all trucks in the provided list.
+
+    Args:
+        truckList (list): A list of Truck objects that need to deliver their loaded packages.
+    Notes:
+        - This function assumes that all trucks in `truckList` have already been loaded with packages.
+        - Each truck's status (including mileage, time, and package status) will be updated during the delivery process.
+    """
+    for truck in truckList:
+        truckDeliverPackages(truck)
+
+
 def main():
     # Create the hash table and load package data
     hashTable = createPackageData()
@@ -72,37 +113,19 @@ def main():
     truckList = initializeTrucks(3, hashTable)
 
     # Load packages into trucks
-    packages = [hashTable.lookUp(packageID) for packageID in range(1, 41)]  # Assume there are 40 packages
-    # truckLoadPackages(truck1, packages)
-    # truckLoadPackages(truck2, packages)
-    # truckLoadPackages(truck3, packages)
+    loadPackagesIntoTrucks(hashTable, truckList)
 
-    # check to see if packages are loaded in trucks TODO delete later
-    # truckList = [truck1, truck2, truck3]
-    # for truck in truckList:
-    #     print('truck: ', truck.truckId, 'packages: ')
-    #     for package in truck.packages:
-    #         print(package)
-    #         print()
-    # TODO el packages are not loading into trucks
-
-
-    print(distanceBetween('1060 Dalton Ave S','1330 2100 S'))
-    # Deliver packages
-    truckDeliverPackages(truck1)
-    truckDeliverPackages(truck2)
-    truckDeliverPackages(truck3)
+    #  todo delete later this is for testing distance between print(distanceBetween('1060 Dalton Ave S','1330 2100 S'))
 
     # Deliver packages for each truck in the truckList
-    for truck in truckList:
-        truckDeliverPackages(truck)
+    deliverPackages(truckList)
 
     # User interaction loop
     while True:
         printUI()
         user_choice = input("Enter your choice: ")
         if user_choice == '1':
-           # for packageIndex in range(1, 41):
+            # for packageIndex in range(1, 41):
             #    print(hashTable.lookUp(packageIndex))
             # Print all package statuses and total mileage for all trucks
             for truck in [truck1, truck2, truck3]:
@@ -116,7 +139,8 @@ def main():
             package_id = int(input("Enter package ID: "))
             package = hashTable.lookUp(package_id)
             if package:
-                print(f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+                print(
+                    f"PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
                 print(package)
             else:
                 print(f"Package ID {package_id} not found.")
@@ -124,15 +148,13 @@ def main():
             # Get all package statuses
             current_time = input("Enter the time to get package status (HH:MM): ")
             # This part could involve checking which packages are delivered at the specified time
-            print("Feature under development.") #TODO need to finish
+            print("Feature under development.")  # TODO need to finish
         elif user_choice == '4':
             # Exit the program
             print("Exiting the program.")
             break
         else:
             print("Invalid choice, please enter a number between 1 and 4.")
-
-
 
 
 # Run the main function
