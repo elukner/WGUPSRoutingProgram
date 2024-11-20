@@ -140,13 +140,6 @@ def truckLoadPackages(truck, packages):
     #  So then all the packages get sent to the next truck instead of just the ones that are left.
 
 
-
-def truckDeliverPackages(truck):
-    """
-    Delivers all packages loaded on the truck.
-    """
-    truck.deliverPackages()
-
 def distanceBetween(address1, address2):
     """
     Function to return the distance between two addresses.
