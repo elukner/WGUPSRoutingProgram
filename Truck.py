@@ -2,7 +2,35 @@ from datetime import timedelta
 from CSV import *
 
 class Truck:
+    """
+    Represents a delivery truck that can carry packages.
+
+    Attributes:
+        truckId (int): The unique ID for the truck.
+        packages (list): A list of packages currently loaded onto the truck.
+        currentLocation (str): The current location of the truck, starting at the hub.
+        totalMileage (float): The total mileage driven by the truck.
+        currentTime (timedelta): The current time for the truck's schedule, starting at 8:00 AM.
+        hashTable (dict): A reference to the hash table for updating package statuses.
+        capacity (int): The maximum number of packages the truck can carry.
+    """
     def __init__(self, truckId, hashTable):
+        """
+        Initializes a Truck instance.
+
+        Args:
+            truckId (int): The unique ID for the truck.
+            hashTable (dict): A reference to the hash table for managing package statuses.
+
+        Attributes Initialized:
+            truckId: Assigned based on the given parameter.
+            packages: Initialized as an empty list for holding loaded packages.
+            currentLocation: Initialized as "Hub" (the starting location).
+            totalMileage: Set to 0.0 initially, representing the mileage driven by the truck.
+            currentTime: Initialized to 8:00 AM using timedelta(hours=8).
+            hashTable: Reference to the hash table passed as a parameter.
+            capacity: Set to 16 packages.
+        """
         self.truckId = truckId
         self.packages = []  # List of packages assigned to the truck
         self.currentLocation = "Hub" #TODO is this the address? 4001 South 700 East, Salt Lake City, UT 84107
@@ -58,8 +86,11 @@ class Truck:
     #         self.packages.remove(closestPackage)
 
     def __str__(self):
-        '''
+        """
         TODO do we need this to string?????????
-        :return:
-        '''
+        Returns a string representation of the Truck object.
+
+        Returns:
+            str: A string representing the truck ID and the number of packages loaded.
+        """
         return f"Truck {self.truckId} with {len(self.packages)} packages loaded."
