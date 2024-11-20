@@ -27,18 +27,7 @@ def main():
    # loadAddressData('addressCSV.csv')
    # print(addressData)
 
-
-
-    # Create the hash table and load package data
-    hashTable = HashTable()
-    loadPackageData('packageCSV.csv', hashTable)
-    # check to see if hashtable data is all there TODO delete later
-    for packageIndex in range(1,41):
-         print(hashTable.lookUp(packageIndex))
-    loadDistanceData('distanceCSV.csv')
-    print(distanceData)
-    loadAddressData('addressCSV.csv')
-    print(addressData)
+    hashTable = createPackageData()
 
     # Create trucks
     truck1 = Truck(1, hashTable)
@@ -106,6 +95,20 @@ def main():
             break
         else:
             print("Invalid choice, please enter a number between 1 and 4.")
+
+
+def createPackageData():
+    # Create the hash table and load package data
+    hashTable = HashTable()
+    loadPackageData('packageCSV.csv', hashTable)
+    # check to see if hashtable data is all there TODO delete later
+    for packageIndex in range(1, 41):
+        print(hashTable.lookUp(packageIndex))
+    loadDistanceData('distanceCSV.csv')
+    print(distanceData)
+    loadAddressData('addressCSV.csv')
+    print(addressData)
+    return hashTable
 
 
 # Run the main function
