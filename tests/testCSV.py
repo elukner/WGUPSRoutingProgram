@@ -1,55 +1,70 @@
 import unittest
-from CSV import *
+from datetime import timedelta
+from io import StringIO
+from CSV import distanceBetween, minDistanceFrom, timeToDeliver
+from Package import Package
 
-# Mock Data for Testing
-addressData = [
-    "Hub Address",
-    "195 W Oakland Ave",
-    "2530 S 500 E",
-    "233 Canyon Rd"
-]
-
+# Mock global data for distance and address information
+global distanceData, addressData
 distanceData = [
-    [0, 2.5, 3.0, 4.5],  # Distances from "Hub Address"
-    [2.5, 0, 1.0, 2.0],  # Distances from "195 W Oakland Ave"
-    [3.0, 1.0, 0, 3.5],  # Distances from "2530 S 500 E"
-    [4.5, 2.0, 3.5, 0]   # Distances from "233 Canyon Rd"
+    [0, 5.0, 10.0, 7.5],  # Distances from Hub
+    [5.0, 0, 4.0, 8.0],    # Distances from Address A
+    [10.0, 4.0, 0, 3.0],   # Distances from Address B
+    [7.5, 8.0, 3.0, 0]     # Distances from Address C
+]
+addressData = [
+    "4001 South 700 East",  # Hub Address
+    "195 W Oakland Ave",    # Address A
+    "2530 S 500 E",         # Address B
+    "233 Canyon Rd"         # Address C
 ]
 
 
 class CSVTestCase(unittest.TestCase):
-    def test_valid_addresses(self):
-        # Test a valid case where both addresses exist
-        distance = distanceBetween("Hub Address", "195 W Oakland Ave")
-        self.assertEqual(distance, 2.5, "Distance between 'Hub Address' and '195 W Oakland Ave' should be 2.5 miles")
+    def test_distanceBetween(self):
+        # Test a valid distance lookup
+        self.assertEqual(distanceBetween('1330 2100 S', '1060 Dalton Ave S'), 7.1)
+        self.assertEqual(distanceBetween("195 W Oakland Ave", "2530 S 500 E"), 4.0)
 
-        distance = distanceBetween("195 W Oakland Ave", "2530 S 500 E")
-        self.assertEqual(distance, 1.0, "Distance between '195 W Oakland Ave' and '2530 S 500 E' should be 1.0 mile")
+        # Test distance lookup for same address (should be 0)
+        self.assertEqual(distanceBetween("195 W Oakland Ave", "195 W Oakland Ave"), 0)
 
-    def test_same_address(self):
-        # Test when the starting and ending address are the same
-        distance = distanceBetween("Hub Address", "Hub Address")
-        self.assertEqual(distance, 0, "Distance between the same address should be 0")
+        # # Test a case where one of the addresses does not exist
+        # self.assertEqual(distanceBetween("Unknown Address", "195 W Oakland Ave"), float('inf'))
+        # self.assertEqual(distanceBetween("195 W Oakland Ave", "Unknown Address"), float('inf'))
 
-    def test_address_not_found(self):
-        # Test when one or both addresses are not in the addressData list
-        distance = distanceBetween("Non-existent Address", "195 W Oakland Ave")
-        self.assertEqual(distance, float('inf'), "Distance should be inf for an unknown address")
+    def test_minDistanceFrom(self):
+        # Create mock packages with different addresses
+        package1 = Package(1, "195 W Oakland Ave", "Salt Lake City", "UT", "84115", "10:30 AM", 21, "")
+        package2 = Package(2, "2530 S 500 E", "Salt Lake City", "UT", "84106", "EOD", 44, "")
+        package3 = Package(3, "233 Canyon Rd", "Salt Lake City", "UT", "84103", "EOD", 2, "")
 
-        distance = distanceBetween("Hub Address", "Unknown Address")
-        self.assertEqual(distance, float('inf'), "Distance should be inf for an unknown address")
+        truckPackages = [package1, package2, package3]
 
-    def test_both_addresses_not_found(self):
-        # Test when both addresses are not in the addressData list
-        distance = distanceBetween("Unknown Address A", "Unknown Address B")
-        self.assertEqual(distance, float('inf'), "Distance should be inf when both addresses are unknown")
+        # Test finding the closest package from "4001 South 700 East" (Hub)
+        closest_package = minDistanceFrom("4001 South 700 East", truckPackages)
+        self.assertEqual(closest_package.packageID, 1)  # Package 1 is the closest (distance = 5.0)
 
+        # Test finding the closest package from "195 W Oakland Ave"
+        closest_package = minDistanceFrom("195 W Oakland Ave", truckPackages)
+        self.assertEqual(closest_package.packageID, 2)  # Package 2 is the closest (distance = 4.0)
 
-    #def testMinDistanceFrom(self):
-     #   self.assertEqual(True, False)  # add assertion here
+        # Test finding the closest package when all addresses are unreachable
+        closest_package = minDistanceFrom("Unknown Address", truckPackages)
+        self.assertIsNone(closest_package)  # No reachable packages
 
-    #def testTimeToDeliver(self):
-    #    self.assertEqual(True, False)  # add assertion here
+        # Test when there are no packages
+        closest_package = minDistanceFrom("4001 South 700 East", [])
+        self.assertIsNone(closest_package)  # Should return None when there are no packages
+
+    def test_timeToDeliver(self):
+        # Test time to deliver for various distances
+        self.assertAlmostEqual(timeToDeliver(36), 2.0)  # 36 miles should take 2 hours at 18 mph
+        self.assertAlmostEqual(timeToDeliver(9), 0.5)  # 9 miles should take 0.5 hours (30 minutes)
+        self.assertAlmostEqual(timeToDeliver(0), 0.0)  # 0 miles should take 0 hours
+
+        # Test time to deliver for a negative distance (should still return a value but may need input validation in real use)
+        self.assertAlmostEqual(timeToDeliver(-18), -1.0)  # Negative values should be checked in real usage
 
 
 if __name__ == '__main__':

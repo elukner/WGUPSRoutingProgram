@@ -102,7 +102,7 @@ def deliverPackages(truckList):
         - Each truck's status (including mileage, time, and package status) will be updated during the delivery process.
     """
     for truck in truckList:
-        truckDeliverPackages(truck)
+        deliverTruckPackages(truck)
 
 
 def userInteractionLoop(truckList, hashTable):
@@ -165,8 +165,6 @@ def main():
 
     # Load packages into trucks
     loadPackagesIntoTrucks(hashTable, truckList)
-
-    #  todo delete later this is for testing distance between print(distanceBetween('1060 Dalton Ave S','1330 2100 S'))
 
     # Deliver packages for each truck in the truckList
     deliverPackages(truckList)
