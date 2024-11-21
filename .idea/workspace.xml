@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="updated implementation of loadPackageData in csv.py" />
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementation for unit tests for distance between into testCSV.py currently failing">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/testCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testCSV.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +52,9 @@
   "keyToString": {
     "Python tests.Python tests for testCSV.CSVTestCase.executor": "Run",
     "Python tests.Python tests for testCSV.CSVTestCase.test_distanceBetween.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses.executor": "Run",
     "Python tests.Python tests for testCSV.CSVTestCase.test_loadAddressData.executor": "Run",
     "Python tests.Python tests for testCSV.CSVTestCase.test_loadDistanceData.executor": "Run",
     "Python tests.Python tests for testCSV.CSVTestCase.test_loadPackageData.executor": "Run",
@@ -76,7 +84,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for testCSV.CSVTestCase">
+  <component name="RunManager" selected="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
@@ -132,7 +140,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for testCSV.CSVTestCase.test_loadDistanceData" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,11 +152,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_loadDistanceData&quot;" />
+      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_distance_between_invalid_addresses&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for testCSV.CSVTestCase.test_loadPackageData" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for testCSV.CSVTestCase.test_distance_between_same_address" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,11 +168,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_loadPackageData&quot;" />
+      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_distance_between_same_address&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for testCSV.CSVTestCase.test_timeToDeliver" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -176,17 +184,17 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_timeToDeliver&quot;" />
+      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_distance_between_valid_addresses&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase" />
+        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address" />
+        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distanceBetween" />
-        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_timeToDeliver" />
-        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_loadPackageData" />
-        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_loadDistanceData" />
       </list>
     </recent_temporary>
   </component>
@@ -212,23 +220,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="30133000" />
-    </task>
-    <task id="LOCAL-00021" summary="Added test functions to testMain.py">
-      <option name="closed" value="true" />
-      <created>1730959422027</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1730959422027</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Added test functions to testPackage.py">
-      <option name="closed" value="true" />
-      <created>1730959575296</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1730959575296</updated>
+      <workItem from="1731679283622" duration="31918000" />
     </task>
     <task id="LOCAL-00023" summary="Added test functions to testTruck.py">
       <option name="closed" value="true" />
@@ -606,15 +598,29 @@
       <option name="project" value="LOCAL" />
       <updated>1732229557166</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Finished implementation for unit tests for loading address, distance, and package csv data into testCSV.py">
+      <option name="closed" value="true" />
+      <created>1732229820004</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1732229820004</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Finished implementation for unit tests for distance between into testCSV.py currently failing">
+      <option name="closed" value="true" />
+      <created>1732229955974</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1732229955974</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated choice 2 so that it is clear what the column headers for each of the rows of the printed data are" />
-    <MESSAGE value="Finished implementing distanceBetween function in CSV.py" />
     <MESSAGE value="Finished implementing distanceBetween function unit tests in testCSV.py. Distance between currently getting errors." />
     <MESSAGE value="Fixed packageCSV.csv" />
     <MESSAGE value="Updated addressCSV.csv" />
@@ -638,10 +644,12 @@
     <MESSAGE value="updated implementation of truckLoadPackages in csv.py" />
     <MESSAGE value="updated implementation of loading address and distance data in csv.py" />
     <MESSAGE value="updated implementation of loadPackageData in csv.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated implementation of loadPackageData in csv.py" />
+    <MESSAGE value="Finished implementation for unit tests for loading address, distance, and package csv data into testCSV.py" />
+    <MESSAGE value="Finished implementation for unit tests for distance between into testCSV.py currently failing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementation for unit tests for distance between into testCSV.py currently failing" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732229523437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732136566403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732230956297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732230913599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

@@ -2,8 +2,6 @@
 from Package import *
 from HashTable import *
 from Truck import *
-from CSV import *
-import csv
 from datetime import timedelta
 
 # Global variables to store the data
@@ -54,14 +52,13 @@ def loadAddressData(fileName):
 
         # Iterate over each row in the CSV file
         for row in addressDataReader:
-            if len(row) > 0:
+            if len(row) > 2:
                 # Extract the address from the third column (index 2)
                 address = row[2].strip()
                 if address:
                     currentAddressData.append(address)
 
     return currentAddressData
-
 
 def loadPackageData(fileName, hashTable):
     """
@@ -216,9 +213,14 @@ def distanceBetween(address1, address2):
     :return: Distance in miles between address1 and address2.
     """
     try:
-        return distanceData[addressData.index(address1)][addressData.index(address2)]
-    except ValueError:
+        print(f"Looking up: {address1} and {address2}")
+        print(f"Available addresses: {addressData}")
+        index1 = addressData.index(address1)
+        index2 = addressData.index(address2)
+        return distanceData[index1][index2]
+    except ValueError as e:
         # If the address is not found, return a large value (inf) to indicate it is unreachable
+        print(f"ValueError: Address not found - {e}")
         return float('inf')
 
 
@@ -263,3 +265,6 @@ def timeToDeliver(distance):
     """
     averageSpeedMph = 18  # Assumption that trucks travel at an average speed of 18 miles per hour
     return distance / averageSpeedMph
+
+
+

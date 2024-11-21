@@ -95,10 +95,10 @@ class CSVTestCase(unittest.TestCase):
 
     def test_distance_between_valid_addresses(self):
         # Test distance between two valid addresses
-        distance = distanceBetween("4001 South 700 East", "1060 Dalton Ave S")
+        distance = distanceBetween('4001 South 700 East', '1060 Dalton Ave S')
         self.assertEqual(distance, 7.2)
 
-        distance = distanceBetween("1060 Dalton Ave S", "1330 2100 S")
+        distance = distanceBetween('1060 Dalton Ave S', '1330 2100 S')
         self.assertEqual(distance, 4.4)
 
     def test_distance_between_same_address(self):
