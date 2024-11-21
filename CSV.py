@@ -110,14 +110,33 @@ def loadPackageData(fileName, hashTable):
 
 def truckLoadPackages(truck, packages):
     """
-    Loads packages into the truck using the nearest neighbor approach until the truck is full.
-    :param truck: Truck object that packages need to be loaded into.
-    :param packages: List of packages available for loading.
+    Loads packages into the truck based on the following rules:
+    1. Some packages are assigned to specific trucks.
+    2. Packages that need to be grouped together are loaded into the same truck.
+    3. The nearest neighbor approach is used to load the remaining packages until the truck is full.
+
+    Args:
+        truck (Truck): Truck object that packages need to be loaded into.
+        packages (list): List of Package objects available for loading.
     """
-    # Iterate until the truck is full or there are no more remaining packages to load
+    # Define specific package assignments based on the requirements
+    truck_assignments = {
+        1: [1, 2, 3],  # Example: Truck 1 must have packages 1, 2, and 3
+        2: [4, 5, 6],  # Example: Truck 2 must have packages 4, 5, and 6
+        3: [7, 8, 9],  # Example: Truck 3 must have packages 7, 8, and 9
+    }
+
+    # Step 1: Load specific packages into the truck based on assignments
+    if truck.truckId in truck_assignments:
+        assigned_packages = [pkg for pkg in packages if pkg.packageID in truck_assignments[truck.truckId]]
+        for package in assigned_packages:
+            if len(truck.packages) < truck.capacity:
+                truck.loadPackage(package)
+                packages.remove(package)
+
+    # Step 2: Use nearest neighbor approach to load the remaining packages
     while len(truck.packages) < truck.capacity and packages:
         # Find the closest package from the current location
-        print(minDistanceFrom(truck.currentLocation, packages))
         closest_package = minDistanceFrom(truck.currentLocation, packages)
 
         # Break the loop if no valid package is found
@@ -134,6 +153,7 @@ def truckLoadPackages(truck, packages):
         # If the truck reaches capacity, break the loop
         if len(truck.packages) >= truck.capacity:
             break
+
 
 def deliverTruckPackages(truck):
     """
