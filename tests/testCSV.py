@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import mock_open, patch
 from io import StringIO
 
-from CSV import loadAddressData, loadDistanceData, loadPackageData
+from CSV import loadAddressData, loadDistanceData, loadPackageData, distanceBetween
 from HashTable import HashTable
 
 
@@ -76,6 +76,43 @@ class CSVTestCase(unittest.TestCase):
         self.assertEqual(package_2.packageWeight, 44)
 
         mock_file.assert_called_once_with(fileName)
+
+    def setUp(self):
+        # Set up mock data for addressData and distanceData
+        global addressData, distanceData
+
+        addressData = [
+            "4001 South 700 East",
+            "1060 Dalton Ave S",
+            "1330 2100 S"
+        ]
+
+        distanceData = [
+            [0.0, 7.2, 3.8],
+            [7.2, 0.0, 4.4],
+            [3.8, 4.4, 0.0]
+        ]
+
+    def test_distance_between_valid_addresses(self):
+        # Test distance between two valid addresses
+        distance = distanceBetween("4001 South 700 East", "1060 Dalton Ave S")
+        self.assertEqual(distance, 7.2)
+
+        distance = distanceBetween("1060 Dalton Ave S", "1330 2100 S")
+        self.assertEqual(distance, 4.4)
+
+    def test_distance_between_same_address(self):
+        # Test distance between the same address (should be 0)
+        distance = distanceBetween("4001 South 700 East", "4001 South 700 East")
+        self.assertEqual(distance, 0.0)
+
+    def test_distance_between_invalid_addresses(self):
+        # Test distance between invalid address (should return inf)
+        distance = distanceBetween("Invalid Address", "1060 Dalton Ave S")
+        self.assertEqual(distance, float('inf'))
+
+        distance = distanceBetween("4001 South 700 East", "Another Invalid Address")
+        self.assertEqual(distance, float('inf'))
 
 
 if __name__ == '__main__':
