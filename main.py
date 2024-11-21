@@ -25,14 +25,14 @@ def createPackageData():
     hashTable = HashTable()
     loadPackageData('packageCSV.csv', hashTable)
     # check to see if hashtable data is all there TODO delete later
-    for packageIndex in range(1, 41):
-        print(hashTable.lookUp(packageIndex))
+    # for packageIndex in range(1, 41):
+    #     print(hashTable.lookUp(packageIndex))
 
     # Load data from CSV files
     loadDistanceData('distanceCSV.csv')
-    print(distanceData)
+   #todo delete later print(distanceData)
     loadAddressData('addressCSV.csv')
-    print(addressData)
+    #todo delete later print(addressData)
     return hashTable
 
 
@@ -89,6 +89,7 @@ def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
     #         print(package)
     #         print()
     # TODO el packages are not loading into trucks
+
 
 
 def deliverPackages(truckList):

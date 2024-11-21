@@ -114,10 +114,10 @@ def truckLoadPackages(truck, packages):
     :param truck: Truck object that packages need to be loaded into.
     :param packages: List of packages available for loading.
     """
-    remaining_packages = packages.copy()
-    while len(truck.packages) < truck.capacity and remaining_packages:
+    # Iterate until the truck is full or there are no more remaining packages to load
+    while len(truck.packages) < truck.capacity and packages:
         # Find the closest package from the current location
-        closest_package = minDistanceFrom(truck.currentLocation, remaining_packages)
+        closest_package = minDistanceFrom(truck.currentLocation, packages)
 
         # Break the loop if no valid package is found
         if closest_package is None:
@@ -127,17 +127,12 @@ def truckLoadPackages(truck, packages):
         # Load the package onto the truck
         truck.loadPackage(closest_package)
 
-        # Remove the loaded package from the remaining_packages list
-        remaining_packages = [
-            package for package in remaining_packages if package.packageID != closest_package.packageID
-        ]
+        # Remove the loaded package from the original packages list
+        packages.remove(closest_package)
 
         # If the truck reaches capacity, break the loop
         if len(truck.packages) >= truck.capacity:
             break
-    # TODO el: the packages get removed from remaining_packages but don't get removed from the global
-    #  packages variable.
-    #  So then all the packages get sent to the next truck instead of just the ones that are left.
 
 def deliverTruckPackages(truck):
     """
@@ -145,30 +140,36 @@ def deliverTruckPackages(truck):
     choosing the nearest address first.
     Updates the delivery status and total mileage.
     """
-    startingAddress="4001 South 700 East"
     while truck.packages:
         # Find the closest package to the current address using the nearest neighbor algorithm
-        #closestPackage = minDistanceFrom(truck.currentLocation, truck.packages)
-        closestPackage = minDistanceFrom(startingAddress, truck.packages)
+        closestPackage = minDistanceFrom(truck.currentLocation, truck.packages)
+
+        # If no valid package is found, break the loop
+        if closestPackage is None:
+            print("Warning: No valid package found to deliver.")
+            break
 
         # Calculate the distance to the next package address
-        #distanceToNext = distanceBetween(truck.currentLocation, closestPackage.deliveryAddress) not doing this in here
-        #
+        distanceToNext = distanceBetween(truck.currentLocation, closestPackage.deliveryAddress)
+        if distanceToNext == float('inf'):
+            print(f"Warning: Cannot deliver to {closestPackage.deliveryAddress}, unreachable.")
+            break
 
         # Update the truck's mileage and move to the next address
         truck.totalMileage += distanceToNext
         truck.currentLocation = closestPackage.deliveryAddress
 
         # Calculate time taken for the delivery based on the average speed of 18 mph
-        timeToDeliver = timedelta(hours=distanceToNext / 18)
-        truck.currentTime += timeToDeliver
+        time_to_deliver = timedelta(hours=distanceToNext / 18)
+        truck.currentTime += time_to_deliver
 
         # Update the package delivery status and delivery time in the hash table
         closestPackage.updateStatus("Delivered", deliveryTime=truck.currentTime)
         truck.hashTable.insert(closestPackage.packageID, closestPackage)
 
         # Print delivery information
-        print(f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
+        print(
+            f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
 
         # Remove the delivered package from the truck's package list
         truck.packages.remove(closestPackage)
@@ -214,6 +215,7 @@ def minDistanceFrom(fromAddress, truckPackages):
         if distance < minDistance:
             minDistance = distance
             closestPackage = truckPackage
+
 
     return closestPackage
 
