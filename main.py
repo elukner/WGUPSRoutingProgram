@@ -25,8 +25,8 @@ def createPackageData():
     hashTable = HashTable()
     loadPackageData('packageCSV.csv', hashTable)
     # check to see if hashtable data is all there TODO delete later
-    # for packageIndex in range(1, 41):
-    #     print(hashTable.lookUp(packageIndex))
+    for packageIndex in range(1, 41):
+       print(hashTable.lookUp(packageIndex))
 
     # Load data from CSV files
     loadDistanceData('distanceCSV.csv')

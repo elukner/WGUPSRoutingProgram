@@ -78,27 +78,26 @@ def loadPackageData(fileName, hashTable):
     with open(fileName) as packageCSV:
         packageData = csv.reader(packageCSV, delimiter=',')
 
-        # Skip the first row if it is a header
-        next(packageData)
-
+        # Iterate through each row in the CSV file
         for package in packageData:
             # Skip empty rows or rows with missing values
             if len(package) == 0 or package[0].strip() == '' or not package[0].isdigit():
                 continue
 
             try:
+                # Extract data from each column in the row
                 packageID = int(package[0].strip())
                 deliveryAddress = package[1].strip()
                 city = package[2].strip()
                 state = package[3].strip()
                 zip = package[4].strip()
-                deliveryDeadline = package[5].strip()
-                packageWeight = package[6].strip()
+                deliveryDeadline = package[5].strip() if package[5] else "EOD"
+                packageWeight = int(package[6].strip()) if package[6].strip().isdigit() else 0
                 pageSpecialNotes = package[7].strip() if len(package) > 7 else ""
                 deliveryStatus = "At Hub"  # Setting initial status to be "At Hub"
 
-                # Calculate the distance from the hub to the package address
-                hubAddress = "Hub Address"  # Replace with actual Hub address
+                # Calculate the distance from the hub to the package address if available
+                hubAddress = "4001 South 700 East"  # Replace with actual Hub address
                 try:
                     indexFrom = addressData.index(hubAddress)
                     indexTo = addressData.index(deliveryAddress)
@@ -117,6 +116,7 @@ def loadPackageData(fileName, hashTable):
 
             except ValueError as e:
                 print(f"Skipping invalid row in {fileName}: {package} ({e})")
+
 
 
 def truckLoadPackages(truck, packages):
