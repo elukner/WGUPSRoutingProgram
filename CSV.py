@@ -14,24 +14,33 @@ addressData = []
 def loadDistanceData(fileName):
     """
     Reads distance data from the provided CSV file and appends each row to the distanceData list.
+
+    Args:
+        fileName (str): The name of the CSV file containing distance data.
+
+    Returns:
+        list: A 2D list containing distances between addresses.
     """
-    currentDistanceData = distanceData
+    global distanceData
 
     with open(fileName) as csvfile:
         distanceDataReader = csv.reader(csvfile, delimiter=',')
-        # Skip the first row
-        for i in range(8):
-            next(distanceDataReader)
 
+        # Read each row in the CSV file
         for row in distanceDataReader:
             cleanedRow = []
-            for value in row[1:]:
+            for value in row:
                 try:
-                    cleanedRow.append(float(value))
+                    # Convert value to float; if empty, set to 0.0
+                    cleanedRow.append(float(value) if value else 0.0)
                 except ValueError:
+                    # If there's a problem converting, set value to 0.0
                     cleanedRow.append(0.0)
-            currentDistanceData.append(cleanedRow)
-    return currentDistanceData
+
+            # Append the cleaned row to distanceData
+            distanceData.append(cleanedRow)
+
+    return distanceData
 
 
 def loadAddressData(fileName):
@@ -42,13 +51,15 @@ def loadAddressData(fileName):
 
     with open(fileName) as csvfile:
         addressDataReader = csv.reader(csvfile, delimiter=',')
-        # Skip the first row
-        next(addressDataReader)
+
+        # Iterate over each row in the CSV file
         for row in addressDataReader:
             if len(row) > 0:
-                address = row[2].strip()  # Extract the address from the first column (index 0)
+                # Extract the address from the third column (index 2)
+                address = row[2].strip()
                 if address:
-                    addressData.append(address)
+                    currentAddressData.append(address)
+
     return currentAddressData
 
 

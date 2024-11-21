@@ -30,9 +30,11 @@ def createPackageData():
 
     # Load data from CSV files
     loadDistanceData('distanceCSV.csv')
-   #todo delete later print(distanceData)
+   #todo delete later
+    print(distanceData)
     loadAddressData('addressCSV.csv')
-    #todo delete later print(addressData)
+    #todo delete later
+    print(addressData)
     return hashTable
 
 
