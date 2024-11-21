@@ -165,12 +165,13 @@ def userInteractionLoop(truckList, hashTable):
 
 
 def main():
+
     # Create the hash table and load package data
     hashTable = createPackageData()
 
     # Create trucks
     truckList = initializeTrucks(3, hashTable)
-
+    #TODO delete later print(distanceBetween('1488 4800 S', '1488 4800 S'))
     # Load packages into trucks
     loadPackagesIntoTrucks(hashTable, truckList)
 

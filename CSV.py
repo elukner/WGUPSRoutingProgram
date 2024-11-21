@@ -56,6 +56,7 @@ def loadAddressData(fileName):
                 # Extract the address from the third column (index 2)
                 address = row[2].strip()
                 if address:
+                    print(address)
                     currentAddressData.append(address)
 
     return currentAddressData

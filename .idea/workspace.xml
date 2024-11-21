@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished implementation for unit tests for distance between into testCSV.py currently failing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="updated implementation of load address data for len of row greater than 2 instead of 0 seems to make no difference though">
       <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/testCSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testCSV.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +82,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
       <option name="ENV_FILES" value="" />
@@ -121,22 +119,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;testCSV.CSVTestCase&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for testCSV.CSVTestCase.test_distanceBetween" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="WGUPSRoutingProgram" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_distanceBetween&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -188,13 +170,29 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for testCSV.CSVTestCase.test_loadAddressData" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="WGUPSRoutingProgram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;testCSV.CSVTestCase.test_loadAddressData&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses" />
+        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_loadAddressData" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase" />
+        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses" />
-        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distanceBetween" />
       </list>
     </recent_temporary>
   </component>
@@ -220,15 +218,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="31918000" />
-    </task>
-    <task id="LOCAL-00023" summary="Added test functions to testTruck.py">
-      <option name="closed" value="true" />
-      <created>1730959652286</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1730959652286</updated>
+      <workItem from="1731679283622" duration="33066000" />
     </task>
     <task id="LOCAL-00024" summary="Reformatted all code in all python files">
       <option name="closed" value="true" />
@@ -614,14 +604,21 @@
       <option name="project" value="LOCAL" />
       <updated>1732229955974</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="updated implementation of load address data for len of row greater than 2 instead of 0 seems to make no difference though">
+      <option name="closed" value="true" />
+      <created>1732231811460</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1732231811460</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finished implementing distanceBetween function unit tests in testCSV.py. Distance between currently getting errors." />
     <MESSAGE value="Fixed packageCSV.csv" />
     <MESSAGE value="Updated addressCSV.csv" />
     <MESSAGE value="Updated loadAddressData to read from a different column." />
@@ -646,10 +643,11 @@
     <MESSAGE value="updated implementation of loadPackageData in csv.py" />
     <MESSAGE value="Finished implementation for unit tests for loading address, distance, and package csv data into testCSV.py" />
     <MESSAGE value="Finished implementation for unit tests for distance between into testCSV.py currently failing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementation for unit tests for distance between into testCSV.py currently failing" />
+    <MESSAGE value="updated implementation of load address data for len of row greater than 2 instead of 0 seems to make no difference though" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated implementation of load address data for len of row greater than 2 instead of 0 seems to make no difference though" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732230956297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732230913599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732232534980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732232140227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
