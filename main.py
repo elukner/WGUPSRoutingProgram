@@ -71,9 +71,12 @@ def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
     Function to load packages into trucks using the nearest neighbor approach.
 
     Args:
-        hashTable (HashTable): The hash table containing all the package information.
+        hashTable (HashTable): Hash table containing all package information.
         truckList (list): A list of Truck objects to load packages into.
         totalPackages (int): Total number of packages to be loaded. Default is 40.
+
+    Returns:
+        list: Updated list of Truck objects with loaded packages.
     """
     # Get all packages from the hash table based on the package IDs
     packages = [hashTable.lookUp(packageID) for packageID in range(1, totalPackages + 1)]
@@ -89,6 +92,8 @@ def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
     #         print(package)
     #         print()
     # TODO el packages are not loading into trucks
+
+    return truckList
 
 
 

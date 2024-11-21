@@ -117,6 +117,7 @@ def truckLoadPackages(truck, packages):
     # Iterate until the truck is full or there are no more remaining packages to load
     while len(truck.packages) < truck.capacity and packages:
         # Find the closest package from the current location
+        print(minDistanceFrom(truck.currentLocation, packages))
         closest_package = minDistanceFrom(truck.currentLocation, packages)
 
         # Break the loop if no valid package is found
@@ -142,6 +143,7 @@ def deliverTruckPackages(truck):
     """
     while truck.packages:
         # Find the closest package to the current address using the nearest neighbor algorithm
+        print(minDistanceFrom(truck.currentLocation, truck.packages))
         closestPackage = minDistanceFrom(truck.currentLocation, truck.packages)
 
         # If no valid package is found, break the loop
