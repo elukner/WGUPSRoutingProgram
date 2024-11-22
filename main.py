@@ -133,6 +133,7 @@ def userInteractionLoop(truckList, hashTable):
             # Iterate over each package loaded onto the truck
             for packageIndex in range(1, 41):
                print(hashTable.lookUp(packageIndex))
+            print()
                 # for package in truck.packages:
                 #     if package:
                 #         print(f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, "
@@ -146,12 +147,32 @@ def userInteractionLoop(truckList, hashTable):
             # Get a single package status
             try:
                 packageID = int(input("Enter package ID: "))
+                currentTime = input("Enter the time to get package status (HH:MM): ")
+
+                # Parse user input into a timedelta
+                currentTime = timedelta(hours=int(currentTime.split(':')[0]), minutes=int(currentTime.split(':')[1]))
+
+                # Lookup the package in the hash table
                 package = hashTable.lookUp(packageID)
+
                 if package:
+                    # Determine the status based on the time
+                    if package.deliveryTime and currentTime >= package.deliveryTime:
+                        packageStatus = "Delivered"
+                    elif currentTime < timedelta(hours=8):  # Before trucks left the hub
+                        packageStatus = "At Hub"
+                    elif package.deliveryTime and currentTime < package.deliveryTime:
+                        packageStatus = "En Route"
+                    else:
+                        packageStatus = "At Hub"  # Default status if none of the above apply
+
+                    # Print package information
+                    print(f"\nStatus at {currentTime}: {packageStatus}\n")
                     printHeader()
-                    print(package)
+                    print(package,"\n")
                 else:
                     print(f"Package ID {packageID} not found.")
+
             except ValueError:
                 print("Invalid input. Please enter a valid package ID.")
 
@@ -215,6 +236,7 @@ def printCalculateTotalMileage(truckList):
 
 
 def printHeader():
+    print()
     print(
         "PackageID  Address                                   City                State      Zip        Deadline        Weight    Special Notes         Status                    DeliveryTime")
     print(

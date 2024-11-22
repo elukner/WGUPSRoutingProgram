@@ -223,7 +223,7 @@ def deliverTruckPackagesUntil(truck, stopTime):
         truck.hashTable.insert(package.packageID, package)
 
     # Print the status of all packages on the truck
-    print(f"\nStatus of packages on Truck {truck.truckId} as of {truck.currentTime}:")
+    # print(f"\nStatus of packages on Truck {truck.truckId} as of {truck.currentTime}:")
     for package in truck.packages:
         print(f"PackageID: {package.packageID}, Status: {package.deliveryStatus}, DeliveryTime: "
               f"{package.deliveryTime if package.deliveryTime else 'Not Delivered'}")

@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Fixed formating for output data for user choices in main.py for the user ui.">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Reformated printing and calculating total truck mileage to its on function in main.py instead of calling it twice." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -218,15 +216,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="53683000" />
-    </task>
-    <task id="LOCAL-00040" summary="Finished UI funtion. Updated loadPackageData in main.py">
-      <option name="closed" value="true" />
-      <created>1731624719780</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1731624719780</updated>
+      <workItem from="1731679283622" duration="54376000" />
     </task>
     <task id="LOCAL-00041" summary="Updated UI main function in main.py so it doesn't have the infinite loop error">
       <option name="closed" value="true" />
@@ -612,14 +602,21 @@
       <option name="project" value="LOCAL" />
       <updated>1732263203041</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Reformated printing and calculating total truck mileage to its on function in main.py instead of calling it twice.">
+      <option name="closed" value="true" />
+      <created>1732263627952</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1732263627952</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated implementation of loading and delievering  truck packages in csv.py" />
     <MESSAGE value="updated implementation of loading packages in user ui main.py" />
     <MESSAGE value="updated implementation of truckLoadPackages in csv.py" />
     <MESSAGE value="updated implementation of loading address and distance data in csv.py" />
@@ -644,7 +641,8 @@
     <MESSAGE value="Fixed user choice 3 time bug in main.py where it was not stoping on the user inputed time." />
     <MESSAGE value="Fixed user choice 3 time bug in main.py where it was not stopping on the user inputted time." />
     <MESSAGE value="Fixed formating for output data for user choices in main.py for the user ui." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed formating for output data for user choices in main.py for the user ui." />
+    <MESSAGE value="Reformated printing and calculating total truck mileage to its on function in main.py instead of calling it twice." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformated printing and calculating total truck mileage to its on function in main.py instead of calling it twice." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732263415014" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
