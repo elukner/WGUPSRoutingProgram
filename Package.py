@@ -57,14 +57,14 @@ class Package:
         self.deliveryStatus = deliveryStatus  # Initial status  (i.e., at the hub, en route, or delivered)
         self.deliveryTime = deliveryTime  # Time when the package is delivered
 
-    def updateStatus(self, status, deliveryTime=None):
+    def updateStatus(self, status:str, deliveryTime=None):
         """
         Update the delivery status of the package.
         :param status: Current status of the package (e.g., 'At Hub', 'En Route', 'Delivered').
         :return: Time of delivery
         """
         self.deliveryStatus = status
-        if status == "Delivered" and deliveryTime:
+        if ("Delivered" in status) and deliveryTime:
             self.deliveryTime = deliveryTime
 
     def __str__(self):

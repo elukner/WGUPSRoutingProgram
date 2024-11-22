@@ -126,59 +126,36 @@ def userInteractionLoop(truckList, hashTable):
         user_choice = input("Enter your choice: ")
 
         if user_choice == '1':
-            # Print header for the package information table
+            # Print all package statuses and total mileage for all trucks
             print(
                 "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
 
-            # Iterate over each truck and display their mileage and package details
             for truck in truckList:
-                print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
+                print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
 
-                # Check if the truck actually has packages
-                if len(truck.packages) == 0:
-                    print(f"Truck {truck.truckId} has no packages loaded.")
-                else:
-                    # Iterate over each package in the truck
-                    for package in truck.packages:
-                        # Print package details
-                        print(
-                            f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, {package.zip}, "
-                            f"{package.deliveryDeadline}, {package.packageWeight}, {package.pageSpecialNotes}, "
-                            f"{package.deliveryStatus} by Truck-{truck.truckId}, "
-                            f"{package.deliveryTime if package.deliveryTime else 'N/A'}"
-                        )
-
-            # Handle packages that are still at the hub or not loaded in any truck
-            for package_id in range(1, 41):  # Assuming package IDs range from 1 to 40
-                package = hashTable.lookUp(package_id)
-                if package and package.deliveryStatus == "At Hub":
-                    print(
-                        f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, {package.zip}, "
-                        f"{package.deliveryDeadline}, {package.packageWeight}, {package.pageSpecialNotes}, "
-                        f"{package.deliveryStatus}, N/A"
-                    )
-
-            # Handle packages that are still at the hub or not loaded in any truck
-            for package_id in range(1, 41):  # Assuming package IDs range from 1 to 40
-                package = hashTable.lookUp(package_id)
-                if package and package.deliveryStatus == "At Hub":
-                    print(
-                        f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, {package.zip}, "
-                        f"{package.deliveryDeadline}, {package.packageWeight}, {package.pageSpecialNotes}, "
-                        f"{package.deliveryStatus}, N/A"
-                    )
+                # Iterate over each package loaded onto the truck
+                for packageIndex in range(1, 41):
+                   print(hashTable.lookUp(packageIndex))
+                # for package in truck.packages:
+                #     if package:
+                #         print(f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, "
+                #               f"{package.zip}, {package.deliveryDeadline}, {package.packageWeight}, "
+                #               f"{package.pageSpecialNotes}, {package.deliveryStatus}, "
+                #               f"{package.deliveryTime if package.deliveryTime else 'Not Delivered'}")
+                #     else:
+                #         print(f"Package not found for Truck {truck.truckId}")
 
         elif user_choice == '2':
             # Get a single package status
             try:
-                package_id = int(input("Enter package ID: "))
-                package = hashTable.lookUp(package_id)
+                packageID = int(input("Enter package ID: "))
+                package = hashTable.lookUp(packageID)
                 if package:
                     print(
                         "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
                     print(package)
                 else:
-                    print(f"Package ID {package_id} not found.")
+                    print(f"Package ID {packageID} not found.")
             except ValueError:
                 print("Invalid input. Please enter a valid package ID.")
 

@@ -124,11 +124,12 @@ def truckLoadPackages(truck, packages):
     :param packages: List of packages available for loading.
     """
     while len(truck.packages) < truck.capacity and packages:
-        closest_package = minDistanceFrom(truck.currentLocation, packages)
-        if closest_package:
-            truck.loadPackage(closest_package)
-            packages.remove(closest_package)
-            #TODO delete laterprint(f"Truck {truck.truckId} loaded package {closest_package.packageID}.")
+        closestPackage = minDistanceFrom(truck.currentLocation, packages)
+        if closestPackage:
+            truck.loadPackage(closestPackage)
+            packages.remove(closestPackage)
+            #TODO delete later
+            # print(f"Truck {truck.truckId} loaded package {closestPackage.packageID}.")
         else:
             print("No valid package found to load.")
 
@@ -164,7 +165,7 @@ def deliverTruckPackages(truck):
         truck.currentTime += time_to_deliver
 
         # Update the package delivery status and delivery time in the hash table
-        closestPackage.updateStatus("Delivered", deliveryTime=truck.currentTime)
+        closestPackage.updateStatus(f"Delivered by truck {truck.truckId}", deliveryTime=truck.currentTime)
         truck.hashTable.insert(closestPackage.packageID, closestPackage)
 
         # TODO delete later Print delivery information
