@@ -123,19 +123,23 @@ def userInteractionLoop(truckList, hashTable):
     """
     while True:
         printUI()
-        user_choice = input("Enter your choice: ")
+        userChoice = input("Enter your choice: ")
 
-        if user_choice == '1':
+        if userChoice == '1':
+            truckTotalMileage = 0
+            for truck in truckList:
+                truckTotalMileage += truck.totalMileage
+                #TODO delete later for debugging purposes only
+                # print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
+
+            print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles")
             # Print all package statuses and total mileage for all trucks
             print(
                 "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
 
-            for truck in truckList:
-                print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
-
-                # Iterate over each package loaded onto the truck
-                for packageIndex in range(1, 41):
-                   print(hashTable.lookUp(packageIndex))
+            # Iterate over each package loaded onto the truck
+            for packageIndex in range(1, 41):
+               print(hashTable.lookUp(packageIndex))
                 # for package in truck.packages:
                 #     if package:
                 #         print(f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, "
@@ -145,7 +149,7 @@ def userInteractionLoop(truckList, hashTable):
                 #     else:
                 #         print(f"Package not found for Truck {truck.truckId}")
 
-        elif user_choice == '2':
+        elif userChoice == '2':
             # Get a single package status
             try:
                 packageID = int(input("Enter package ID: "))
@@ -159,13 +163,13 @@ def userInteractionLoop(truckList, hashTable):
             except ValueError:
                 print("Invalid input. Please enter a valid package ID.")
 
-        elif user_choice == '3':
+        elif userChoice == '3':
             # Get all package statuses at a specific time
             current_time = input("Enter the time to get package status (HH:MM): ")
             # This part could involve checking which packages are delivered at the specified time
             print("Feature under development.")  # TODO need to finish
 
-        elif user_choice == '4':
+        elif userChoice == '4':
             # Exit the program
             print("Exiting the program.")
             break
