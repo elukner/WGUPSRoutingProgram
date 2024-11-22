@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loop that checks if the truck is not full for groupPackages List and deleted old for loop for this and availablePackages list.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loops that checks if the truck is not full for trucks with packages that have incorrect address and then loads the package onto truck accordingly.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,22 +221,6 @@
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
       <workItem from="1731679283622" duration="65396000" />
-    </task>
-    <task id="LOCAL-00053" summary="Started implementing deliverTruckPackages function">
-      <option name="closed" value="true" />
-      <created>1731767637961</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1731767637961</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Commented load package and deliver package in truck.py to continue to implement deliverTruckPackages function in csv.py">
-      <option name="closed" value="true" />
-      <created>1732129446937</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1732129446937</updated>
     </task>
     <task id="LOCAL-00055" summary="Updated testTruck.py unittests to match the new Truck.py. Still need to figure out if the to string is accurate to the new Truck.py class.">
       <option name="closed" value="true" />
@@ -613,7 +598,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732301732752</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loops that checks if the truck is not full for trucks with packages that have truck restrictions and packages that are delayed and loads package onto truck. Then deleted correlated old code.">
+      <option name="closed" value="true" />
+      <created>1732302510312</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1732302510312</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loops that checks if the truck is not full for trucks with packages that have incorrect address and then loads the package onto truck accordingly.">
+      <option name="closed" value="true" />
+      <created>1732302631009</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1732302631009</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,8 +632,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added unit tests to help debug minDistanceFrom function in csv.py" />
-    <MESSAGE value="Debugged loadPackagesIntoTrucks so that it is now working in the main method by adding back loadPackage function back into Truck.py so that truckLoadPackages can work properly again." />
     <MESSAGE value="Started commenting out dubbuging print statements" />
     <MESSAGE value="updated minDistanceFrom to make sure that it is returning type package" />
     <MESSAGE value="updated loadPackage to make sure package status is getting updated in truck.py" />
@@ -656,10 +655,12 @@
     <MESSAGE value="Address for task 2 assumption is being correct now but the delivery time is not correct." />
     <MESSAGE value="Started new implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added new lists for specific needs to clean up method. The lists added are specificTruckList, delayedList, and wrongAddressList." />
     <MESSAGE value="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loop that checks if the truck is not full for groupPackages List and deleted old for loop for this and availablePackages list." />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loop that checks if the truck is not full for groupPackages List and deleted old for loop for this and availablePackages list." />
+    <MESSAGE value="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loops that checks if the truck is not full for trucks with packages that have truck restrictions and packages that are delayed and loads package onto truck. Then deleted correlated old code." />
+    <MESSAGE value="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loops that checks if the truck is not full for trucks with packages that have incorrect address and then loads the package onto truck accordingly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loops that checks if the truck is not full for trucks with packages that have incorrect address and then loads the package onto truck accordingly." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732282307001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732304798323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
