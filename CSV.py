@@ -124,46 +124,50 @@ def truckLoadPackages(truck, packages):
     :param packages: List of packages available for loading.
     """
     # Start by filtering packages that are allowed to be loaded into the current truck
-    available_packages = [pkg for pkg in packages if pkg.allowedTruck is None or pkg.allowedTruck == truck.truckId]
+    availablePackages = [pkg for pkg in packages if pkg.allowedTruck is None or pkg.allowedTruck == truck.truckId]
 
     # Load group-dependent packages first, to ensure they are delivered together
-    group_packages = [pkg for pkg in available_packages if pkg.groupDependency]
-    for pkg in group_packages:
-        if len(truck.packages) < truck.capacity and pkg in available_packages:
+    groupPackages = [pkg for pkg in availablePackages if pkg.groupDependency]
+    specificTruckList= [pkg for pkg in availablePackages if pkg.allowedTruck==truck.truckId]
+    delayedList = [pkg for pkg in availablePackages if pkg.arrivalTime]
+    wrongAddressList = [pkg for pkg in availablePackages if pkg.addressCorrectionNeeded]
+
+    for pkg in groupPackages:
+        if len(truck.packages) < truck.capacity and pkg in availablePackages:
             truck.loadPackage(pkg)
             packages.remove(pkg)
-            available_packages.remove(pkg)
+            availablePackages.remove(pkg)
 
             # Also load dependent packages, if they exist and meet the conditions
             for dependent_id in pkg.groupDependency:
-                dependent_pkg = next((p for p in available_packages if p.packageID == dependent_id), None)
+                dependent_pkg = next((p for p in availablePackages if p.packageID == dependent_id), None)
                 if dependent_pkg and len(truck.packages) < truck.capacity:
                     truck.loadPackage(dependent_pkg)
                     packages.remove(dependent_pkg)
-                    available_packages.remove(dependent_pkg)
+                    availablePackages.remove(dependent_pkg)
 
     #Load all the packages that have special notes for specific trucks
-    for pkg in available_packages:
+    for pkg in availablePackages:
         if(pkg.allowedTruck == truck.truckId):
             truck.loadPackage(pkg)
             packages.remove(pkg)
-            available_packages.remove(pkg)
+            availablePackages.remove(pkg)
 
 
     # Load remaining packages using nearest neighbor approach
-    while len(truck.packages) < truck.capacity and available_packages:
+    while len(truck.packages) < truck.capacity and availablePackages:
         # Find the closest package from the current location
-        closestPackage = minDistanceFrom(truck.currentLocation, available_packages)
+        closestPackage = minDistanceFrom(truck.currentLocation, availablePackages)
 
 
         if closestPackage:
             if(closestPackage.arrivalTime is not None and (closestPackage.arrivalTime>truck.currentTime)):
-                available_packages.remove(closestPackage)
+                availablePackages.remove(closestPackage)
                 continue
             # Load the package onto the truck
             truck.loadPackage(closestPackage)
             packages.remove(closestPackage)
-            available_packages.remove(closestPackage)
+            availablePackages.remove(closestPackage)
             # TODO delete later
             # print(f"Truck {truck.truckId} loaded package {closestPackage.packageID}.")
         else:
