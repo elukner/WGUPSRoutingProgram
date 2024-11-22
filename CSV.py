@@ -238,7 +238,7 @@ def minDistanceFrom(fromAddress, truckPackages):
         return None
 
     #TODO delete later? for dubugging purposes only
-    print(f"Finding the closest package to: {fromAddress}")
+    #print(f"Finding the closest package to: {fromAddress}")
 
     # Find the closest package using the nearest neighbor approach
     closestPackage = min(
@@ -248,10 +248,10 @@ def minDistanceFrom(fromAddress, truckPackages):
     )
 
     #TODO delete later? for dubugging purposes only
-    if closestPackage:
-        print(f"Closest package to {fromAddress} is {closestPackage.packageID} at address {closestPackage.deliveryAddress}")
-    else:
-        print(f"No valid closest package found from {fromAddress}")
+    # if closestPackage:
+    #     print(f"Closest package to {fromAddress} is {closestPackage.packageID} at address {closestPackage.deliveryAddress}")
+    # else:
+    #     print(f"No valid closest package found from {fromAddress}")
 
     return closestPackage
 

@@ -107,8 +107,10 @@ class Truck:
         """
         if len(self.packages) < self.capacity:
             self.packages.append(package)
-            print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")
+            #TODO delete later? for dubugging purposes only
+            # print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")
             return True
         else:
-            print(f"Truck {self.truckId} is at full capacity. Cannot load Package {package.packageID}.")
+            #TODO delete later? for dubugging purposes only
+            # print(f"Truck {self.truckId} is at full capacity. Cannot load Package {package.packageID}.")
             return False
