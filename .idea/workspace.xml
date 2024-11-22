@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Refactored deliverTruckPackages and added new function returnToHubAndLoadDelayedPackages in CSV.py; deliverPackages and main functions in main.py so that they are handling delayed packages. The grouping of packages that have special notes is not handled yet.  .">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
     </list>
@@ -219,15 +219,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="64026000" />
-    </task>
-    <task id="LOCAL-00049" summary="Updated addressCSV.csv">
-      <option name="closed" value="true" />
-      <created>1731686359899</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1731686359899</updated>
+      <workItem from="1731679283622" duration="65396000" />
     </task>
     <task id="LOCAL-00050" summary="Updated loadAddressData to read from a different column.">
       <option name="closed" value="true" />
@@ -613,14 +605,21 @@
       <option name="project" value="LOCAL" />
       <updated>1732273651513</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks.">
+      <option name="closed" value="true" />
+      <created>1732274545032</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1732274545032</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Continued debugging loadPackageData due to the error that it is skipping the first line and updated packageCSV.csv data" />
     <MESSAGE value="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py." />
     <MESSAGE value="Added get all items in hashtable to make it iterable" />
     <MESSAGE value="Refactored minDistanceFrom function to better match the given nearest neighbor instructions in CSV.py." />
@@ -645,10 +644,11 @@
     <MESSAGE value="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the special notes with the package data given." />
     <MESSAGE value="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the arrivalTime being different than the default packages that just get loaded." />
     <MESSAGE value="Refactored deliverTruckPackages and added new function returnToHubAndLoadDelayedPackages in CSV.py; deliverPackages and main functions in main.py so that they are handling delayed packages. The grouping of packages that have special notes is not handled yet.  ." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored deliverTruckPackages and added new function returnToHubAndLoadDelayedPackages in CSV.py; deliverPackages and main functions in main.py so that they are handling delayed packages. The grouping of packages that have special notes is not handled yet.  ." />
+    <MESSAGE value="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732274256477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732275717807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
