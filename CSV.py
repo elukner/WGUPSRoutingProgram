@@ -138,12 +138,14 @@ def truckLoadPackages(truck, packages):
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            print(len(packages))
 
     # Load trucks with packages that have truck restriction
     for package in specificTruckList:
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            print(len(packages))
 
     # Load delayed packages if their arrival time has passed
     # Load any delayed packages that have now arrived and can be loaded
@@ -151,38 +153,40 @@ def truckLoadPackages(truck, packages):
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            print(len(packages))
 
     # Load packages with incorrect address onto truck
     for package in wrongAddressList:
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            print(len(packages))
 
 
-    # Load remaining packages using nearest neighbor approach
-    availablePackages = [pkg for pkg in packages if pkg not in groupPackagesList
-                          and pkg not in specificTruckList and pkg not in delayedList
-                          and pkg not in wrongAddressList]
-
-
-    # Load remaining packages using nearest neighbor approach
-    while len(truck.packages) < truck.capacity and availablePackages:
-        # Find the closest package from the current location
-        closestPackage = minDistanceFrom(truck.currentLocation, availablePackages)
-
-        if closestPackage:
-            # Check if the package's arrival time allows it to be loaded
-            if closestPackage.arrivalTime and closestPackage.arrivalTime > truck.currentTime:
-                availablePackages.remove(closestPackage)
-                continue
-
-            # Load the package onto the truck
-            truck.loadPackage(closestPackage)
-            packages.remove(closestPackage)
-            availablePackages.remove(closestPackage)
-        else:
-            print("No valid package found to load.")
-            break
+    # # Load remaining packages using nearest neighbor approach
+    # availablePackages = [pkg for pkg in packages if pkg not in groupPackagesList
+    #                       and pkg not in specificTruckList and pkg not in delayedList
+    #                       and pkg not in wrongAddressList]
+    #
+    #
+    # # Load remaining packages using nearest neighbor approach
+    # while len(truck.packages) < truck.capacity and availablePackages:
+    #     # Find the closest package from the current location
+    #     closestPackage = minDistanceFrom(truck.currentLocation, availablePackages)
+    #
+    #     if closestPackage:
+    #         # Check if the package's arrival time allows it to be loaded
+    #         if closestPackage.arrivalTime and closestPackage.arrivalTime > truck.currentTime:
+    #             availablePackages.remove(closestPackage)
+    #             continue
+    #
+    #         # Load the package onto the truck
+    #         truck.loadPackage(closestPackage)
+    #         packages.remove(closestPackage)
+    #         availablePackages.remove(closestPackage)
+    #     else:
+    #         print("No valid package found to load.")
+    #         break
 
 
 def loadPackageIfTruckNotFull(package, packages, truck):
