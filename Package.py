@@ -72,7 +72,9 @@ class Package:
         Function that returns a string representation of the package.
         :return: string representation of the package
         """
-        return ( #TODO el: update this to show what each item means so someone who didn't write the code can tell what each item is.  This will help you debug too.
-            f"{self.packageID}, {self.deliveryAddress}, {self.city}, {self.state}, {self.zip}, "
-            f"{self.deliveryDeadline}, {self.packageWeight}, {self.pageSpecialNotes}, {self.deliveryStatus}, "
-            f"{self.deliveryTime if self.deliveryTime else 'Not Delivered'}")
+        truncatedNotes = (self.pageSpecialNotes[:17] + "...") if len(self.pageSpecialNotes) > 20 else self.pageSpecialNotes
+        return (
+            f"{str(self.packageID):<10} {self.deliveryAddress:<40} {self.city:<20} {self.state:<10} {self.zip:<10} "
+            f"{self.deliveryDeadline:<15} {str(self.packageWeight):<10} {truncatedNotes:<20} {self.deliveryStatus:<25} "
+            f"{str(self.deliveryTime) if self.deliveryTime else 'Not Delivered':<20}"
+        )

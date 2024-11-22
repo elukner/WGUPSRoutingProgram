@@ -134,8 +134,7 @@ def userInteractionLoop(truckList, hashTable):
 
             print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles")
             # Print all package statuses and total mileage for all trucks
-            print(
-                "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+            printHeader()
 
             # Iterate over each package loaded onto the truck
             for packageIndex in range(1, 41):
@@ -155,8 +154,7 @@ def userInteractionLoop(truckList, hashTable):
                 packageID = int(input("Enter package ID: "))
                 package = hashTable.lookUp(packageID)
                 if package:
-                    print(
-                        "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+                    printHeader()
                     print(package)
                 else:
                     print(f"Package ID {packageID} not found.")
@@ -201,8 +199,7 @@ def userInteractionLoop(truckList, hashTable):
                 print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles")
 
                 # Print header
-                print(
-                    "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+                printHeader()
 
                 # Iterate over each package loaded onto the truck
                 for packageID in range(1, 41):
@@ -218,6 +215,13 @@ def userInteractionLoop(truckList, hashTable):
 
         else:
             print("Invalid choice, please enter a number between 1 and 4.")
+
+
+def printHeader():
+    print(
+        "PackageID  Address                                   City                State      Zip        Deadline        Weight    Special Notes         Status                    DeliveryTime")
+    print(
+        "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 
 
 def main():
