@@ -33,7 +33,7 @@ class Truck:
         """
         self.truckId = truckId
         self.packages = []  # List of packages assigned to the truck
-        self.currentLocation = "Hub" #TODO is this the address? 4001 South 700 East, Salt Lake City, UT 84107
+        self.currentLocation = "4001 South 700 East" #TODO is this the address? 4001 South 700 East, Salt Lake City, UT 84107
         self.totalMileage = 0.0
         self.currentTime = timedelta(hours=8)  # Start at 8:00 AM
         self.hashTable = hashTable  # Reference to hash table for updating package status
@@ -94,3 +94,21 @@ class Truck:
             str: A string representing the truck ID and the number of packages loaded.
         """
         return f"Truck {self.truckId} with {len(self.packages)} packages loaded."
+
+    def loadPackage(self, package):
+        """
+        Loads a package onto the truck if capacity allows.
+
+        Args:
+            package (Package): The package object to be loaded onto the truck.
+
+        Returns:
+            bool: True if the package was successfully loaded, False if the truck is at full capacity.
+        """
+        if len(self.packages) < self.capacity:
+            self.packages.append(package)
+            print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")
+            return True
+        else:
+            print(f"Truck {self.truckId} is at full capacity. Cannot load Package {package.packageID}.")
+            return False
