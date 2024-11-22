@@ -69,6 +69,20 @@ class HashTable:
                 return kV[1] #this is the value
         return None
 
+    def remove(self, key):
+        """
+        function removes a key from the table
+        :param key:
+        :return:
+        """
+        index = hash(key) % len(self.table)
+        indexList = self.table[index]
+
+        for kV in indexList:
+            if kV[0] == key:
+                indexList.remove([kV[0], kV[1]])
+
+
     def getAllItems(self):
         '''
         Function retrieves all the items from the hash table.
