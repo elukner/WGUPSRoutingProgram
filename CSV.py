@@ -56,7 +56,7 @@ def loadAddressData(fileName):
                 # Extract the address from the third column (index 2)
                 address = row[2].strip()
                 if address:
-                    print(address)
+                    #TODO delete later print(address)
                     currentAddressData.append(address)
 
     return currentAddressData
@@ -214,8 +214,8 @@ def distanceBetween(address1, address2):
     :return: Distance in miles between address1 and address2.
     """
     try:
-        print(f"Looking up: {address1} and {address2}")
-        print(f"Available addresses: {addressData}")
+        # print(f"Looking up: {address1} and {address2}")
+        # print(f"Available addresses: {addressData}")
         index1 = addressData.index(address1)
         index2 = addressData.index(address2)
         return distanceData[index1][index2]
