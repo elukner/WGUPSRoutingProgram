@@ -73,7 +73,7 @@ def loadPackageData(fileName, hashTable):
     :param fileName: The name of the CSV file containing package data.
     :param hashTable: The hash table into which Package objects will be inserted, with the package ID as the key.
     """
-    with open(fileName) as packageCSV:
+    with open(fileName, encoding='utf-8-sig') as packageCSV:
         packageData = csv.reader(packageCSV, delimiter=',')
 
         # Iterate through each row in the CSV file
