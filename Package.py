@@ -86,7 +86,8 @@ class Package:
         if "Delayed on flight" in self.pageSpecialNotes:
             # Extract delay time from the note
             delayTimeString = self.pageSpecialNotes.split("until")[1].strip()
-            hours, minutes = map(int, delayTimeString.split(':'))
+            hours = int(delayTimeString.split(':')[0])
+            minutes = int(delayTimeString.split(':')[1])
             self.arrivalTime = timedelta(hours=hours, minutes=minutes)
 
         if "Wrong address listed" in self.pageSpecialNotes:

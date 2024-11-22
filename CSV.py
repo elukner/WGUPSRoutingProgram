@@ -116,51 +116,22 @@ def loadPackageData(fileName, hashTable):
                 print(f"Skipping invalid row in {fileName}: {package} ({e})")
 
 
-def truckLoadPackages(truck, packages, currentTime):
+
+def truckLoadPackages(truck, packages):
     """
     Loads packages into the truck using the nearest neighbor approach until the truck is full.
     :param truck: Truck object that packages need to be loaded into.
     :param packages: List of packages available for loading.
-    :param currentTime: The current time to determine if delayed packages can be loaded.
     """
-    remaining_packages = packages.copy()
-
-    while len(truck.packages) < truck.capacity and remaining_packages:
-        # Filter packages based on special conditions
-        valid_packages = []
-
-        for package in remaining_packages:
-            # Check for truck restriction
-            if package.allowedTruck is not None and package.allowedTruck != truck.truckId:
-                continue
-
-            # Check for arrival time
-            if package.arrivalTime and currentTime < package.arrivalTime:
-                continue
-
-            valid_packages.append(package)
-
-        # Find the closest package from the current location
-        if valid_packages:
-            closest_package = minDistanceFrom(truck.currentLocation, valid_packages)
-
-            # Load the package onto the truck
-            truck.loadPackage(closest_package)
-
-            # Load any group-dependent packages
-            if closest_package.groupDependency:
-                for group_id in closest_package.groupDependency:
-                    group_package = next((pkg for pkg in remaining_packages if pkg.packageID == group_id), None)
-                    if group_package:
-                        truck.loadPackage(group_package)
-                        remaining_packages.remove(group_package)
-
-            # Remove the loaded package from the remaining_packages list
-            remaining_packages.remove(closest_package)
-
-        # If the truck reaches capacity, break the loop
-        if len(truck.packages) >= truck.capacity:
-            break
+    while len(truck.packages) < truck.capacity and packages:
+        closestPackage = minDistanceFrom(truck.currentLocation, packages)
+        if closestPackage:
+            truck.loadPackage(closestPackage)
+            packages.remove(closestPackage)
+            #TODO delete later
+            # print(f"Truck {truck.truckId} loaded package {closestPackage.packageID}.")
+        else:
+            print("No valid package found to load.")
 
 
 def deliverTruckPackages(truck):
