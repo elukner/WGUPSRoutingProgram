@@ -254,6 +254,7 @@ def deliverTruckPackages(truck):
         availablePackages.remove(closestPackage)
 
 
+
 # def deliverTruckPackages(truck, delayedPackages):
 #     """
 #     Delivers all packages loaded on the truck based on the nearest neighbor algorithm,

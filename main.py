@@ -275,7 +275,7 @@ def main():
     loadPackagesIntoTrucks(hashTable, truckList)
 
 
-    # Deliver packages for each truck in the truckList
+    # Deliver packages for each truck in the truckList that is not delayed packages
     deliverPackages(truckList)
 
     # # Identify delayed packages

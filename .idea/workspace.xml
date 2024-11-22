@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Continued implementation of truckLoadPackages edge cases finished implementation of the group dependencies so that they are all on the correct trucks.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Completed new implementation of truckLoadPackages and fixed bug where packages were getting loaded twice.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,14 +222,6 @@
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
       <workItem from="1731679283622" duration="65396000" />
-    </task>
-    <task id="LOCAL-00063" summary="Deleted function truckDeliverPackages because deliverTruckPackages is already doing this">
-      <option name="closed" value="true" />
-      <created>1732134255910</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1732134255910</updated>
     </task>
     <task id="LOCAL-00064" summary="added unit tests to test some of the functions in csv.py">
       <option name="closed" value="true" />
@@ -613,7 +607,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732313881280</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="Completed new implementation of truckLoadPackages and fixed bug where packages were getting loaded twice.">
+      <option name="closed" value="true" />
+      <created>1732314266168</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1732314266168</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +633,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed user choice 3 time bug in main.py where it was not stopping on the user inputted time." />
     <MESSAGE value="Fixed formating for output data for user choices in main.py for the user ui." />
     <MESSAGE value="Reformated printing and calculating total truck mileage to its on function in main.py instead of calling it twice." />
     <MESSAGE value="Completed implementation of choice 2 so that user can no input time when the package ID in main.py for the user ui." />
@@ -656,10 +657,11 @@
     <MESSAGE value="Continued implementation of truckLoadPackages now edge case packages are only getting added once. However, now package 6,25, 28, 32 are still being loaded even though they are not supposed to be loaded when the program is initialized due to their special notes." />
     <MESSAGE value="Continued implementation of truckLoadPackages now edge case packages are only getting added once and delayedList are not being loaded now with program start." />
     <MESSAGE value="Continued implementation of truckLoadPackages edge cases finished implementation of the group dependencies so that they are all on the correct trucks." />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued implementation of truckLoadPackages edge cases finished implementation of the group dependencies so that they are all on the correct trucks." />
+    <MESSAGE value="Completed new implementation of truckLoadPackages and fixed bug where packages were getting loaded twice." />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed new implementation of truckLoadPackages and fixed bug where packages were getting loaded twice." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732314171717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732316015226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
