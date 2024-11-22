@@ -146,7 +146,12 @@ def truckLoadPackages(truck, packages):
     while len(truck.packages) < truck.capacity and available_packages:
         # Find the closest package from the current location
         closestPackage = minDistanceFrom(truck.currentLocation, available_packages)
+
+
         if closestPackage:
+            if(closestPackage.arrivalTime is not None and (closestPackage.arrivalTime>truck.currentTime)):
+                available_packages.remove(closestPackage)
+                continue
             # Load the package onto the truck
             truck.loadPackage(closestPackage)
             packages.remove(closestPackage)
@@ -256,9 +261,9 @@ def deliverTruckPackagesUntil(truck, stopTime):
 
     # Print the status of all packages on the truck
     # print(f"\nStatus of packages on Truck {truck.truckId} as of {truck.currentTime}:")
-    for package in truck.packages:
-        print(f"PackageID: {package.packageID}, Status: {package.deliveryStatus}, DeliveryTime: "
-              f"{package.deliveryTime if package.deliveryTime else 'Not Delivered'}")
+    # for package in truck.packages:
+    #     print(f"PackageID: {package.packageID}, Status: {package.deliveryStatus}, DeliveryTime: "
+    #           f"{package.deliveryTime if package.deliveryTime else 'Not Delivered'}")
 
 
 def distanceBetween(address1, address2):

@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Refactored parsing function in package object class so that am does not affect the special notes.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the special notes with the package data given.">
       <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,15 +218,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="60079000" />
-    </task>
-    <task id="LOCAL-00046" summary="Finished implementing distanceBetween function in CSV.py">
-      <option name="closed" value="true" />
-      <created>1731681839162</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1731681839162</updated>
+      <workItem from="1731679283622" duration="60606000" />
     </task>
     <task id="LOCAL-00047" summary="Finished implementing distanceBetween function unit tests in testCSV.py. Distance between currently getting errors.">
       <option name="closed" value="true" />
@@ -613,14 +604,21 @@
       <option name="project" value="LOCAL" />
       <updated>1732270031800</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the special notes with the package data given.">
+      <option name="closed" value="true" />
+      <created>1732270559224</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1732270559224</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Finished implementation for unit tests for distance between into testCSV.py currently failing" />
     <MESSAGE value="updated implementation of load address data for len of row greater than 2 instead of 0 seems to make no difference though" />
     <MESSAGE value="Tested and distanceBetween is not working correctly" />
     <MESSAGE value="Continued debugging loadPackageData due to the error that it is skipping the first line and updated packageCSV.csv data" />
@@ -645,7 +643,8 @@
     <MESSAGE value="Added and implemented new truckLoadPackages to take in currentTime in csv.py" />
     <MESSAGE value="Refactored parsing function in package object class." />
     <MESSAGE value="Refactored parsing function in package object class so that am does not affect the special notes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored parsing function in package object class so that am does not affect the special notes." />
+    <MESSAGE value="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the special notes with the package data given." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the special notes with the package data given." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -659,7 +658,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732270381435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732270928893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
