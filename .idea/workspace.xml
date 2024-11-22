@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
-    </list>
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +20,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -46,43 +44,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for testCSV.CSVTestCase.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_distanceBetween.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_loadAddressData.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_loadDistanceData.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_loadPackageData.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_min_distance_from.executor": "Run",
-    "Python tests.Python tests for testCSV.CSVTestCase.test_timeToDeliver.executor": "Run",
-    "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertMultipleItems.executor": "Run",
-    "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem.executor": "Run",
-    "Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem.executor": "Run",
-    "Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor": "Run",
-    "Python tests.Python tests for testMain.MainTestCase.testLoadPackageData.executor": "Run",
-    "Python tests.Python tests for testPackage.PackageTestCase.executor": "Run",
-    "Python tests.Python tests for testPackage.PackageTestCase.test_str_method.executor": "Run",
-    "Python tests.Python tests for testTruck.TruckTestCase.executor": "Run",
-    "Python tests.Python tests in testHashTable.py.executor": "Run",
-    "Python tests.Python tests in testPackage.py.executor": "Run",
-    "Python tests.Python tests in tests.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distanceBetween.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_loadAddressData.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_loadDistanceData.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_loadPackageData.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_min_distance_from.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_timeToDeliver.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testInsertMultipleItems.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testMain.MainTestCase.testLoadPackageData.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testPackage.PackageTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testPackage.PackageTestCase.test_str_method.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for testTruck.TruckTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in testHashTable.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in testPackage.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
@@ -619,6 +617,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py." />
     <MESSAGE value="Added get all items in hashtable to make it iterable" />
@@ -648,7 +657,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732275717807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732280669624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
