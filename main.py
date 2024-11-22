@@ -179,6 +179,19 @@ def userInteractionLoop(truckList, hashTable):
                 # Create a timedelta object for the specified time
                 currentTime = timedelta(hours=hours, minutes=minutes)
 
+                # Create the hash table and load package data
+                hashTable = createPackageData()
+
+                # Create trucks
+                truckList = initializeTrucks(3, hashTable)
+                # TODO delete later print(distanceBetween('1488 4800 S', '1488 4800 S'))
+                # Load packages into trucks
+                loadPackagesIntoTrucks(hashTable, truckList)
+
+                # Deliver packages for each truck in the truckList
+                for truck in truckList:
+                    deliverTruckPackagesUntil(truck,currentTime)
+
                 truckTotalMileage=0
                 for truck in truckList:
                     truckTotalMileage += truck.totalMileage
@@ -220,8 +233,6 @@ def main():
 
     # Deliver packages for each truck in the truckList
     deliverPackages(truckList)
-
-    print(distanceBetween('177 W Price Ave','195 W Oakland Ave'))
 
     # User interaction loop
     userInteractionLoop(truckList, hashTable)

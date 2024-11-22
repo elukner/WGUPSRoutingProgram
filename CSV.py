@@ -169,8 +169,8 @@ def deliverTruckPackages(truck):
         truck.hashTable.insert(closestPackage.packageID, closestPackage)
 
         # TODO delete later Print delivery information
-        print(
-            f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
+        # print(
+        #     f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
 
         # Remove the delivered package from the truck's package list
         truck.packages.remove(closestPackage)
@@ -210,9 +210,9 @@ def deliverTruckPackagesUntil(truck, stopTime):
         truck.hashTable.insert(closestPackage.packageID, closestPackage)
 
         # Print delivery information
-        print(
-            f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. "
-            f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
+        # print(
+        #     f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. "
+        #     f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
 
         # Remove the delivered package from the truck's package list
         truck.packages.remove(closestPackage)
