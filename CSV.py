@@ -142,6 +142,14 @@ def truckLoadPackages(truck, packages):
                     packages.remove(dependent_pkg)
                     available_packages.remove(dependent_pkg)
 
+    #Load all the packages that have special notes for specific trucks
+    for pkg in available_packages:
+        if(pkg.allowedTruck == truck.truckId):
+            truck.loadPackage(pkg)
+            packages.remove(pkg)
+            available_packages.remove(pkg)
+
+
     # Load remaining packages using nearest neighbor approach
     while len(truck.packages) < truck.capacity and available_packages:
         # Find the closest package from the current location
