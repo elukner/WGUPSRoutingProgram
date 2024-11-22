@@ -69,5 +69,16 @@ class HashTable:
                 return kV[1] #this is the value
         return None
 
+    def getAllItems(self):
+        '''
+        Function retrieves all the items from the hash table.
+        :return: A list of all items in the hash table.
+        '''
+        allItems = []
+        for bucket in self.table:
+            for kV in bucket:
+                allItems.append(kV[1])  # Appending the value (package object)
+        return allItems
+
 
 

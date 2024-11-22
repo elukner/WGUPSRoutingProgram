@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Tested and distanceBetween is not working correctly">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packageCSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/packageCSV.csv" afterDir="false" />
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py.">
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,23 +217,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="34125000" />
-    </task>
-    <task id="LOCAL-00025" summary="Started working on hashtable data structure in HashTable.py">
-      <option name="closed" value="true" />
-      <created>1731001218058</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1731001218058</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Worked on hashtable data structure by working on insert method in HashTable.py">
-      <option name="closed" value="true" />
-      <created>1731024857211</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1731024857211</updated>
+      <workItem from="1731679283622" duration="34578000" />
     </task>
     <task id="LOCAL-00027" summary="Created and implemented unitTest cases to test insert function in HashTable.py to ensure that this function inserts new item, updates existing item, and could add multiple items as intended.">
       <option name="closed" value="true" />
@@ -613,15 +595,29 @@
       <option name="project" value="LOCAL" />
       <updated>1732232790096</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Continued debugging loadPackageData due to the error that it is skipping the first line and updated packageCSV.csv data">
+      <option name="closed" value="true" />
+      <created>1732233736909</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1732233736909</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py.">
+      <option name="closed" value="true" />
+      <created>1732233936939</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1732233936939</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated addressCSV.csv" />
-    <MESSAGE value="Updated loadAddressData to read from a different column." />
     <MESSAGE value="Started debugging deliverPackages function in truck.py" />
     <MESSAGE value="Moved deliverPackages from truck.py to CSV.py to be used by the functions in CSV.py" />
     <MESSAGE value="Started implementing deliverTruckPackages function" />
@@ -645,26 +641,12 @@
     <MESSAGE value="Finished implementation for unit tests for distance between into testCSV.py currently failing" />
     <MESSAGE value="updated implementation of load address data for len of row greater than 2 instead of 0 seems to make no difference though" />
     <MESSAGE value="Tested and distanceBetween is not working correctly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tested and distanceBetween is not working correctly" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/CSV.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>25</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Continued debugging loadPackageData due to the error that it is skipping the first line and updated packageCSV.csv data" />
+    <MESSAGE value="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732233483890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732234047891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732232140227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
