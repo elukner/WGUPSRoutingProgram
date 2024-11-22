@@ -165,9 +165,38 @@ def userInteractionLoop(truckList, hashTable):
 
         elif userChoice == '3':
             # Get all package statuses at a specific time
-            current_time = input("Enter the time to get package status (HH:MM): ")
-            # This part could involve checking which packages are delivered at the specified time
-            print("Feature under development.")  # TODO need to finish
+            currentTimeInput = input("Enter the time to get package status (HH:MM): ")
+
+            try:
+                # Manually parse the input time
+                timeParts = currentTimeInput.split(':')
+                if len(timeParts) != 2:
+                    raise ValueError("Invalid time format")
+
+                hours = int(timeParts[0])
+                minutes = int(timeParts[1])
+
+                # Create a timedelta object for the specified time
+                currentTime = timedelta(hours=hours, minutes=minutes)
+
+                truckTotalMileage=0
+                for truck in truckList:
+                    truckTotalMileage += truck.totalMileage
+                    # TODO delete later for debugging purposes only
+                    # print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
+
+                print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles")
+
+                # Print header
+                print(
+                    "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+
+                # Iterate over each package loaded onto the truck
+                for packageID in range(1, 41):
+                    package = hashTable.lookUp(packageID)
+                    print(package)
+            except ValueError:
+                print("Invalid input. Please enter the time in HH:MM format.")
 
         elif userChoice == '4':
             # Exit the program

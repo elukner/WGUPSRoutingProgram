@@ -160,20 +160,73 @@ def deliverTruckPackages(truck):
         truck.totalMileage += distanceToNext
         truck.currentLocation = closestPackage.deliveryAddress
 
-        # Calculate time taken for the delivery based on the average speed of 18 mph
-        time_to_deliver = timedelta(hours=distanceToNext / 18)
-        truck.currentTime += time_to_deliver
+        # Calculate time taken for the delivery based on the average speed of 18 mph TODO use the timeTo Deliver funciton
+        timeToDeliver = timedelta(hours=distanceToNext / 18)
+        truck.currentTime += timeToDeliver
 
         # Update the package delivery status and delivery time in the hash table
         closestPackage.updateStatus(f"Delivered by truck {truck.truckId}", deliveryTime=truck.currentTime)
         truck.hashTable.insert(closestPackage.packageID, closestPackage)
 
         # TODO delete later Print delivery information
-        # print(
-        #     f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
+        print(
+            f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
 
         # Remove the delivered package from the truck's package list
         truck.packages.remove(closestPackage)
+
+
+def deliverTruckPackagesUntil(truck, stopTime):
+    """
+    Delivers packages loaded on the truck until the specified stop time.
+    Updates package delivery statuses and records total mileage.
+
+    Args:
+        truck (Truck): The truck object containing packages to be delivered.
+        stopTime (timedelta): The time at which deliveries should stop.
+    """
+    while truck.packages:
+        # Find the closest package to the current address using the nearest neighbor algorithm
+        closestPackage = minDistanceFrom(truck.currentLocation, truck.packages)
+
+        # Calculate the distance to the next package address
+        distanceToNext = distanceBetween(truck.currentLocation, closestPackage.deliveryAddress)
+
+        # Calculate time taken for the delivery based on the average speed of 18 mph
+        timeToDeliver = timedelta(hours=distanceToNext / 18)
+
+        # Check if the current time + time to deliver exceeds the stop time
+        if truck.currentTime + timeToDeliver > stopTime:
+            # If so, stop deliveries and break the loop
+            break
+
+        # Update the truck's mileage and move to the next address
+        truck.totalMileage += distanceToNext
+        truck.currentLocation = closestPackage.deliveryAddress
+        truck.currentTime += timeToDeliver
+
+        # Update the package delivery status and delivery time in the hash table
+        closestPackage.updateStatus(f"Delivered by truck {truck.truckId}", deliveryTime=truck.currentTime)
+        truck.hashTable.insert(closestPackage.packageID, closestPackage)
+
+        # Print delivery information
+        print(
+            f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. "
+            f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
+
+        # Remove the delivered package from the truck's package list
+        truck.packages.remove(closestPackage)
+
+    # For all remaining packages on the truck that haven't been delivered by the stopTime, update the status as 'En Route'
+    for package in truck.packages:
+        package.updateStatus("En Route")
+        truck.hashTable.insert(package.packageID, package)
+
+    # Print the status of all packages on the truck
+    print(f"\nStatus of packages on Truck {truck.truckId} as of {truck.currentTime}:")
+    for package in truck.packages:
+        print(f"PackageID: {package.packageID}, Status: {package.deliveryStatus}, DeliveryTime: "
+              f"{package.deliveryTime if package.deliveryTime else 'Not Delivered'}")
 
 
 def distanceBetween(address1, address2):
