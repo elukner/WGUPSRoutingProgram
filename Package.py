@@ -1,3 +1,6 @@
+from datetime import timedelta
+
+
 class Package:
     """
     Represents a package for delivery, containing all the relevant information needed
@@ -56,6 +59,38 @@ class Package:
         self.pageSpecialNotes = pageSpecialNotes
         self.deliveryStatus = deliveryStatus  # Initial status  (i.e., at the hub, en route, or delivered)
         self.deliveryTime = deliveryTime  # Time when the package is delivered
+
+        # Additional attributes based on special notes
+        self.allowedTruck = None  # Truck restriction, if any
+        self.groupDependency = []  # List of package IDs that must be delivered together
+        self.arrivalTime = None  # Time when the package arrives at the hub
+        self.addressCorrectionNeeded = False  # Flag for incorrect address
+
+        self.parseSpecialNotes()  # Parse the special notes during initialization
+
+    def parseSpecialNotes(self):
+        """
+        Parses the special notes to set additional attributes like allowedTruck,
+        groupDependency, arrivalTime, or addressCorrectionNeeded.
+        """
+        if "Can only be on truck" in self.pageSpecialNotes:
+            # Extract truck number
+            truckNumber = int(self.pageSpecialNotes.split("truck")[1].strip())
+            self.allowedTruck = truckNumber
+
+        if "Must be delivered with" in self.pageSpecialNotes:
+            # Extract package IDs that this package must be delivered with
+            ids = self.pageSpecialNotes.split("Must be delivered with")[1].strip().split(',')
+            self.groupDependency = [int(id.strip()) for id in ids]
+
+        if "Delayed on flight" in self.pageSpecialNotes:
+            # Extract delay time from the note
+            delayTimeString = self.pageSpecialNotes.split("until")[1].strip()
+            hours, minutes = map(int, delayTimeString.split(':'))
+            self.arrivalTime = timedelta(hours=hours, minutes=minutes)
+
+        if "Wrong address listed" in self.pageSpecialNotes:
+            self.addressCorrectionNeeded = True
 
     def updateStatus(self, status:str, deliveryTime=None):
         """
