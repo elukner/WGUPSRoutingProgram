@@ -80,7 +80,7 @@ class HashTable:
 
         for kV in indexList:
             if kV[0] == key:
-                indexList.remove([kV[0], kV[1]])
+                indexList.remove(kV)
 
 
     def getAllItems(self):
