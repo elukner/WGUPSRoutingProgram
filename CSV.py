@@ -127,7 +127,7 @@ def truckLoadPackages(truck, packages):
     groupPackagesList = [pkg for pkg in packages if pkg.groupDependency]
     specificTruckList= [pkg for pkg in packages if pkg.allowedTruck==truck.truckId]
     #delayed_packages_ready = [pkg for pkg in packages if pkg.arrivalTime and pkg.arrivalTime <= truck.currentTime]
-    delayedList = [pkg for pkg in packages if pkg.arrivalTime]
+    delayedList = [pkg for pkg in packages if pkg.arrivalTime and pkg.arrivalTime <= truck.currentTime]
     wrongAddressList = [pkg for pkg in packages if pkg.addressCorrectionNeeded]
 
     # Load trucks with packages that must be delivered together
