@@ -126,13 +126,7 @@ def userInteractionLoop(truckList, hashTable):
         userChoice = input("Enter your choice: ")
 
         if userChoice == '1':
-            truckTotalMileage = 0
-            for truck in truckList:
-                truckTotalMileage += truck.totalMileage
-                #TODO delete later for debugging purposes only
-                # print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
-
-            print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles")
+            printCalculateTotalMileage(truckList)
             # Print all package statuses and total mileage for all trucks
             printHeader()
 
@@ -190,13 +184,7 @@ def userInteractionLoop(truckList, hashTable):
                 for truck in truckList:
                     deliverTruckPackagesUntil(truck,currentTime)
 
-                truckTotalMileage=0
-                for truck in truckList:
-                    truckTotalMileage += truck.totalMileage
-                    # TODO delete later for debugging purposes only
-                    # print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
-
-                print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles")
+                printCalculateTotalMileage(truckList)
 
                 # Print header
                 printHeader()
@@ -215,6 +203,15 @@ def userInteractionLoop(truckList, hashTable):
 
         else:
             print("Invalid choice, please enter a number between 1 and 4.")
+
+
+def printCalculateTotalMileage(truckList):
+    truckTotalMileage = 0
+    for truck in truckList:
+        truckTotalMileage += truck.totalMileage
+        # TODO delete later for debugging purposes only
+        # print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
+    print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles\n")
 
 
 def printHeader():
