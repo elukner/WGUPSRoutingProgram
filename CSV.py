@@ -123,28 +123,16 @@ def truckLoadPackages(truck, packages):
     :param truck: Truck object that packages need to be loaded into.
     :param packages: List of packages available for loading.
     """
-    # Start by filtering packages that are allowed to be loaded into the current truck
-    availablePackages = [pkg for pkg in packages if pkg.allowedTruck is None or pkg.allowedTruck == truck.truckId]
-
     # Load group-dependent packages first, to ensure they are delivered together
-    groupPackages = [pkg for pkg in availablePackages if pkg.groupDependency]
-    specificTruckList= [pkg for pkg in availablePackages if pkg.allowedTruck==truck.truckId]
-    delayedList = [pkg for pkg in availablePackages if pkg.arrivalTime]
-    wrongAddressList = [pkg for pkg in availablePackages if pkg.addressCorrectionNeeded]
+    groupPackagesList = [pkg for pkg in packages if pkg.groupDependency]
+    specificTruckList= [pkg for pkg in packages if pkg.allowedTruck==truck.truckId]
+    delayedList = [pkg for pkg in packages if pkg.arrivalTime]
+    wrongAddressList = [pkg for pkg in packages if pkg.addressCorrectionNeeded]
 
-    for pkg in groupPackages:
-        if len(truck.packages) < truck.capacity and pkg in availablePackages:
-            truck.loadPackage(pkg)
-            packages.remove(pkg)
-            availablePackages.remove(pkg)
-
-            # Also load dependent packages, if they exist and meet the conditions
-            for dependent_id in pkg.groupDependency:
-                dependent_pkg = next((p for p in availablePackages if p.packageID == dependent_id), None)
-                if dependent_pkg and len(truck.packages) < truck.capacity:
-                    truck.loadPackage(dependent_pkg)
-                    packages.remove(dependent_pkg)
-                    availablePackages.remove(dependent_pkg)
+    for package in groupPackagesList:
+        if len(truck.packages) < truck.capacity:  # Check if the truck is not full
+            truck.loadPackage(package)
+            packages.remove(package)
 
     #Load all the packages that have special notes for specific trucks
     for pkg in availablePackages:
@@ -152,6 +140,14 @@ def truckLoadPackages(truck, packages):
             truck.loadPackage(pkg)
             packages.remove(pkg)
             availablePackages.remove(pkg)
+
+    # Finally, load delayed packages if their arrival time has passed
+    for pkg in list(packages):
+        if pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime and len(truck.packages) < truck.capacity:
+            truck.loadPackage(pkg)
+            packages.remove(pkg)
+            # TODO delete later
+            # print(f"Truck {truck.truckId} loaded delayed package {pkg.packageID}.")
 
 
     # Load remaining packages using nearest neighbor approach
@@ -173,14 +169,6 @@ def truckLoadPackages(truck, packages):
         else:
             print("No valid package found to load.")
             break
-
-    # Finally, load delayed packages if their arrival time has passed
-    for pkg in list(packages):
-        if pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime and len(truck.packages) < truck.capacity:
-            truck.loadPackage(pkg)
-            packages.remove(pkg)
-            # TODO delete later
-            # print(f"Truck {truck.truckId} loaded delayed package {pkg.packageID}.")
 
 
 def deliverTruckPackages(truck, delayedPackages):

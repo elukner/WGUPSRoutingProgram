@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Address for task 2 assumption is being correct now but the delivery time is not correct.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Started new implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added new lists for specific needs to clean up method. The lists added are specificTruckList, delayedList, and wrongAddressList.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
     </list>
@@ -221,14 +221,6 @@
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
       <workItem from="1731679283622" duration="65396000" />
-    </task>
-    <task id="LOCAL-00051" summary="Started debugging deliverPackages function in truck.py">
-      <option name="closed" value="true" />
-      <created>1731693977888</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1731693977888</updated>
     </task>
     <task id="LOCAL-00052" summary="Moved deliverPackages from truck.py to CSV.py to be used by the functions in CSV.py">
       <option name="closed" value="true" />
@@ -614,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732281191781</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Started new implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added new lists for specific needs to clean up method. The lists added are specificTruckList, delayedList, and wrongAddressList.">
+      <option name="closed" value="true" />
+      <created>1732300377190</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1732300377190</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +632,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added get all items in hashtable to make it iterable" />
     <MESSAGE value="Refactored minDistanceFrom function to better match the given nearest neighbor instructions in CSV.py." />
     <MESSAGE value="Added unit tests to help debug minDistanceFrom function in csv.py" />
     <MESSAGE value="Debugged loadPackagesIntoTrucks so that it is now working in the main method by adding back loadPackage function back into Truck.py so that truckLoadPackages can work properly again." />
@@ -657,7 +656,8 @@
     <MESSAGE value="Refactored deliverTruckPackages and added new function returnToHubAndLoadDelayedPackages in CSV.py; deliverPackages and main functions in main.py so that they are handling delayed packages. The grouping of packages that have special notes is not handled yet.  ." />
     <MESSAGE value="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks." />
     <MESSAGE value="Address for task 2 assumption is being correct now but the delivery time is not correct." />
-    <option name="LAST_COMMIT_MESSAGE" value="Address for task 2 assumption is being correct now but the delivery time is not correct." />
+    <MESSAGE value="Started new implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added new lists for specific needs to clean up method. The lists added are specificTruckList, delayedList, and wrongAddressList." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started new implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added new lists for specific needs to clean up method. The lists added are specificTruckList, delayedList, and wrongAddressList." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732282307001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
