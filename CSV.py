@@ -237,12 +237,21 @@ def minDistanceFrom(fromAddress, truckPackages):
     if not truckPackages:
         return None
 
+    #TODO delete later? for dubugging purposes only
+    print(f"Finding the closest package to: {fromAddress}")
+
     # Find the closest package using the nearest neighbor approach
     closestPackage = min(
         truckPackages,
         key=lambda pkg: distanceBetween(fromAddress, pkg.deliveryAddress) if distanceBetween(fromAddress, pkg.deliveryAddress) != float('inf') else float('inf'),
         default=None
     )
+
+    #TODO delete later? for dubugging purposes only
+    if closestPackage:
+        print(f"Closest package to {fromAddress} is {closestPackage.packageID} at address {closestPackage.deliveryAddress}")
+    else:
+        print(f"No valid closest package found from {fromAddress}")
 
     return closestPackage
 

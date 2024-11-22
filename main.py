@@ -173,7 +173,6 @@ def main():
     truckList = initializeTrucks(3, hashTable)
     #TODO delete later print(distanceBetween('1488 4800 S', '1488 4800 S'))
     # Load packages into trucks
-    print(minDistanceFrom(truckList, hashTable))
     loadPackagesIntoTrucks(hashTable, truckList)
 
     # Deliver packages for each truck in the truckList

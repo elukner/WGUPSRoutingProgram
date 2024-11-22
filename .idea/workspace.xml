@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Added get all items in hashtable to make it iterable">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Refactored minDistanceFrom function to better match the given nearest neighbor instructions in CSV.py.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,10 +189,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address" />
+        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_loadAddressData" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase" />
-        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses" />
-        <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address" />
         <item itemvalue="Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses" />
       </list>
     </recent_temporary>
@@ -217,15 +219,7 @@
       <workItem from="1730937182120" duration="439000" />
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
-      <workItem from="1731679283622" duration="36129000" />
-    </task>
-    <task id="LOCAL-00028" summary="Started working on implementation of lookUp function and deleted old update unit test function in testHashTable.py.">
-      <option name="closed" value="true" />
-      <created>1731026613125</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1731026613125</updated>
+      <workItem from="1731679283622" duration="36801000" />
     </task>
     <task id="LOCAL-00029" summary="Finished implementation of lookUp function and added unit test cases correlated to the lookUp function in testHashTable.py.">
       <option name="closed" value="true" />
@@ -611,14 +605,21 @@
       <option name="project" value="LOCAL" />
       <updated>1732234348817</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Refactored minDistanceFrom function to better match the given nearest neighbor instructions in CSV.py.">
+      <option name="closed" value="true" />
+      <created>1732235955151</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1732235955151</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Moved deliverPackages from truck.py to CSV.py to be used by the functions in CSV.py" />
     <MESSAGE value="Started implementing deliverTruckPackages function" />
     <MESSAGE value="Commented load package and deliver package in truck.py to continue to implement deliverTruckPackages function in csv.py" />
     <MESSAGE value="Updated testTruck.py unittests to match the new Truck.py. Still need to figure out if the to string is accurate to the new Truck.py class." />
@@ -643,10 +644,11 @@
     <MESSAGE value="Continued debugging loadPackageData due to the error that it is skipping the first line and updated packageCSV.csv data" />
     <MESSAGE value="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py." />
     <MESSAGE value="Added get all items in hashtable to make it iterable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added get all items in hashtable to make it iterable" />
+    <MESSAGE value="Refactored minDistanceFrom function to better match the given nearest neighbor instructions in CSV.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored minDistanceFrom function to better match the given nearest neighbor instructions in CSV.py." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732234545231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732232140227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732236251692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732236177977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

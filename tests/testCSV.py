@@ -2,8 +2,9 @@ import unittest
 from unittest.mock import mock_open, patch
 from io import StringIO
 
-from CSV import loadAddressData, loadDistanceData, loadPackageData, distanceBetween
+from CSV import loadAddressData, loadDistanceData, loadPackageData, distanceBetween, minDistanceFrom
 from HashTable import HashTable
+from Package import Package
 
 
 class CSVTestCase(unittest.TestCase):
@@ -113,6 +114,33 @@ class CSVTestCase(unittest.TestCase):
 
         distance = distanceBetween("4001 South 700 East", "Another Invalid Address")
         self.assertEqual(distance, float('inf'))
+
+    def setUp(self):
+        # Set up the mock data for testing
+        global distanceData, addressData
+        distanceData = [
+            [0, 3, 5],
+            [3, 0, 4],
+            [5, 4, 0]
+        ]
+        addressData = ["Address A", "Address B", "Address C"]
+
+        # Create some package objects
+        self.package1 = Package(1, "Address B")
+        self.package2 = Package(2, "Address C")
+        self.truckPackages = [self.package1, self.package2]
+
+    def test_min_distance_from(self):
+        # Run minDistanceFrom to find the closest package
+        closest_package = minDistanceFrom("Address A", self.truckPackages)
+        # Assert that the closest package ID is as expected (closest to "Address A" is package 1)
+        self.assertEqual(closest_package.packageID, 1)
+
+    def test_empty_truck_packages(self):
+        # Test the function with an empty list of truck packages
+        closest_package = minDistanceFrom("Address A", [])
+        # Assert that it returns None
+        self.assertIsNone(closest_package)
 
 
 if __name__ == '__main__':
