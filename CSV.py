@@ -237,21 +237,12 @@ def minDistanceFrom(fromAddress, truckPackages):
     if not truckPackages:
         return None
 
-    minDistance = float("inf")
-    closestPackage = None
-
-    # Loop through all packages in the truck to find the closest package
-    for truckPackage in truckPackages:
-        distance = distanceBetween(fromAddress, truckPackage.deliveryAddress)
-
-        # Skip the distance if it is 'inf', meaning the address is unreachable
-        if distance == float('inf'):
-            continue
-
-        if distance < minDistance:
-            minDistance = distance
-            closestPackage = truckPackage
-
+    # Find the closest package using the nearest neighbor approach
+    closestPackage = min(
+        truckPackages,
+        key=lambda pkg: distanceBetween(fromAddress, pkg.deliveryAddress) if distanceBetween(fromAddress, pkg.deliveryAddress) != float('inf') else float('inf'),
+        default=None
+    )
 
     return closestPackage
 
