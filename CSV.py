@@ -129,25 +129,23 @@ def truckLoadPackages(truck, packages):
     delayedList = [pkg for pkg in packages if pkg.arrivalTime]
     wrongAddressList = [pkg for pkg in packages if pkg.addressCorrectionNeeded]
 
+    # Load trucks with packages that must be delivered together
     for package in groupPackagesList:
         if len(truck.packages) < truck.capacity:  # Check if the truck is not full
             truck.loadPackage(package)
             packages.remove(package)
 
-    #Load all the packages that have special notes for specific trucks
-    for pkg in availablePackages:
-        if(pkg.allowedTruck == truck.truckId):
-            truck.loadPackage(pkg)
-            packages.remove(pkg)
-            availablePackages.remove(pkg)
+    # Load trucks with packages that have truck restriction
+    for package in specificTruckList:
+        if len(truck.packages) < truck.capacity:  # Check if the truck is not full
+            truck.loadPackage(package)
+            packages.remove(package)
 
-    # Finally, load delayed packages if their arrival time has passed
-    for pkg in list(packages):
-        if pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime and len(truck.packages) < truck.capacity:
-            truck.loadPackage(pkg)
-            packages.remove(pkg)
-            # TODO delete later
-            # print(f"Truck {truck.truckId} loaded delayed package {pkg.packageID}.")
+    # Load delayed packages if their arrival time has passed
+    for package in delayedList:
+        if len(truck.packages) < truck.capacity: # Check if the truck is not full
+            truck.loadPackage(package)
+            packages.remove(package)
 
 
     # Load remaining packages using nearest neighbor approach
@@ -169,6 +167,7 @@ def truckLoadPackages(truck, packages):
         else:
             print("No valid package found to load.")
             break
+
 
 
 def deliverTruckPackages(truck, delayedPackages):
