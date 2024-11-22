@@ -116,15 +116,15 @@ def loadPackageData(fileName, hashTable):
                 print(f"Skipping invalid row in {fileName}: {package} ({e})")
 
 
-
+#wait so would it make sense that some of the packages keep repeating because they have not been loaded yet?
 def truckLoadPackages(truck, packages):
     """
     Loads packages into the truck using the nearest neighbor approach until the truck is full.
     :param truck: Truck object that packages need to be loaded into.
     :param packages: List of packages available for loading.
     """
-    # Initialize a hash table to track loaded packages to avoid duplicates
-    loadedPackages = HashTable()
+    # # Initialize a hash table to track loaded packages to avoid duplicates
+    # loadedPackages = HashTable()
 
     # Load group-dependent packages first, to ensure they are delivered together
     groupPackagesList = [pkg for pkg in packages if pkg.groupDependency]
@@ -135,60 +135,58 @@ def truckLoadPackages(truck, packages):
 
     # Load trucks with packages that must be delivered together
     for package in groupPackagesList:
-        loadPackageIfTruckNotFull(loadedPackages, package, packages, truck)
-        # Load the dependent packages as well
-        for dependent_id in package.groupDependency:
-            dependent_pkg = next((p for p in packages if p.packageID == dependent_id), None)
-            if dependent_pkg:
-                loadPackageIfTruckNotFull(loadedPackages, package, packages, truck)
+        if len(truck.packages) < truck.capacity:
+            truck.loadPackage(package)
+            packages.remove(package)
 
     # Load trucks with packages that have truck restriction
     for package in specificTruckList:
-        loadPackageIfTruckNotFull(loadedPackages, package, packages, truck)
-        #loadPackageIfTruckNotFull(truck, package, packages,loadedPackages)
+        if len(truck.packages) < truck.capacity:
+            truck.loadPackage(package)
+            packages.remove(package)
 
     # Load delayed packages if their arrival time has passed
+    # Load any delayed packages that have now arrived and can be loaded
     for package in delayedList:
-        loadPackageIfTruckNotFull(loadedPackages, package, packages, truck)
-        #loadPackageIfTruckNotFull(truck, package, packages,loadedPackages)
+        if len(truck.packages) < truck.capacity:
+            truck.loadPackage(package)
+            packages.remove(package)
 
     # Load packages with incorrect address onto truck
     for package in wrongAddressList:
-        loadPackageIfTruckNotFull(loadedPackages, package, packages, truck)
-        #loadPackageIfTruckNotFull(truck, package, packages,loadedPackages)
-
-    # Load any delayed packages that have now arrived and can be loaded
-    for package in delayedList:
-        loadPackageIfTruckNotFull(loadedPackages, package, packages, truck)
-        # loadPackageIfTruckNotFull(truck, package, packages,loadedPackages)
-
-    # # Load remaining packages using nearest neighbor approach
-    # available_packages = [pkg for pkg in packages if pkg not in groupPackagesList
-    #                       and pkg not in specificTruckList and pkg not in delayedList
-    #                       and pkg not in wrongAddressList]
-    #
-    # # Load remaining packages using nearest neighbor approach
-    # while len(truck.packages) < truck.capacity and available_packages:
-    #     # Find the closest package from the current location
-    #     closest_package = minDistanceFrom(truck.currentLocation, available_packages)
-    #
-    #     if closest_package:
-    #         # Check if the package's arrival time allows it to be loaded
-    #         if closest_package.arrivalTime and closest_package.arrivalTime > truck.currentTime:
-    #             available_packages.remove(closest_package)
-    #             continue
-    #
-    #         # Load the package onto the truck
-    #         truck.loadPackage(closest_package)
-    #         loadedPackages.insert(closest_package.packageID, True)
-    #         packages.remove(closest_package)
-    #         available_packages.remove(closest_package)
-    #     else:
-    #         print("No valid package found to load.")
-    #         break
+        if len(truck.packages) < truck.capacity:
+            truck.loadPackage(package)
+            packages.remove(package)
 
 
-def loadPackageIfTruckNotFull(loadedPackages, package, packages, truck):
+    # Load remaining packages using nearest neighbor approach
+    availablePackages = [pkg for pkg in packages if pkg not in groupPackagesList
+                          and pkg not in specificTruckList and pkg not in delayedList
+                          and pkg not in wrongAddressList]
+
+
+    # Load remaining packages using nearest neighbor approach
+    while len(truck.packages) < truck.capacity and availablePackages:
+        # Find the closest package from the current location
+        closest_package = minDistanceFrom(truck.currentLocation, availablePackages)
+
+        if closest_package:
+            # Check if the package's arrival time allows it to be loaded
+            if closest_package.arrivalTime and closest_package.arrivalTime > truck.currentTime:
+                availablePackages.remove(closest_package)
+                continue
+
+            # Load the package onto the truck
+            truck.loadPackage(closest_package)
+            loadedPackages.insert(closest_package.packageID, True)
+            packages.remove(closest_package)
+            availablePackages.remove(closest_package)
+        else:
+            print("No valid package found to load.")
+            break
+
+
+def loadPackageIfTruckNotFull(package, packages, truck):
     """
     Loads a package into the truck if it is not full.
     :param loadedPackages:
@@ -197,11 +195,12 @@ def loadPackageIfTruckNotFull(loadedPackages, package, packages, truck):
     :param truck: Truck object to load the package into.
     :return:
     """
-    if loadedPackages.lookUp(package.packageID) is None:  # Ensure the package isn't already loaded
-        if len(truck.packages) < truck.capacity:
-            truck.loadPackage(package)
-            loadedPackages.insert(package.packageID, True)
-            packages.remove(package)
+    #if loadedPackages.lookUp(package.packageID) is None:  # Ensure the package isn't already loaded
+    if len(truck.packages) < truck.capacity:
+        truck.loadPackage(package)
+        #loadedPackages.insert(package.packageID, package.packageID)
+        packages.remove(package)
+   # return loadedPackages
 
 
 
