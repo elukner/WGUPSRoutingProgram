@@ -171,7 +171,7 @@ def truckLoadPackages(truck, packages):
             # print(f"Truck {truck.truckId} loaded delayed package {pkg.packageID}.")
 
 
-def deliverTruckPackages(truck):
+def deliverTruckPackages(truck,delayedPackages):
     """
     Delivers all packages loaded on the truck based on the nearest neighbor algorithm,
     choosing the nearest address first.
@@ -211,6 +211,36 @@ def deliverTruckPackages(truck):
 
         # Remove the delivered package from the truck's package list
         truck.packages.remove(closestPackage)
+
+        # Check if any delayed packages are now available for pickup
+        for pkg in delayedPackages:
+            if pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime:
+                returnToHubAndLoadDelayedPackages(truck, delayedPackages)
+                break  # Only go back once after finding at least one package that is ready
+
+
+def returnToHubAndLoadDelayedPackages(truck, delayed_packages):
+    """
+    Returns the truck to the hub and loads the available delayed packages.
+    :param truck: Truck object that needs to return to the hub.
+    :param delayed_packages: List of delayed packages waiting at the hub.
+    """
+    # Assuming the hub is at "4001 South 700 East"
+    hubAddress = "4001 South 700 East"
+    distanceToHub = distanceBetween(truck.currentLocation, hubAddress)
+
+    # Update truck mileage and current location
+    truck.totalMileage += distanceToHub
+    truck.currentLocation = hubAddress
+    truck.currentTime += timedelta(hours=distanceToHub / 18)  # Assuming average speed of 18 mph
+
+    # Load available delayed packages
+    for pkg in list(delayed_packages):
+        if pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime:
+            truck.loadPackage(pkg)
+            delayed_packages.remove(pkg)
+            # Optional: print for debugging
+            # print(f"Truck {truck.truckId} loaded delayed package {pkg.packageID}.")
 
 
 def deliverTruckPackagesUntil(truck, stopTime):

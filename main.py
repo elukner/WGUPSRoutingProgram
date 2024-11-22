@@ -99,7 +99,7 @@ def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
 
 
 
-def deliverPackages(truckList):
+def deliverPackages(truckList,delayedPackages):
     """
     Function to deliver packages for all trucks in the provided list.
 
@@ -110,7 +110,14 @@ def deliverPackages(truckList):
         - Each truck's status (including mileage, time, and package status) will be updated during the delivery process.
     """
     for truck in truckList:
-        deliverTruckPackages(truck)
+        deliverTruckPackages(truck, delayedPackages)
+
+        # If any delayed packages are still left, have the truck return to the hub to load them
+        if delayedPackages:
+            returnToHubAndLoadDelayedPackages(truck, delayedPackages)
+
+            # Once delayed packages are loaded, deliver them
+            deliverTruckPackages(truck, delayedPackages)
 
 
 def userInteractionLoop(truckList, hashTable):
@@ -254,8 +261,17 @@ def main():
     # Load packages into trucks
     loadPackagesIntoTrucks(hashTable, truckList)
 
+    # Identify delayed packages
+    delayedPackages = []
+
+    # Add delayed packages to the list based on their arrival time from hashTable
+    for package_id in range(1, 41):
+        package = hashTable.lookUp(package_id)
+        if package and package.arrivalTime:  # If the package has a delayed arrival time
+            delayedPackages.append(package)
+
     # Deliver packages for each truck in the truckList
-    deliverPackages(truckList)
+    deliverPackages(truckList, delayedPackages)
 
     # User interaction loop
     userInteractionLoop(truckList, hashTable)
