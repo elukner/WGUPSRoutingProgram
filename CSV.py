@@ -123,9 +123,6 @@ def truckLoadPackages(truck, packages):
     :param truck: Truck object that packages need to be loaded into.
     :param packages: List of packages available for loading.
     """
-    # # Initialize a hash table to track loaded packages to avoid duplicates
-    # loadedPackages = HashTable()
-
     # Load group-dependent packages first, to ensure they are delivered together
     groupPackagesList = [pkg for pkg in packages if pkg.groupDependency]
     specificTruckList= [pkg for pkg in packages if pkg.allowedTruck==truck.truckId]
@@ -205,10 +202,7 @@ def loadPackageIfTruckNotFull(package, packages, truck):
         packages.remove(package)
    # return loadedPackages
 
-
-
-
-def deliverTruckPackages(truck, delayedPackages):
+def deliverTruckPackages(truck):
     """
     Delivers all packages loaded on the truck based on the nearest neighbor algorithm,
     choosing the nearest address first and prioritizing packages with deadlines.
@@ -257,22 +251,72 @@ def deliverTruckPackages(truck, delayedPackages):
         truck.packages.remove(closestPackage)
         availablePackages.remove(closestPackage)
 
-        # Print delivery information for debugging (can be deleted later)
-        # print(f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
 
-        # Check if any delayed packages are now available for pickup
-        newlyAvailablePackages = [pkg for pkg in delayedPackages if
-                                  pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime]
-        if newlyAvailablePackages:
-            returnToHubAndLoadDelayedPackages(truck, newlyAvailablePackages)
-            break  # Only return to hub once after finding at least one package that is ready
-
-    # Handle case where truck goes back to hub for delayed packages
-    if delayedPackages:
-        delayedPackagesReady = [pkg for pkg in delayedPackages if
-                                pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime]
-        if delayedPackagesReady:
-            returnToHubAndLoadDelayedPackages(truck, delayedPackagesReady)
+# def deliverTruckPackages(truck, delayedPackages):
+#     """
+#     Delivers all packages loaded on the truck based on the nearest neighbor algorithm,
+#     choosing the nearest address first and prioritizing packages with deadlines.
+#     Updates the delivery status and total mileage.
+#     """
+#     # Get packages that are currently available for delivery
+#     availablePackages = [pkg for pkg in truck.packages if not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
+#     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
+#
+#     while availablePackages:
+#         # At 10:20 AM, update address for package #9 if needed
+#         if truck.currentTime >= timedelta(hours=10, minutes=20):
+#             correctAddressAt1020(truck.hashTable)
+#
+#         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
+#         if packagesWithDeadlines:
+#             closestPackage = min(packagesWithDeadlines,
+#                                  key=lambda pkg: distanceBetween(truck.currentLocation, pkg.deliveryAddress))
+#             packagesWithDeadlines.remove(closestPackage)
+#         else:
+#             closestPackage = min(availablePackages,
+#                                  key=lambda pkg: distanceBetween(truck.currentLocation, pkg.deliveryAddress))
+#
+#         # If no valid package is found, break the loop
+#         if closestPackage is None:
+#             print("Warning: No valid package found to deliver.")
+#             break
+#
+#         # Calculate the distance to the next package address
+#         distanceToNext = distanceBetween(truck.currentLocation, closestPackage.deliveryAddress)
+#         if distanceToNext == float('inf'):
+#             print(f"Warning: Cannot deliver to {closestPackage.deliveryAddress}, unreachable.")
+#             availablePackages.remove(closestPackage)
+#             continue
+#
+#         # Update the truck's mileage, location, and time
+#         truck.totalMileage += distanceToNext
+#         truck.currentLocation = closestPackage.deliveryAddress
+#         truck.currentTime += timedelta(hours=distanceToNext / 18)  # Assuming average speed is 18 mph
+#
+#         # Update the package delivery status and delivery time in the hash table
+#         closestPackage.updateStatus(f"Delivered by truck {truck.truckId}", deliveryTime=truck.currentTime)
+#         truck.hashTable.insert(closestPackage.packageID, closestPackage)
+#
+#         # Remove the delivered package from truck's available packages
+#         truck.packages.remove(closestPackage)
+#         availablePackages.remove(closestPackage)
+#
+#         # Print delivery information for debugging (can be deleted later)
+#         # print(f"Package {closestPackage.packageID} delivered to {closestPackage.deliveryAddress} at {truck.currentTime}. Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles.")
+#
+#         # Check if any delayed packages are now available for pickup
+#         newlyAvailablePackages = [pkg for pkg in delayedPackages if
+#                                   pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime]
+#         if newlyAvailablePackages:
+#             returnToHubAndLoadDelayedPackages(truck, newlyAvailablePackages)
+#             break  # Only return to hub once after finding at least one package that is ready
+#
+#     # Handle case where truck goes back to hub for delayed packages
+#     if delayedPackages:
+#         delayedPackagesReady = [pkg for pkg in delayedPackages if
+#                                 pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime]
+#         if delayedPackagesReady:
+#             returnToHubAndLoadDelayedPackages(truck, delayedPackagesReady)
 
 # Correct the address for package #9 at 10:20 AM
 def correctAddressAt1020(hashTable):
