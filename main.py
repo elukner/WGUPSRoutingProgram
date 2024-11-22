@@ -221,6 +221,8 @@ def main():
     # Deliver packages for each truck in the truckList
     deliverPackages(truckList)
 
+    print(distanceBetween('177 W Price Ave','195 W Oakland Ave'))
+
     # User interaction loop
     userInteractionLoop(truckList, hashTable)
 

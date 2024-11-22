@@ -241,7 +241,10 @@ def distanceBetween(address1, address2):
         # print(f"Available addresses: {addressData}")
         index1 = addressData.index(address1)
         index2 = addressData.index(address2)
-        return distanceData[index1][index2]
+        distance=distanceData[index1][index2]
+        if distance != 0:
+            return distanceData[index1][index2]
+        return distanceData[index2][index1]
     except ValueError as e:
         # If the address is not found, return a large value (inf) to indicate it is unreachable
         print(f"ValueError: Address not found - {e}")
