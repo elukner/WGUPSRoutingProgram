@@ -25,16 +25,16 @@ def createPackageData():
     hashTable = HashTable()
     loadPackageData('packageCSV.csv', hashTable)
     # check to see if hashtable data is all there TODO delete later
-    for packageIndex in range(1, 41):
-       print(hashTable.lookUp(packageIndex))
+    # for packageIndex in range(1, 41):
+    #    print(hashTable.lookUp(packageIndex))
 
     # Load data from CSV files
     loadDistanceData('distanceCSV.csv')
    #todo delete later
-    print(distanceData)
+   # print(distanceData)
     loadAddressData('addressCSV.csv')
     #todo delete later
-    print(addressData)
+    #print(addressData)
     return hashTable
 
 
@@ -126,14 +126,47 @@ def userInteractionLoop(truckList, hashTable):
         user_choice = input("Enter your choice: ")
 
         if user_choice == '1':
-            # Print all package statuses and total mileage for all trucks
+            # Print header for the package information table
+            print(
+                "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
+
+            # Iterate over each truck and display their mileage and package details
             for truck in truckList:
                 print(f"Truck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
-                print("Packages on Truck:")
-                for package in truck.packages:
+
+                # Check if the truck actually has packages
+                if len(truck.packages) == 0:
+                    print(f"Truck {truck.truckId} has no packages loaded.")
+                else:
+                    # Iterate over each package in the truck
+                    for package in truck.packages:
+                        # Print package details
+                        print(
+                            f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, {package.zip}, "
+                            f"{package.deliveryDeadline}, {package.packageWeight}, {package.pageSpecialNotes}, "
+                            f"{package.deliveryStatus} by Truck-{truck.truckId}, "
+                            f"{package.deliveryTime if package.deliveryTime else 'N/A'}"
+                        )
+
+            # Handle packages that are still at the hub or not loaded in any truck
+            for package_id in range(1, 41):  # Assuming package IDs range from 1 to 40
+                package = hashTable.lookUp(package_id)
+                if package and package.deliveryStatus == "At Hub":
                     print(
-                        "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, PageSpecial Notes, Status, DeliveryTime")
-                    print(package)
+                        f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, {package.zip}, "
+                        f"{package.deliveryDeadline}, {package.packageWeight}, {package.pageSpecialNotes}, "
+                        f"{package.deliveryStatus}, N/A"
+                    )
+
+            # Handle packages that are still at the hub or not loaded in any truck
+            for package_id in range(1, 41):  # Assuming package IDs range from 1 to 40
+                package = hashTable.lookUp(package_id)
+                if package and package.deliveryStatus == "At Hub":
+                    print(
+                        f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, {package.zip}, "
+                        f"{package.deliveryDeadline}, {package.packageWeight}, {package.pageSpecialNotes}, "
+                        f"{package.deliveryStatus}, N/A"
+                    )
 
         elif user_choice == '2':
             # Get a single package status

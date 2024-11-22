@@ -107,6 +107,7 @@ class Truck:
         """
         if len(self.packages) < self.capacity:
             self.packages.append(package)
+            package.updateStatus("In Route", deliveryTime=self.currentTime)
             #TODO delete later? for dubugging purposes only
             # print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")
             return True
