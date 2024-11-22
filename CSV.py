@@ -147,6 +147,10 @@ def truckLoadPackages(truck, packages):
             truck.loadPackage(package)
             packages.remove(package)
 
+    for package in wrongAddressList:
+        if len(truck.packages) < truck.capacity: # Check if the truck is not full
+            truck.loadPackage(package)
+            packages.remove(package)
 
     # Load remaining packages using nearest neighbor approach
     while len(truck.packages) < truck.capacity and availablePackages:
