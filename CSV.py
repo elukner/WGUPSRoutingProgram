@@ -136,6 +136,15 @@ def truckLoadPackages(truck, packages):
             truck.loadPackage(package)
             packages.remove(package)
             print(len(packages))
+            # Load all dependent packages for this package
+            for dependentId in package.groupDependency:
+                # Find the actual dependent package in the list
+                dependentPackage = next((p for p in packages if p.packageID == dependentId), None)
+                if dependentPackage and len(truck.packages) < truck.capacity:
+                    truck.loadPackage(dependentPackage)
+                    packages.remove(dependentPackage)
+                    print(len(packages))
+
 
     # Load trucks with packages that have truck restriction
     for package in specificTruckList:
@@ -165,14 +174,12 @@ def truckLoadPackages(truck, packages):
     #                       and pkg not in specificTruckList and pkg not in delayedList
     #                       and pkg not in wrongAddressList]
     #
-    #
-    # # Load remaining packages using nearest neighbor approach
     # while len(truck.packages) < truck.capacity and availablePackages:
     #     # Find the closest package from the current location
     #     closestPackage = minDistanceFrom(truck.currentLocation, availablePackages)
     #
     #     if closestPackage:
-    #         # Check if the package's arrival time allows it to be loaded
+    #         # Ensure that the package's arrival time allows it to be loaded
     #         if closestPackage.arrivalTime and closestPackage.arrivalTime > truck.currentTime:
     #             availablePackages.remove(closestPackage)
     #             continue
@@ -181,6 +188,7 @@ def truckLoadPackages(truck, packages):
     #         truck.loadPackage(closestPackage)
     #         packages.remove(closestPackage)
     #         availablePackages.remove(closestPackage)
+    #         print(f"Package {closestPackage.packageID} loaded onto Truck {truck.truckId}. Packages remaining: {len(packages)}")
     #     else:
     #         print("No valid package found to load.")
     #         break
