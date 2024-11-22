@@ -130,9 +130,9 @@ def truckLoadPackages(truck, packages):
     """
     # Define specific package assignments based on the requirements
     truck_assignments = {
-        1: [1, 2, 3],  # Example: Truck 1 must have packages 1, 2, and 3
-        2: [4, 5, 6],  # Example: Truck 2 must have packages 4, 5, and 6
-        3: [7, 8, 9],  # Example: Truck 3 must have packages 7, 8, and 9
+        1: [1, 2, 3],  # TODO Example: Truck 1 must have packages 1, 2, and 3
+        2: [4, 5, 6],  # TODO Example: Truck 2 must have packages 4, 5, and 6
+        3: [7, 8, 9],  # TODO Example: Truck 3 must have packages 7, 8, and 9
     }
 
     # Step 1: Load specific packages into the truck based on assignments
@@ -146,18 +146,18 @@ def truckLoadPackages(truck, packages):
     # Step 2: Use nearest neighbor approach to load the remaining packages
     while len(truck.packages) < truck.capacity and packages:
         # Find the closest package from the current location
-        closest_package = minDistanceFrom(truck.currentLocation, packages)
+        closestPackage = minDistanceFrom(truck.currentLocation, packages)
 
         # Break the loop if no valid package is found
-        if closest_package is None:
+        if closestPackage is None:
             print("Warning: No valid package found to load.")
             break
 
         # Load the package onto the truck
-        truck.loadPackage(closest_package)
+        truck.loadPackage(closestPackage)
 
         # Remove the loaded package from the original packages list
-        packages.remove(closest_package)
+        packages.remove(closestPackage)
 
         # If the truck reaches capacity, break the loop
         if len(truck.packages) >= truck.capacity:
@@ -172,7 +172,7 @@ def deliverTruckPackages(truck):
     """
     while truck.packages:
         # Find the closest package to the current address using the nearest neighbor algorithm
-        print(minDistanceFrom(truck.currentLocation, truck.packages))
+        #TODO delete later print(minDistanceFrom(truck.currentLocation, truck.packages))
         closestPackage = minDistanceFrom(truck.currentLocation, truck.packages)
 
         # If no valid package is found, break the loop
@@ -226,7 +226,7 @@ def distanceBetween(address1, address2):
 
 
 # Function to find min distance/address
-def minDistanceFrom(fromAddress, truckPackages):
+def minDistanceFrom(fromAddress, truckPackages) -> Package:
     """
     Function to find the package with the minimum distance from the given address.
     :param fromAddress: The address to calculate distances from.
