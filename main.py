@@ -281,31 +281,33 @@ def findDelayedPackages(hashTable, totalPackages=40):
     return delayedPackages
 
 def main():
-
     # Create the hash table and load package data
     hashTable = createPackageData()
 
     # Create trucks
     truckList = initializeTrucks(3, hashTable)
-    #TODO delete later print(distanceBetween('1488 4800 S', '1488 4800 S'))
+
     # Load packages into trucks
     loadPackagesIntoTrucks(hashTable, truckList)
 
+    # Find delayed packages
+    delayedPackages = findDelayedPackages(hashTable)
 
-    # Deliver packages for each truck in the truckList that is not delayed packages
+    # Deliver packages for each truck that are not delayed packages
     deliverPackages(truckList)
 
-    # # Identify delayed packages
-    # delayedPackages = []
-    #
-    # # Add delayed packages to the list based on their arrival time from hashTable
-    # for package_id in range(1, 41):
-    #     package = hashTable.lookUp(package_id)
-    #     if package and package.arrivalTime:  # If the package has a delayed arrival time
-    #         delayedPackages.append(package)
-    #
-    # # Deliver packages for each truck in the truckList
-    # deliverPackages(truckList, delayedPackages)
+    # Deliver delayed packages
+    for truck in truckList:
+        # Load delayed packages that are now available to be loaded
+        newlyAvailablePackages = [pkg for pkg in delayedPackages if pkg.arrivalTime <= truck.currentTime]
+        if newlyAvailablePackages:
+            for pkg in newlyAvailablePackages:
+                if len(truck.packages) < truck.capacity:
+                    truck.loadPackage(pkg)
+                    delayedPackages.remove(pkg)
+
+        # Deliver the loaded delayed packages
+        deliverTruckPackages(truck)
 
 
     # User interaction loop
