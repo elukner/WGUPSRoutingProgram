@@ -212,15 +212,9 @@ def deliverTruckPackages(truck):
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
     while availablePackages:
-        # At 10:20 AM, update address for package #9 if needed
-        # Print truck current time for debugging purposes
-        # TODO delete later print(f"Current Time of Truck {truck.truckId}: {truck.currentTime}")
-        #At 10:20 AM: Correct the address for package #9.
-        # After 10:20 AM: Make package #9 available for loading.
-        # A truck should return to the hub to pick up the package when feasible.
-        # if truck.currentTime >= timedelta(hours=10, minutes=20) :
-        #     print(f"Correcting address for package #9 at {truck.currentTime}.")
-        #     correctAddressAt1020(truck.hashTable)
+        # Correct the address for package #9 after 10:20 AM
+        if truck.currentTime >= timedelta(hours=10, minutes=20):
+            correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
         if packagesWithDeadlines:
