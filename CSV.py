@@ -160,6 +160,8 @@ def truckLoadPackages(truck, packages):
     # Load packages with incorrect address onto truck
     #Before 10:20 AM: Package #9 should not be loaded onto any truck.
     if truck.currentTime >= timedelta(hours=10, minutes=20):
+        print(f"Correcting address for package #9 at {truck.currentTime}.")
+        correctAddressAt1020(truck.hashTable)
         for package in wrongAddressList:
             if len(truck.packages) < truck.capacity:
                 truck.loadPackage(package)
@@ -223,9 +225,9 @@ def deliverTruckPackages(truck):
         #At 10:20 AM: Correct the address for package #9.
         # After 10:20 AM: Make package #9 available for loading.
         # A truck should return to the hub to pick up the package when feasible.
-        if truck.currentTime >= timedelta(hours=10, minutes=20):
-            print(f"Correcting address for package #9 at {truck.currentTime}.")
-            correctAddressAt1020(truck.hashTable)
+        # if truck.currentTime >= timedelta(hours=10, minutes=20) :
+        #     print(f"Correcting address for package #9 at {truck.currentTime}.")
+        #     correctAddressAt1020(truck.hashTable)
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
         if packagesWithDeadlines:
