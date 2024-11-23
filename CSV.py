@@ -341,7 +341,7 @@ def correctAddressAt1020(hashTable):
         package9.state = "UT"
         package9.zip = "84111"
         package9.addressCorrectionNeeded = False
-        print("Package #9 address updated at 10:20 AM.")
+        #TODO delete later for debugging purposes? print("Package #9 address updated at 10:20 AM.")
 
 
 def returnToHubAndLoadDelayedPackages(truck, delayedPackages):
@@ -414,7 +414,7 @@ def deliverTruckPackagesUntil(truck, stopTime):
         package.updateStatus("En Route")
         truck.hashTable.insert(package.packageID, package)
 
-    # Print the status of all packages on the truck
+    #Print the status of all packages on the truck
     # print(f"\nStatus of packages on Truck {truck.truckId} as of {truck.currentTime}:")
     # for package in truck.packages:
     #     print(f"PackageID: {package.packageID}, Status: {package.deliveryStatus}, DeliveryTime: "

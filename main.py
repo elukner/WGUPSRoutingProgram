@@ -189,7 +189,7 @@ def userInteractionLoop(truckList, hashTable):
                         packageStatus = "At Hub"  # Default status if none of the above apply
 
                     # Print package information
-                    print(f"\nStatus at {currentTime}: {packageStatus}\n")
+                    print(f"\nStatus at {currentTime}: { packageStatus}\n")
                     printHeader()
                     print(package,"\n")
                 else:

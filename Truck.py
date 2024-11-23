@@ -109,7 +109,7 @@ class Truck:
             self.packages.append(package)
             package.updateStatus("In Route", deliveryTime=self.currentTime)
             #TODO delete later? for dubugging purposes only
-            print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")
+            #print(f"Package {package.packageID} loaded onto Truck {self.truckId}.")
             return True
         else:
             #TODO delete later? for dubugging purposes only
