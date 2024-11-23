@@ -188,21 +188,21 @@ def truckLoadPackages(truck, packages):
             break
 
 
-def loadPackageIfTruckNotFull(package, packages, truck):
-    """
-    Loads a package into the truck if it is not full.
-    :param loadedPackages:
-    :param package: Package object to be loaded into the truck.
-    :param packages: List of available packages (to be updated after loading).
-    :param truck: Truck object to load the package into.
-    :return:
-    """
-    #if loadedPackages.lookUp(package.packageID) is None:  # Ensure the package isn't already loaded
-    if len(truck.packages) < truck.capacity:
-        truck.loadPackage(package)
-        #loadedPackages.insert(package.packageID, package.packageID)
-        packages.remove(package)
-   # return loadedPackages
+# def loadPackageIfTruckNotFull(package, packages, truck):
+#     """
+#     Loads a package into the truck if it is not full.
+#     :param loadedPackages:
+#     :param package: Package object to be loaded into the truck.
+#     :param packages: List of available packages (to be updated after loading).
+#     :param truck: Truck object to load the package into.
+#     :return:
+#     """
+#     #if loadedPackages.lookUp(package.packageID) is None:  # Ensure the package isn't already loaded
+#     if len(truck.packages) < truck.capacity:
+#         truck.loadPackage(package)
+#         #loadedPackages.insert(package.packageID, package.packageID)
+#         packages.remove(package)
+#    # return loadedPackages
 
 def deliverTruckPackages(truck):
     """
@@ -253,6 +253,13 @@ def deliverTruckPackages(truck):
         # Remove the delivered package from truck's available packages
         truck.packages.remove(closestPackage)
         availablePackages.remove(closestPackage)
+
+        # # Check if any delayed packages are now available for pickup
+        # newlyAvailablePackages = [pkg for pkg in delayedPackages if
+        #                           pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime]
+        # if newlyAvailablePackages:
+        #     returnToHubAndLoadDelayedPackages(truck, newlyAvailablePackages)
+        #     break  # Only return to hub once after finding at least one package that is ready
 
 
 
