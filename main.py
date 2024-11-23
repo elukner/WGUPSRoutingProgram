@@ -309,6 +309,8 @@ def main():
         # Deliver the loaded delayed packages
         deliverTruckPackages(truck)
 
+    deliverPackages(truck.hashTable.lookUp(9))
+
 
     # User interaction loop
     userInteractionLoop(truckList, hashTable)

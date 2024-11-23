@@ -215,11 +215,12 @@ def deliverTruckPackages(truck):
     availablePackages = [pkg for pkg in truck.packages if not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
+    package9 = truck.hashTable.lookUp(9)
     while availablePackages:
         # Correct the address for package #9 after 10:20 AM
-        if truck.currentTime >= timedelta(hours=10, minutes=20):
+        if truck.currentTime >= timedelta(hours=10, minutes=20) and package9.addressCorrectionNeeded:
             correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
-            package9 =truck.hashTable.lookUp(9)
+            # package9 =truck.hashTable.lookUp(9)
             truck.loadPackage(package9)
             truck.packages.remove(package9)
             #returnToHubAndLoadDelayedPackages(truck,truck.hashTable.lookUp(9))
