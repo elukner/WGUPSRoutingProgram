@@ -158,10 +158,12 @@ def truckLoadPackages(truck, packages):
             packages.remove(package)
 
     # Load packages with incorrect address onto truck
-    for package in wrongAddressList:
-        if len(truck.packages) < truck.capacity:
-            truck.loadPackage(package)
-            packages.remove(package)
+    #Before 10:20 AM: Package #9 should not be loaded onto any truck.
+    if truck.currentTime >= timedelta(hours=10, minutes=20):
+        for package in wrongAddressList:
+            if len(truck.packages) < truck.capacity:
+                truck.loadPackage(package)
+                packages.remove(package)
 
 
     # Load remaining packages using nearest neighbor approach
@@ -216,8 +218,13 @@ def deliverTruckPackages(truck):
 
     while availablePackages:
         # At 10:20 AM, update address for package #9 if needed
-        # print(truck.currentTime) todo because truck.current time never is greater than 10:20 and somehow its still getting updated????
+        # Print truck current time for debugging purposes
+        # TODO delete later print(f"Current Time of Truck {truck.truckId}: {truck.currentTime}")
+        #At 10:20 AM: Correct the address for package #9.
+        # After 10:20 AM: Make package #9 available for loading.
+        # A truck should return to the hub to pick up the package when feasible.
         if truck.currentTime >= timedelta(hours=10, minutes=20):
+            print(f"Correcting address for package #9 at {truck.currentTime}.")
             correctAddressAt1020(truck.hashTable)
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
