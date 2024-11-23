@@ -216,6 +216,7 @@ def deliverTruckPackages(truck):
 
     while availablePackages:
         # At 10:20 AM, update address for package #9 if needed
+        # print(truck.currentTime) todo because truck.current time never is greater than 10:20 and somehow its still getting updated????
         if truck.currentTime >= timedelta(hours=10, minutes=20):
             correctAddressAt1020(truck.hashTable)
 
