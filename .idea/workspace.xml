@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Noticing now due to output that package is getting correct 3 times which is incorrect.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Fixed output that package is getting correct 3 times which is incorrect.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,14 +220,6 @@
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
       <workItem from="1731679283622" duration="65396000" />
-    </task>
-    <task id="LOCAL-00070" summary="Finished implementation for unit tests for loading address, distance, and package csv data into testCSV.py">
-      <option name="closed" value="true" />
-      <created>1732229820004</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1732229820004</updated>
     </task>
     <task id="LOCAL-00071" summary="Finished implementation for unit tests for distance between into testCSV.py currently failing">
       <option name="closed" value="true" />
@@ -614,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732338246666</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Fixed output that package is getting correct 3 times which is incorrect.">
+      <option name="closed" value="true" />
+      <created>1732346941825</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1732346941825</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +631,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored parsing function in package object class so that am does not affect the special notes." />
     <MESSAGE value="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the special notes with the package data given." />
     <MESSAGE value="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the arrivalTime being different than the default packages that just get loaded." />
     <MESSAGE value="Refactored deliverTruckPackages and added new function returnToHubAndLoadDelayedPackages in CSV.py; deliverPackages and main functions in main.py so that they are handling delayed packages. The grouping of packages that have special notes is not handled yet.  ." />
@@ -657,10 +655,11 @@
     <MESSAGE value="Added new implementation of finding delayed packages in a findDelayedPackages instead." />
     <MESSAGE value="Added new implementation of deliver delayed packages in main definition in main.py" />
     <MESSAGE value="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Noticing now due to output that package is getting correct 3 times which is incorrect." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Noticing now due to output that package is getting correct 3 times which is incorrect." />
+    <MESSAGE value="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Fixed output that package is getting correct 3 times which is incorrect." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Fixed output that package is getting correct 3 times which is incorrect." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732346520210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732347166036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

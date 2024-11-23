@@ -157,15 +157,8 @@ def truckLoadPackages(truck, packages):
             truck.loadPackage(package)
             packages.remove(package)
 
-    # Load packages with incorrect address onto truck
-    #Before 10:20 AM: Package #9 should not be loaded onto any truck.
-    if truck.currentTime >= timedelta(hours=10, minutes=20):
-        print(f"Correcting address for package #9 at {truck.currentTime}.")
-        correctAddressAt1020(truck.hashTable)
-        for package in wrongAddressList:
-            if len(truck.packages) < truck.capacity:
-                truck.loadPackage(package)
-                packages.remove(package)
+    # Exclude packages with wrong addresses during initial loading
+
 
 
     # Load remaining packages using nearest neighbor approach
