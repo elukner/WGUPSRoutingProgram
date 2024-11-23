@@ -262,6 +262,23 @@ def printHeader():
     print(
         "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 
+def findDelayedPackages(hashTable, totalPackages=40):
+    """
+    Finds all delayed packages based on their arrival time.
+
+    Args:
+        hashTable (HashTable): Hash table containing all package information.
+        totalPackages (int): Total number of packages. Default is 40.
+
+    Returns:
+        list: List of packages that are delayed and have specific arrival times.
+    """
+    delayedPackages = []
+    for packageID in range(1, totalPackages + 1):
+        package = hashTable.lookUp(packageID)
+        if package and package.arrivalTime:  # If the package has a delayed arrival time
+            delayedPackages.append(package)
+    return delayedPackages
 
 def main():
 
