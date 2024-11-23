@@ -1,79 +1,59 @@
 import csv
 import math
 
-
-# TODO 1-Create HashTable data structure
-# A.  Develop a hash table, without using any additional libraries or classes,
-# that has an insertion function that takes the package ID as input and inserts
-# each of the following data components into the hash table:
-# delivery address
-# delivery deadline
-# delivery city
-# delivery zip code
-# package weight
-# delivery status (i.e., at the hub, en route, or delivered), including the delivery time
-# TODO + lookUp(self, key)
-# B.  Develop a look-up function that takes the package ID as input and returns
-# each of the following corresponding data components:
-# delivery address
-# delivery deadline
-# delivery city
-# delivery zip code
-# package weight
-# delivery status (i.e., at the hub, en route, or delivered), including the delivery time
-
 class HashTable:
-    # Constructor to initialize the hash table, with an optional parameter for the initial capacity.
+    """
+    This class represents a HashTable data structure for storing and managing package data.
+    It supports inserting, looking up, removing, and retrieving all items in the hash table.
+    """
+
     def __init__(self, initialCapacity=40):
-        # Create the hash table with empty bucket lists, each bucket represented by an empty list.
+        """
+        Initialize the hash table with empty buckets
+        :param initialCapacity: There is a maximum of 40 packages
+        """
         self.table = []
         for i in range(initialCapacity):
             self.table.append([])
 
     def insert(self, key, item):
-        '''
-        function inserts a new item and updates items
-        :param key: packageID
-        :param item: package object
-        :return: boolean
-        '''
+        """
+        Inserts an item into the hash table.
+        :param key: The unique identifier for the package (packageID).
+        :param item: The package object to be stored in the hash table.
+        :return: True if the item was successfully inserted or updated, False otherwise.
+        """
         index = hash(key) % len(self.table)
         index_list = self.table[index]
 
-        #updates key if it exists already in index
         for kV in index_list:
-            #print(key_value) TODO delete later?
             if kV[0] == key:
                 kV[1] = item
                 return True
 
-        #if key does not exist already in index
         keyValue = [key, item]
         index_list.append(keyValue)
         return True
 
     def lookUp(self, key):
-        '''
-        function searches for a key and returns its value
-        :param key: packageID
-        :return: package object
-        '''
+        """
+        Searches for a key and returns its value.
+        :param key: The unique identifier for the package (packageID).
+        :return: The package object if found, otherwise None.
+        """
         index = hash(key) % len(self.table)
         index_list = self.table[index]
-        #print(index_list) TODO delete later?
 
-        #searches for the key in the index_list
         for kV in index_list:
-            #print(key_value) TODO delete later?
             if kV[0] == key:
-                return kV[1] #this is the value
+                return kV[1]
         return None
 
     def remove(self, key):
         """
-        function removes a key from the table
-        :param key:
-        :return:
+        Removes a key from the hash table.
+        :param key: The unique identifier for the package (packageID) to be removed.
+        :return: None.
         """
         index = hash(key) % len(self.table)
         indexList = self.table[index]
@@ -82,17 +62,13 @@ class HashTable:
             if kV[0] == key:
                 indexList.remove(kV)
 
-
     def getAllItems(self):
-        '''
-        Function retrieves all the items from the hash table.
-        :return: A list of all items in the hash table.
-        '''
+        """
+        Retrieves all items from the hash table.
+        :return: A list of all package objects in the hash table.
+        """
         allItems = []
         for bucket in self.table:
             for kV in bucket:
-                allItems.append(kV[1])  # Appending the value (package object)
+                allItems.append(kV[1])
         return allItems
-
-
-

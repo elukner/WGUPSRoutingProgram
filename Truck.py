@@ -1,20 +1,22 @@
 from datetime import timedelta
 from CSV import *
 
+
 class Truck:
     """
     Class Truck represents a delivery truck that can carry packages.
     """
+
     def __init__(self, truckId, hashTable):
         """
         Initializes a Truck instance.
         :param truckId: The unique ID for the truck.
         :param hashTable: A reference to the hash table for managing package statuses.
         """
-        self.truckId = truckId # Assigned based on the given parameter.
+        self.truckId = truckId  # Assigned based on the given parameter.
         self.packages = []  # Initialized as an empty list for holding loaded packages.
-        self.currentLocation = "4001 South 700 East" # The starting location which is the Hub address.
-        self.totalMileage = 0.0 # Set to 0.0 initially, representing the mileage driven by the truck.
+        self.currentLocation = "4001 South 700 East"  # The starting location which is the Hub address.
+        self.totalMileage = 0.0  # Set to 0.0 initially, representing the mileage driven by the truck.
         self.currentTime = timedelta(hours=8)  # Start at 8:00 AM
         self.hashTable = hashTable  # Reference to hash table for updating package status
         self.capacity = 16  # Each truck can carry a maximum of 16 packages
