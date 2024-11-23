@@ -358,11 +358,11 @@ def returnToHubAndLoadDelayedPackages(truck, delayedPackages):
 
     # Load available delayed packages
     for pkg in list(delayedPackages):
-        if pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime:
+        if truck.currentTime >= pkg.arrivalTime:
             truck.loadPackage(pkg)
             delayedPackages.remove(pkg)
             # Optional: print for debugging
-            # print(f"Truck {truck.truckId} loaded delayed package {pkg.packageID}.")
+            #print(f"Truck {truck.truckId} loaded delayed package {pkg.packageID}.")
 
 
 def deliverTruckPackagesUntil(truck, stopTime):

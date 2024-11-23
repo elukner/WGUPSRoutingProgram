@@ -110,6 +110,8 @@ def deliverPackages(truckList):
     for truck in truckList:
         deliverTruckPackages(truck)
 
+    #obj want to return to hub for package 9
+
 
 
 # def deliverPackages(truckList,delayedPackages):
@@ -296,15 +298,18 @@ def main():
     # Deliver packages for each truck that are not delayed packages
     deliverPackages(truckList)
 
+
+
     # Deliver delayed packages
     for truck in truckList:
-        # Load delayed packages that are now available to be loaded
-        newlyAvailablePackages = [pkg for pkg in delayedPackages if pkg.arrivalTime <= truck.currentTime]
-        if newlyAvailablePackages:
-            for pkg in newlyAvailablePackages:
-                if len(truck.packages) < truck.capacity:
-                    truck.loadPackage(pkg)
-                    delayedPackages.remove(pkg)
+        returnToHubAndLoadDelayedPackages(truck, delayedPackages)
+        # # Load delayed packages that are now available to be loaded
+        # newlyAvailablePackages = [pkg for pkg in delayedPackages if pkg.arrivalTime <= truck.currentTime]
+        # if newlyAvailablePackages:
+        #     for pkg in newlyAvailablePackages:
+        #         if len(truck.packages) < truck.capacity:
+        #             truck.loadPackage(pkg)
+        #             delayedPackages.remove(pkg)
 
         # Deliver the loaded delayed packages
         deliverTruckPackages(truck)
