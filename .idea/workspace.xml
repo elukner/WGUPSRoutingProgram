@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Continued to work on implementation to deliver Package 9.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Started to implementation returning to Hub function usage in main.py for the delayed packages.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,14 +220,6 @@
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
       <workItem from="1731679283622" duration="65396000" />
-    </task>
-    <task id="LOCAL-00075" summary="Finished debugging loadPackageData by added encoding for encoding='utf-8-sig' so that the first line will not be skipped in csv.py.">
-      <option name="closed" value="true" />
-      <created>1732233936939</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1732233936939</updated>
     </task>
     <task id="LOCAL-00076" summary="Added get all items in hashtable to make it iterable">
       <option name="closed" value="true" />
@@ -615,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732356936657</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="Started to implementation returning to Hub function usage in main.py for the delayed packages.">
+      <option name="closed" value="true" />
+      <created>1732358724981</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1732358724981</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +631,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Address for task 2 assumption is being correct now but the delivery time is not correct." />
     <MESSAGE value="Started new implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added new lists for specific needs to clean up method. The lists added are specificTruckList, delayedList, and wrongAddressList." />
     <MESSAGE value="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loop that checks if the truck is not full for groupPackages List and deleted old for loop for this and availablePackages list." />
     <MESSAGE value="Continued implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added for loops that checks if the truck is not full for trucks with packages that have truck restrictions and packages that are delayed and loads package onto truck. Then deleted correlated old code." />
@@ -658,10 +655,22 @@
     <MESSAGE value="Added in functionality in deliverTruckPackages function to correct the address after the time threshold is met for package #9." />
     <MESSAGE value="Found bug in delayed packages getting delivered on time. Package #25 is delivered after deadline. Started debugging this delayed packages delivery implementation." />
     <MESSAGE value="Continued to work on implementation to deliver Package 9." />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued to work on implementation to deliver Package 9." />
+    <MESSAGE value="Started to implementation returning to Hub function usage in main.py for the delayed packages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started to implementation returning to Hub function usage in main.py for the delayed packages." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CSV.py</url>
+          <line>228</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732358495021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732360291059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

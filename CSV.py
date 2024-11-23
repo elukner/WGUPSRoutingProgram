@@ -215,15 +215,13 @@ def deliverTruckPackages(truck):
     availablePackages = [pkg for pkg in truck.packages if not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
-    package9 = truck.hashTable.lookUp(9)
     while availablePackages:
         # Correct the address for package #9 after 10:20 AM
-        if truck.currentTime >= timedelta(hours=10, minutes=20) and package9.addressCorrectionNeeded:
+        if truck.currentTime >= timedelta(hours=10, minutes=20):
             correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
-            # package9 =truck.hashTable.lookUp(9)
-            truck.loadPackage(package9)
-            truck.packages.remove(package9)
-            #returnToHubAndLoadDelayedPackages(truck,truck.hashTable.lookUp(9))
+            package9 = truck.hashTable.lookUp(9)
+            if package9 not in truck.packages and len(truck.packages) < truck.capacity:
+                truck.loadPackage(package9)
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
         if packagesWithDeadlines:
@@ -258,6 +256,11 @@ def deliverTruckPackages(truck):
         # Remove the delivered package from truck's available packages
         truck.packages.remove(closestPackage)
         availablePackages.remove(closestPackage)
+
+        # Reevaluate available packages to ensure delayed packages with deadlines are delivered on time
+        availablePackages = [pkg for pkg in truck.packages if not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
+        packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
+
 
 
 
@@ -333,7 +336,7 @@ def correctAddressAt1020(hashTable):
     package9 = hashTable.lookUp(9)
     if package9 and package9.addressCorrectionNeeded:
         # Update the address to the correct one at 10:20 AM
-        package9.deliveryAddress = "410 S. State St."
+        package9.deliveryAddress = "410 S State St"
         package9.city = "Salt Lake City"
         package9.state = "UT"
         package9.zip = "84111"
