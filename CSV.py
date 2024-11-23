@@ -158,10 +158,10 @@ def truckLoadPackages(truck, packages):
             packages.remove(package)
 
     # # Exclude packages with wrong addresses during initial loading
-    # for package in wrongAddressList:
-    #     if len(truck.packages) < truck.capacity:
-    #         truck.loadPackage(package)
-    #         packages.remove(package)
+    for package in wrongAddressList:
+        if len(truck.packages) < truck.capacity:
+            truck.loadPackage(package)
+            packages.remove(package)
 
 
 
