@@ -11,6 +11,7 @@ from datetime import timedelta
 def printUI():
     """
     Displays the main menu options for the user.
+    :return: None
     """
     print(f'***************************************')
     print(f'1. Print All Package Status and Total Mileage')
@@ -21,33 +22,24 @@ def printUI():
 
 
 def createPackageData():
-    # Create the hash table and load package data
+    """
+    Creates the hash table and loads package data
+    :return: None
+    """
+    #
     hashTable = HashTable()
     loadPackageData('packageCSV.csv', hashTable)
-    # check to see if hashtable data is all there TODO delete later
-    # for packageIndex in range(1, 41):
-    #    print(hashTable.lookUp(packageIndex))
-
-    # Load data from CSV files
     loadDistanceData('distanceCSV.csv')
-   #todo delete later
-   # print(distanceData)
     loadAddressData('addressCSV.csv')
-    #todo delete later
-    #print(addressData)
     return hashTable
 
 
 def initializeTrucks(numTrucks, hashTable):
     """
     Function to create and initialize a list of trucks.
-
-    Args:
-        num_trucks (int): The number of trucks to be created.
-        hashTable (HashTable): Reference to the hash table for package status management.
-
-    Returns:
-        list: A list of initialized Truck objects.
+    :param numTrucks: The number of trucks to be created.
+    :param hashTable: Reference to the hash table for package status management.
+    :return: list: A list of initialized Truck objects.
     """
     trucks = []
 
@@ -56,29 +48,16 @@ def initializeTrucks(numTrucks, hashTable):
         truck = Truck(truckId=i, hashTable=hashTable)
         trucks.append(truck)
 
-    # # Print initial state of the trucks for verification
-    # for truck in trucks:
-    #     print(f"Truck ID: {truck.truckId}, "
-    #           f"Current Location: {truck.currentLocation}, "
-    #           f"Total Mileage: {truck.totalMileage}, "
-    #           f"Packages Loaded: {len(truck.packages)}, "
-    #           f"Capacity: {truck.capacity}, "
-    #           f"Current Time: {truck.currentTime}")
-
     return trucks
 
 
 def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
     """
     Function to load packages into trucks using the nearest neighbor approach.
-
-    Args:
-        hashTable (HashTable): Hash table containing all package information.
-        truckList (list): A list of Truck objects to load packages into.
-        totalPackages (int): Total number of packages to be loaded. Default is 40.
-
-    Returns:
-        list: Updated list of Truck objects with loaded packages.
+    :param hashTable: Hash table containing all package information.
+    :param truckList: A list of Truck objects to load packages into.
+    :param totalPackages: Total number of packages to be loaded. Default is 40.
+    :return: list: Updated list of Truck objects with loaded packages.
     """
     # Get all packages from the hash table based on the package IDs
     packages = [hashTable.lookUp(packageID) for packageID in range(1, totalPackages + 1)]
@@ -87,61 +66,25 @@ def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
     for truck in truckList:
         truckLoadPackages(truck, packages)
 
-    # TODO delete later Check to see if packages are loaded into trucks (for debugging purposes)
-    # for truck in truckList:
-    #     print('Truck ID:', truck.truckId, 'Packages:')
-    #     for package in truck.packages:
-    #         print(package)
-    #         print()
-    # TODO el packages are not loading into trucks
-
     return truckList
 
 def deliverPackages(truckList):
     """
-    Function to deliver packages for all trucks in the provided list.
-
-    Args:
-        truckList (list): A list of Truck objects that need to deliver their loaded packages.
-    Notes:
-        - This function assumes that all trucks in `truckList` have already been loaded with packages.
-        - Each truck's status (including mileage, time, and package status) will be updated during the delivery process.
+    Function to deliver a list of packages to a truck.
+    :param truckList: A list of Truck objects that need to deliver their loaded packages.
+    :return: None
     """
     for truck in truckList:
         deliverTruckPackages(truck)
 
-    #obj want to return to hub for package 9
-
-
-
-# def deliverPackages(truckList,delayedPackages):
-#     """
-#     Function to deliver packages for all trucks in the provided list.
-#
-#     Args:
-#         truckList (list): A list of Truck objects that need to deliver their loaded packages.
-#     Notes:
-#         - This function assumes that all trucks in `truckList` have already been loaded with packages.
-#         - Each truck's status (including mileage, time, and package status) will be updated during the delivery process.
-#     """
-#     for truck in truckList:
-#         deliverTruckPackages(truck, delayedPackages)
-#
-#         # If any delayed packages are still left, have the truck return to the hub to load them
-#         if delayedPackages:
-#             returnToHubAndLoadDelayedPackages(truck, delayedPackages)
-#
-#             # Once delayed packages are loaded, deliver them
-#             deliverTruckPackages(truck, delayedPackages)
 
 
 def userInteractionLoop(truckList, hashTable):
     """
     Function to handle user interaction for managing package deliveries.
-
-    Args:
-        truckList (list): A list of Truck objects containing information about the loaded packages.
-        hashTable (HashTable): A hash table containing package data for lookup.
+    :param truckList: A list of Truck objects containing information about the loaded packages.
+    :param hashTable: A hash table containing package data for lookup.
+    :return: None
     """
     while True:
         printUI()
@@ -156,14 +99,6 @@ def userInteractionLoop(truckList, hashTable):
             for packageIndex in range(1, 41):
                print(hashTable.lookUp(packageIndex))
             print()
-                # for package in truck.packages:
-                #     if package:
-                #         print(f"{package.packageID}, {package.deliveryAddress}, {package.city}, {package.state}, "
-                #               f"{package.zip}, {package.deliveryDeadline}, {package.packageWeight}, "
-                #               f"{package.pageSpecialNotes}, {package.deliveryStatus}, "
-                #               f"{package.deliveryTime if package.deliveryTime else 'Not Delivered'}")
-                #     else:
-                #         print(f"Package not found for Truck {truck.truckId}")
 
         elif userChoice == '2':
             # Get a single package status
@@ -219,7 +154,6 @@ def userInteractionLoop(truckList, hashTable):
 
                 # Create trucks
                 truckList = initializeTrucks(3, hashTable)
-                # TODO delete later print(distanceBetween('1488 4800 S', '1488 4800 S'))
                 # Load packages into trucks
                 loadPackagesIntoTrucks(hashTable, truckList)
 
@@ -249,15 +183,22 @@ def userInteractionLoop(truckList, hashTable):
 
 
 def printCalculateTotalMileage(truckList):
+    """
+    Function to calculate the total mileage of a truck.
+    :param truckList: A list of Truck objects containing information about the loaded packages.
+    :return: None
+    """
     truckTotalMileage = 0
     for truck in truckList:
         truckTotalMileage += truck.totalMileage
-        # TODO delete later for debugging purposes only
-        # print(f"\nTruck {truck.truckId} total mileage: {truck.totalMileage:.2f} miles")
     print(f"\nTrucks total mileage: {truckTotalMileage:.2f} miles\n")
 
 
 def printHeader():
+    """
+    Helper function that is called in the user interface to print the header for the list of packages.
+    :return: None
+    """
     print()
     print(
         "PackageID  Address                                   City                State      Zip        Deadline        Weight    Special Notes         Status                    DeliveryTime")
@@ -267,13 +208,9 @@ def printHeader():
 def findDelayedPackages(hashTable, totalPackages=40):
     """
     Finds all delayed packages based on their arrival time.
-
-    Args:
-        hashTable (HashTable): Hash table containing all package information.
-        totalPackages (int): Total number of packages. Default is 40.
-
-    Returns:
-        list: List of packages that are delayed and have specific arrival times.
+    :param hashTable: Hash table containing all package information.
+    :param totalPackages: Total number of packages. Default is 40.
+    :return: list: List of packages that are delayed and have specific arrival times.
     """
     delayedPackages = []
     for packageID in range(1, totalPackages + 1):
@@ -283,6 +220,19 @@ def findDelayedPackages(hashTable, totalPackages=40):
     return delayedPackages
 
 def main():
+    """
+    Main function to manage the process of loading packages, delivering them, and handling user interaction.
+
+    Steps:
+    1. Create the hash table and load package data.
+    2. Create trucks and initialize them.
+    3. Load packages into trucks using loading rules.
+    4. Identify and deliver delayed packages when available.
+    5. Deliver packages using nearest neighbor algorithm.
+    6. Provide an interface for user interactions.
+
+    :return: None
+    """
     # Create the hash table and load package data
     hashTable = createPackageData()
 
