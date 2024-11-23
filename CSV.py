@@ -219,6 +219,10 @@ def deliverTruckPackages(truck):
         # Correct the address for package #9 after 10:20 AM
         if truck.currentTime >= timedelta(hours=10, minutes=20):
             correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
+            package9 =truck.hashTable.lookUp(9)
+            truck.loadPackage(package9)
+            truck.packages.remove(package9)
+            #returnToHubAndLoadDelayedPackages(truck,truck.hashTable.lookUp(9))
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
         if packagesWithDeadlines:
@@ -254,12 +258,6 @@ def deliverTruckPackages(truck):
         truck.packages.remove(closestPackage)
         availablePackages.remove(closestPackage)
 
-        # # Check if any delayed packages are now available for pickup
-        # newlyAvailablePackages = [pkg for pkg in delayedPackages if
-        #                           pkg.arrivalTime and truck.currentTime >= pkg.arrivalTime]
-        # if newlyAvailablePackages:
-        #     returnToHubAndLoadDelayedPackages(truck, newlyAvailablePackages)
-        #     break  # Only return to hub once after finding at least one package that is ready
 
 
 
