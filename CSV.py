@@ -327,7 +327,7 @@ def correctAddressAt1020(hashTable):
     package9 = hashTable.lookUp(9)
     if package9 and package9.addressCorrectionNeeded:
         # Update the address to the correct one at 10:20 AM
-        package9.deliveryAddress = "410 S State St"
+        package9.deliveryAddress = "410 S. State St."
         package9.city = "Salt Lake City"
         package9.state = "UT"
         package9.zip = "84111"
