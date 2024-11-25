@@ -68,14 +68,14 @@ def loadPackagesIntoTrucks(hashTable, truckList, totalPackages=40):
 
     return truckList
 
-def deliverPackages(truckList):
+def deliverPackages(truckList,stopTime):
     """
     Function to deliver a list of packages to a truck.
     :param truckList: A list of Truck objects that need to deliver their loaded packages.
     :return: None
     """
     for truck in truckList:
-        deliverTruckPackages(truck)
+        deliverTruckPackages(truck,stopTime)
 
 
 
@@ -91,6 +91,10 @@ def userInteractionLoop(truckList, hashTable):
         userChoice = input("Enter your choice: ")
 
         if userChoice == '1':
+            stopTime = timedelta(hours=17, minutes=00)
+
+            hashTable, truckList = runRouteUntil(stopTime)
+
             printCalculateTotalMileage(truckList)
 
             # Print all package statuses and total mileage for all trucks
@@ -103,11 +107,15 @@ def userInteractionLoop(truckList, hashTable):
         elif userChoice == '2':
             # Get a single package status
             try:
+
                 packageID = int(input("Enter package ID: "))
                 currentTime = input("Enter the time to get package status (HH:MM): ")
 
                 # Parse user input into a timedelta
                 currentTime = timedelta(hours=int(currentTime.split(':')[0]), minutes=int(currentTime.split(':')[1]))
+
+                hashTable, truckList = runRouteUntil(currentTime)
+
 
                 # Lookup the package in the hash table
                 package = hashTable.lookUp(packageID)
@@ -161,7 +169,7 @@ def userInteractionLoop(truckList, hashTable):
                 # for truck in truckList:
                 #     deliverTruckPackagesUntil(truck,currentTime)
 
-                hashTable, truckList = runRouteUntil()
+                hashTable, truckList = runRouteUntil(currentTime)
 
                 printCalculateTotalMileage(truckList)
 
@@ -235,13 +243,17 @@ def main():
 
     :return: None
     """
-    hashTable, truckList = runRouteUntil()
+    # hours = int(timeParts[0])
+    # minutes = int(timeParts[1])
+    stopTime = timedelta(hours=17, minutes=00)
+
+    hashTable, truckList = runRouteUntil(stopTime)
 
     # User interaction loop
     userInteractionLoop(truckList, hashTable)
 
 
-def runRouteUntil():
+def runRouteUntil(stopTime):
     # Create the hash table and load package data
     hashTable = createPackageData()
     # Create trucks
@@ -251,7 +263,7 @@ def runRouteUntil():
     # Find delayed packages
     delayedPackages = findDelayedPackages(hashTable)
     # Deliver packages for each truck that are not delayed packages
-    deliverPackages(truckList)
+    deliverPackages(truckList,stopTime)
     # Deliver delayed packages
     for truck in truckList:
         # returnToHubAndLoadDelayedPackages(truck, delayedPackages)
@@ -264,7 +276,7 @@ def runRouteUntil():
                     delayedPackages.remove(pkg)
 
         # Deliver the loaded delayed packages
-        deliverTruckPackages(truck)
+        deliverTruckPackages(truck,stopTime)
     return hashTable, truckList
 
 
