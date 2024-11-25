@@ -36,7 +36,7 @@ class Truck:
         """
         if len(self.packages) < self.capacity:
             self.packages.append(package)
-            package.updateStatus("In Route", deliveryTime=self.currentTime)
+            package.updateStatus("En Route", deliveryTime=self.currentTime)
             return True
         else:
             return False

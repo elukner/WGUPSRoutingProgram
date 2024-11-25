@@ -233,24 +233,29 @@ def main():
 
     :return: None
     """
+    hashTable, truckList = runRouteUntil()
+
+    # deliverPackages(truck.hashTable.lookUp(9))
+
+
+    # User interaction loop
+    userInteractionLoop(truckList, hashTable)
+
+
+def runRouteUntil():
     # Create the hash table and load package data
     hashTable = createPackageData()
-
     # Create trucks
     truckList = initializeTrucks(3, hashTable)
-
     # Load packages into trucks
     loadPackagesIntoTrucks(hashTable, truckList)
-
     # Find delayed packages
     delayedPackages = findDelayedPackages(hashTable)
-
     # Deliver packages for each truck that are not delayed packages
     deliverPackages(truckList)
-
     # Deliver delayed packages
     for truck in truckList:
-       # returnToHubAndLoadDelayedPackages(truck, delayedPackages)
+        # returnToHubAndLoadDelayedPackages(truck, delayedPackages)
         # Load delayed packages that are now available to be loaded
         newlyAvailablePackages = [pkg for pkg in delayedPackages if pkg.arrivalTime <= truck.currentTime]
         if newlyAvailablePackages:
@@ -261,12 +266,7 @@ def main():
 
         # Deliver the loaded delayed packages
         deliverTruckPackages(truck)
-
-   # deliverPackages(truck.hashTable.lookUp(9))
-
-
-    # User interaction loop
-    userInteractionLoop(truckList, hashTable)
+    return hashTable, truckList
 
 
 # Run the main function

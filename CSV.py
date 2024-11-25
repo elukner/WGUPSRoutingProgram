@@ -194,12 +194,7 @@ def deliverTruckPackages(truck):
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
     while availablePackages:
-        # Correct the address for package #9 after 10:20 AM
-        if truck.currentTime >= timedelta(hours=10, minutes=20):
-            correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
-            package9 = truck.hashTable.lookUp(9)
-            if package9 not in truck.packages and len(truck.packages) < truck.capacity:
-                truck.loadPackage(package9)
+        correctPackage9Address(truck)
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
         if packagesWithDeadlines:
@@ -239,6 +234,15 @@ def deliverTruckPackages(truck):
         availablePackages = [pkg for pkg in truck.packages if
                              not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
         packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
+
+
+def correctPackage9Address(truck):
+    # Correct the address for package #9 after 10:20 AM
+    if truck.currentTime >= timedelta(hours=10, minutes=20):
+        correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
+        package9 = truck.hashTable.lookUp(9)
+        if package9 not in truck.packages and len(truck.packages) < truck.capacity:
+            truck.loadPackage(package9)
 
 
 def correctAddressAt1020(hashTable):
