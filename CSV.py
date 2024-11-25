@@ -161,12 +161,12 @@ def truckLoadPackages(truck, packages):
 
 
     # Load packages with wrong addresses during initial loading
-    for package in wrongAddressList:
-        if len(truck.packages) < truck.capacity:
-            truck.loadPackage(package)
-            packages.remove(package)
-            if package.packageID == 9:
-                print(f"Package 9 selected in wrongAddressList and loaded onto Truck {truck.truckId}.")
+    # for package in wrongAddressList:
+    #     if len(truck.packages) < truck.capacity:
+    #         truck.loadPackage(package)
+    #         packages.remove(package)
+    #         if package.packageID == 9:
+    #             print(f"Package 9 selected in wrongAddressList and loaded onto Truck {truck.truckId}.")
 
     # Load remaining packages using nearest neighbor approach
     availablePackages = [pkg for pkg in packages if pkg not in groupPackagesList
@@ -278,6 +278,10 @@ def correctPackage9Address(truck):
         package9 = truck.hashTable.lookUp(9)
         if package9 not in truck.packages and len(truck.packages) < truck.capacity:
             truck.loadPackage(package9)
+        # Only load if package is not already on the truck and not delivered
+        # if package9 not in truck.packages and not package9.deliveryStatus == "Delivered" and len(
+        #         truck.packages) < truck.capacity:
+        #     truck.loadPackage(package9)
 
 
 def correctAddressAt1020(hashTable):
