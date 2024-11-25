@@ -115,7 +115,6 @@ def userInteractionLoop():
 
                 hashTable, truckList = runRouteUntil(currentTime)
 
-
                 # Lookup the package in the hash table
                 package = hashTable.lookUp(packageID)
 

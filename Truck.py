@@ -37,6 +37,8 @@ class Truck:
         if len(self.packages) < self.capacity:
             self.packages.append(package)
             package.updateStatus("En Route", deliveryTime=self.currentTime)
+            if package.packageID == 9:
+                print(f"Package 9 loaded onto Truck {self.truckId} at time {self.currentTime}.")
             return True
         else:
             return False

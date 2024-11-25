@@ -130,6 +130,8 @@ def truckLoadPackages(truck, packages):
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            # if package.packageID == 9:
+            #     print(f"Package 9 selected in groupPackagesList and loaded onto Truck {truck.truckId}.")
             # Load all dependent packages for this package
             for dependentId in package.groupDependency:
                 # Find the actual dependent package in the list
@@ -137,24 +139,34 @@ def truckLoadPackages(truck, packages):
                 if dependentPackage and len(truck.packages) < truck.capacity:
                     truck.loadPackage(dependentPackage)
                     packages.remove(dependentPackage)
+                    # if package.packageID == 9:
+                    #     print(f"Package 9 selected in groupPackagesList and loaded onto Truck {truck.truckId}.")
 
     # Load trucks with packages that have truck restriction
     for package in specificTruckList:
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            # if package.packageID == 9:
+            #     print(f"Package 9 selected in specificTruckList and loaded onto Truck {truck.truckId}.")
+
 
     # Load delayed packages if their arrival time has passed
     for package in delayedList:
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            # if package.packageID == 9:
+            #     print(f"Package 9 selected in delayedList and loaded onto Truck {truck.truckId}.")
+
 
     # Load packages with wrong addresses during initial loading
     for package in wrongAddressList:
         if len(truck.packages) < truck.capacity:
             truck.loadPackage(package)
             packages.remove(package)
+            if package.packageID == 9:
+                print(f"Package 9 selected in wrongAddressList and loaded onto Truck {truck.truckId}.")
 
     # Load remaining packages using nearest neighbor approach
     availablePackages = [pkg for pkg in packages if pkg not in groupPackagesList
@@ -196,7 +208,7 @@ def deliverTruckPackages(truck,stopTime):
     while availablePackages:
         # Stop deliveries if current time exceeds the stop time
         if truck.currentTime >= stopTime:
-            print(f"Stopping deliveries at {truck.currentTime} due to stopTime limitation.")
+            #TODO delete later print(f"Stopping deliveries at {truck.currentTime} due to stopTime limitation.")
             break
 
         # Correct the address for package #9 after 10:20 AM
@@ -226,7 +238,7 @@ def deliverTruckPackages(truck,stopTime):
 
         # Check if the current time plus the time to deliver exceeds the stop time
         if truck.currentTime + timeToDeliver > stopTime:
-            print(f"Cannot deliver package {closestPackage.packageID} as it would exceed the stop time of {stopTime}.")
+           #TODO delete later print(f"Cannot deliver package {closestPackage.packageID} as it would exceed the stop time of {stopTime}.")
             break
 
         # Update the truck's mileage, location, and time
