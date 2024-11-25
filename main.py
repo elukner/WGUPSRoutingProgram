@@ -79,7 +79,7 @@ def deliverPackages(truckList,stopTime):
 
 
 
-def userInteractionLoop(truckList, hashTable):
+def userInteractionLoop():
     """
     Function to handle user interaction for managing package deliveries.
     :param truckList: A list of Truck objects containing information about the loaded packages.
@@ -87,12 +87,12 @@ def userInteractionLoop(truckList, hashTable):
     :return: None
     """
     while True:
+
         printUI()
         userChoice = input("Enter your choice: ")
 
         if userChoice == '1':
             stopTime = timedelta(hours=17, minutes=00)
-
             hashTable, truckList = runRouteUntil(stopTime)
 
             printCalculateTotalMileage(truckList)
@@ -107,7 +107,6 @@ def userInteractionLoop(truckList, hashTable):
         elif userChoice == '2':
             # Get a single package status
             try:
-
                 packageID = int(input("Enter package ID: "))
                 currentTime = input("Enter the time to get package status (HH:MM): ")
 
@@ -172,14 +171,13 @@ def userInteractionLoop(truckList, hashTable):
                 hashTable, truckList = runRouteUntil(currentTime)
 
                 printCalculateTotalMileage(truckList)
-
                 # Print header
                 printHeader()
-
                 # Iterate over each package loaded onto the truck
                 for packageID in range(1, 41):
                     package = hashTable.lookUp(packageID)
                     print(package)
+
             except ValueError:
                 print("Invalid input. Please enter the time in HH:MM format.")
 
@@ -245,12 +243,12 @@ def main():
     """
     # hours = int(timeParts[0])
     # minutes = int(timeParts[1])
-    stopTime = timedelta(hours=17, minutes=00)
-
-    hashTable, truckList = runRouteUntil(stopTime)
+    # stopTime = timedelta(hours=17, minutes=00)
+    #
+    # hashTable, truckList = runRouteUntil(stopTime)
 
     # User interaction loop
-    userInteractionLoop(truckList, hashTable)
+    userInteractionLoop()
 
 
 def runRouteUntil(stopTime):
