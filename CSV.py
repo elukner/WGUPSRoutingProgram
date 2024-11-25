@@ -180,7 +180,7 @@ def truckLoadPackages(truck, packages):
             break
 
 
-def deliverTruckPackages(truck):
+def deliverTruckPackages(truck,stopTime):
     """
     Delivers all packages loaded on the truck based on the nearest neighbor algorithm,
     choosing the nearest address first and prioritizing packages with deadlines.
@@ -194,6 +194,11 @@ def deliverTruckPackages(truck):
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
     while availablePackages:
+        # Stop deliveries if current time exceeds the stop time
+        if truck.currentTime >= stopTime:
+            print(f"Stopping deliveries at {truck.currentTime} due to stopTime limitation.")
+            break
+
         # Correct the address for package #9 after 10:20 AM
         correctPackage9Address(truck)
 
@@ -215,6 +220,14 @@ def deliverTruckPackages(truck):
             print(f"Warning: Cannot deliver to {closestPackage.deliveryAddress}, unreachable.")
             availablePackages.remove(closestPackage)
             continue
+
+        # Calculate the time taken to deliver based on the average speed of 18 mph
+        timeToDeliver = timedelta(hours=distanceToNext / 18)
+
+        # Check if the current time plus the time to deliver exceeds the stop time
+        if truck.currentTime + timeToDeliver > stopTime:
+            print(f"Cannot deliver package {closestPackage.packageID} as it would exceed the stop time of {stopTime}.")
+            break
 
         # Update the truck's mileage, location, and time
         updateTruckState(closestPackage, distanceToNext, truck)
