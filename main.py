@@ -92,9 +92,9 @@ def userInteractionLoop(truckList, hashTable):
 
         if userChoice == '1':
             printCalculateTotalMileage(truckList)
+
             # Print all package statuses and total mileage for all trucks
             printHeader()
-
             # Iterate over each package loaded onto the truck
             for packageIndex in range(1, 41):
                print(hashTable.lookUp(packageIndex))
@@ -149,17 +149,19 @@ def userInteractionLoop(truckList, hashTable):
                 # Create a timedelta object for the specified time
                 currentTime = timedelta(hours=hours, minutes=minutes)
 
-                # Create the hash table and load package data
-                hashTable = createPackageData()
+                # # Create the hash table and load package data
+                # hashTable = createPackageData()
+                #
+                # # Create trucks
+                # truckList = initializeTrucks(3, hashTable)
+                # # Load packages into trucks
+                # loadPackagesIntoTrucks(hashTable, truckList)
+                #
+                # # Deliver packages for each truck in the truckList
+                # for truck in truckList:
+                #     deliverTruckPackagesUntil(truck,currentTime)
 
-                # Create trucks
-                truckList = initializeTrucks(3, hashTable)
-                # Load packages into trucks
-                loadPackagesIntoTrucks(hashTable, truckList)
-
-                # Deliver packages for each truck in the truckList
-                for truck in truckList:
-                    deliverTruckPackagesUntil(truck,currentTime)
+                hashTable, truckList = runRouteUntil()
 
                 printCalculateTotalMileage(truckList)
 
@@ -234,9 +236,6 @@ def main():
     :return: None
     """
     hashTable, truckList = runRouteUntil()
-
-    # deliverPackages(truck.hashTable.lookUp(9))
-
 
     # User interaction loop
     userInteractionLoop(truckList, hashTable)
