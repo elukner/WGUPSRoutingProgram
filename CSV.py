@@ -201,6 +201,9 @@ def deliverTruckPackages(truck,stopTime):
     :param truck: The Truck object that contains loaded packages to be delivered.
     :return: None
     """
+    # Initialize correctPackage9 to track whether package #9 has been corrected
+    correctPackage9 = False
+
     # Get packages that are currently available for delivery
     availablePackages = [pkg for pkg in truck.packages if not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
@@ -211,8 +214,10 @@ def deliverTruckPackages(truck,stopTime):
             #TODO delete later print(f"Stopping deliveries at {truck.currentTime} due to stopTime limitation.")
             break
 
-        # Correct the address for package #9 after 10:20 AM
-        correctPackage9Address(truck)
+        # # Correct the address for package #9 after 10:20 AM
+        if truck.currentTime >= timedelta(hours=10, minutes=20):
+            correctPackage9 = correctPackage9Address(truck)  # Corrects package #9's address in the hash table
+       # correctPackage9Address(truck)  # Corrects package #9's address in the hash table
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
         if packagesWithDeadlines:
@@ -220,6 +225,7 @@ def deliverTruckPackages(truck,stopTime):
             packagesWithDeadlines.remove(closestPackage)
         else:
             closestPackage = getClosestPackage(truck,availablePackages)
+
 
         # If no valid package is found, break the loop
         if closestPackage is None:
@@ -245,12 +251,25 @@ def deliverTruckPackages(truck,stopTime):
         updateTruckState(closestPackage, distanceToNext, truck)
 
         # Update the package delivery status and delivery time in the hash table
-        closestPackage.updateStatus(f"Delivered by truck {truck.truckId}", deliveryTime=truck.currentTime)
-        truck.hashTable.insert(closestPackage.packageID, closestPackage)
+        # if closestPackage.packageID != 9 or not correctPackage9:
+        if closestPackage.packageID==9:
+            print(f"Closet package is delivered {closestPackage}")
+
+        # if(closestPackage.packageID!=9):
+        if (correctPackage9==True and closestPackage.packageID==9):
+            closestPackage.updateStatus(f"Delivered by truck {truck.truckId}", deliveryTime=truck.currentTime)
+            truck.hashTable.insert(closestPackage.packageID, closestPackage)
+
+        if (closestPackage.packageID!=9):
+            closestPackage.updateStatus(f"Delivered by truck {truck.truckId}", deliveryTime=truck.currentTime)
+            truck.hashTable.insert(closestPackage.packageID, closestPackage)
+
+
 
         # Remove the delivered package from truck's available packages
         truck.packages.remove(closestPackage)
         availablePackages.remove(closestPackage)
+
 
         # Reevaluate available packages to ensure delayed packages with deadlines are delivered on time
         availablePackages = [pkg for pkg in truck.packages if
@@ -278,6 +297,9 @@ def correctPackage9Address(truck):
         package9 = truck.hashTable.lookUp(9)
         if package9 not in truck.packages and len(truck.packages) < truck.capacity:
             truck.loadPackage(package9)
+            print(f"Package #9 loaded onto Truck {truck.truckId} after address correction.")
+            return True
+
             #truck.packages.remove(package9)
         # Only load if package is not already on the truck and not delivered
         # if package9 not in truck.packages and not package9.deliveryStatus == "Delivered" and len(
@@ -299,6 +321,7 @@ def correctAddressAt1020(hashTable):
         package9.state = "UT"
         package9.zip = "84111"
         package9.addressCorrectionNeeded = False
+
 
 
 def returnToHubAndLoadDelayedPackages(truck, delayedPackages):

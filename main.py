@@ -119,6 +119,7 @@ def userInteractionLoop():
                 package = hashTable.lookUp(packageID)
 
                 if package:
+                    #TODO need to add this back in so that it does not show the truck??
                     # # Determine the status based on the time
                     # if package.deliveryTime and currentTime >= package.deliveryTime:
                     #     packageStatus = "Delivered"
