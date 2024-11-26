@@ -119,18 +119,18 @@ def userInteractionLoop():
                 package = hashTable.lookUp(packageID)
 
                 if package:
-                    # Determine the status based on the time
-                    if package.deliveryTime and currentTime >= package.deliveryTime:
-                        packageStatus = "Delivered"
-                    elif currentTime < timedelta(hours=8):  # Before trucks left the hub
-                        packageStatus = "At Hub"
-                    elif package.deliveryTime and currentTime < package.deliveryTime:
-                        packageStatus = "En Route"
-                    else:
-                        packageStatus = "At Hub"  # Default status if none of the above apply
+                    # # Determine the status based on the time
+                    # if package.deliveryTime and currentTime >= package.deliveryTime:
+                    #     packageStatus = "Delivered"
+                    # elif currentTime < timedelta(hours=8):  # Before trucks left the hub
+                    #     packageStatus = "At Hub"
+                    # elif package.deliveryTime and currentTime < package.deliveryTime:
+                    #     packageStatus = "En Route"
+                    # else:
+                    #     packageStatus = "At Hub"  # Default status if none of the above apply
 
                     # Print package information
-                    print(f"\nStatus at {currentTime}: { packageStatus}\n")
+                    print(f"\nStatus at {currentTime}: {package.deliveryStatus}\n")
                     printHeader()
                     print(package,"\n")
                 else:
