@@ -222,6 +222,7 @@ def deliverTruckPackages(truck,stopTime):
         if (truck.currentTime >= timedelta(hours=10, minutes=20) and correctPackage9==False):
             correctPackage9 = True
             correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
+            # truck.loadPackage(truck.hashTable.lookUp(9))
             print(f"Package #9 loaded onto Truck {truck.truckId} after address correction.")
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
@@ -269,10 +270,10 @@ def deliverTruckPackages(truck,stopTime):
         availablePackages.remove(closestPackage)
 
 
-        # # Reevaluate available packages to ensure delayed packages with deadlines are delivered on time
-        # availablePackages = [pkg for pkg in truck.packages if
-        #                      not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
-        # packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
+        # Reevaluate available packages to ensure delayed packages with deadlines are delivered on time
+        availablePackages = [pkg for pkg in truck.packages if
+                             not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
+        packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
 
 def updateTruckState(closestPackage, distanceToNext, truck):
@@ -282,9 +283,9 @@ def updateTruckState(closestPackage, distanceToNext, truck):
     truck.currentTime += timedelta(hours=distanceToNext / 18)  # Assuming average speed is 18 mph
 
 
-def getClosestPackage(truck,packagesWithDeadlines):
+def getClosestPackage(truck, packages):
     # Prioritize packages with deadlines if available, else use the nearest neighbor approach
-    return min(packagesWithDeadlines,
+    return min(packages,
                key=lambda pkg: distanceBetween(truck.currentLocation, pkg.deliveryAddress))
 
 
