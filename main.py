@@ -119,16 +119,6 @@ def userInteractionLoop():
                 package = hashTable.lookUp(packageID)
 
                 if package:
-                    #TODO need to add this back in so that it does not show the truck??
-                    # # Determine the status based on the time
-                    # if package.deliveryTime and currentTime >= package.deliveryTime:
-                    #     packageStatus = "Delivered"
-                    # elif currentTime < timedelta(hours=8):  # Before trucks left the hub
-                    #     packageStatus = "At Hub"
-                    # elif package.deliveryTime and currentTime < package.deliveryTime:
-                    #     packageStatus = "En Route"
-                    # else:
-                    #     packageStatus = "At Hub"  # Default status if none of the above apply
 
                     # Print package information
                     print(f"\nStatus at {currentTime}: {package.deliveryStatus}\n")
@@ -155,18 +145,6 @@ def userInteractionLoop():
 
                 # Create a timedelta object for the specified time
                 currentTime = timedelta(hours=hours, minutes=minutes)
-
-                # # Create the hash table and load package data
-                # hashTable = createPackageData()
-                #
-                # # Create trucks
-                # truckList = initializeTrucks(3, hashTable)
-                # # Load packages into trucks
-                # loadPackagesIntoTrucks(hashTable, truckList)
-                #
-                # # Deliver packages for each truck in the truckList
-                # for truck in truckList:
-                #     deliverTruckPackagesUntil(truck,currentTime)
 
                 hashTable, truckList = runRouteUntil(currentTime)
 
@@ -230,28 +208,20 @@ def findDelayedPackages(hashTable, totalPackages=40):
 def main():
     """
     Main function to manage the process of loading packages, delivering them, and handling user interaction.
-
-    Steps:
-    1. Create the hash table and load package data.
-    2. Create trucks and initialize them.
-    3. Load packages into trucks using loading rules.
-    4. Identify and deliver delayed packages when available.
-    5. Deliver packages using nearest neighbor algorithm.
-    6. Provide an interface for user interactions.
-
     :return: None
     """
-    # hours = int(timeParts[0])
-    # minutes = int(timeParts[1])
-    # stopTime = timedelta(hours=17, minutes=00)
-    #
-    # hashTable, truckList = runRouteUntil(stopTime)
-
     # User interaction loop
     userInteractionLoop()
 
 
 def runRouteUntil(stopTime):
+    """
+    Simulates the delivery route for all trucks until a specified stop time.
+    Loads packages, delivers them, corrects package 9 address, and delivers delayed packages.
+
+    :param stopTime: The time to run the route until.
+    :return: The updated hash table and the list of trucks
+    """
     # Create the hash table and load package data
     hashTable = createPackageData()
     # Create trucks
@@ -266,22 +236,18 @@ def runRouteUntil(stopTime):
 
     if (stopTime >= timedelta(hours=10, minutes=20)):
         correctAddressAt1020(hashTable)  # Corrects package #9's address in the hash table
-        # truck.loadPackage(truck.hashTable.lookUp(9))
-        print(f"Package #9 has has a address correction in runRouteUntil.")
 
-
+    # update time of any truck that hasn't made it to the delayedFlightArrivalTime yet before processing delayed packages
     delayedFlightArrivalTime = timedelta(hours=9, minutes=5)
     if (stopTime >= delayedFlightArrivalTime):
-        # update time of any truck that hasn't made it to the delayedFlightArrivalTime yet before processing delayed packages
         for truck in truckList:
             if truck.currentTime < delayedFlightArrivalTime:
                 truck.currentTime = delayedFlightArrivalTime
 
+    # Deliver delayed packages
     # get the largest time from all the trucks (latest in the day)
     latestTruckTime = max([truck.currentTime for truck in truckList])
-    print('latestTruckTime:', latestTruckTime) # TODO remove print
-    # Deliver delayed packages
-    # returnToHubAndLoadDelayedPackages(truck, delayedPackages)
+
     # Load delayed packages that are now available to be loaded
     newlyAvailablePackages = [pkg for pkg in delayedPackages if pkg.arrivalTime <= latestTruckTime]
 
@@ -289,7 +255,6 @@ def runRouteUntil(stopTime):
         for index, pkg in enumerate(newlyAvailablePackages):
             # spread the packages between each of the trucks
             truckNumber=((index+2) % 3)+1 # start with truck 3 since it gets fewer packages
-            print(truckNumber)
             truckToLoad = truckList[truckNumber-1]
             # double check the truck isn't full before loading
             if len(truckToLoad.packages) < truckToLoad.capacity:

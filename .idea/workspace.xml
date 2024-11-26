@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Fixed bug so that now address gets changed at 10:20.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Fixed package number 25 getting delivered past deadline.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Truck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Truck.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,15 +224,7 @@
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
       <workItem from="1731679283622" duration="65396000" />
-      <workItem from="1732499470215" duration="33357000" />
-    </task>
-    <task id="LOCAL-00099" summary="Address for task 2 assumption is being correct now but the delivery time is not correct.">
-      <option name="closed" value="true" />
-      <created>1732281191781</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1732281191781</updated>
+      <workItem from="1732499470215" duration="34920000" />
     </task>
     <task id="LOCAL-00100" summary="Started new implementation of truckLoadPackages to fix bug of packages getting loaded multiple times. Added new lists for specific needs to clean up method. The lists added are specificTruckList, delayedList, and wrongAddressList.">
       <option name="closed" value="true" />
@@ -617,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732607016017</updated>
     </task>
-    <option name="localTasksCounter" value="148" />
+    <task id="LOCAL-00148" summary="Fixed package number 25 getting delivered past deadline.">
+      <option name="closed" value="true" />
+      <created>1732612576502</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1732612576502</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +636,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Continued to work on implementation to deliver Package 9." />
     <MESSAGE value="Started to implementation returning to Hub function usage in main.py for the delayed packages." />
     <MESSAGE value="Finished implementation to deliver package 9 now. Continuing working on bug where package 6 is not being delivered on time." />
     <MESSAGE value="Completed bug fix on bug where package 6 is not being delivered on time." />
@@ -660,10 +660,11 @@
     <MESSAGE value="Continued to work on package 9 getting delivered after the address gets changed at 10:20." />
     <MESSAGE value="Continued to work on package 9 getting delivered after the address gets changed at 10:20. Updated debugging print statements for package 9." />
     <MESSAGE value="Fixed bug so that now address gets changed at 10:20." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug so that now address gets changed at 10:20." />
+    <MESSAGE value="Fixed package number 25 getting delivered past deadline." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed package number 25 getting delivered past deadline." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732612246537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732613590997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>
