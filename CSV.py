@@ -222,8 +222,8 @@ def deliverTruckPackages(truck,stopTime):
         if (truck.currentTime >= timedelta(hours=10, minutes=20) and correctPackage9==False):
             correctPackage9 = True
             correctAddressAt1020(truck.hashTable)  # Corrects package #9's address in the hash table
-            # truck.loadPackage(truck.hashTable.lookUp(9))
-            print(f"Package #9 loaded onto Truck {truck.truckId} after address correction.")
+            #truck.loadPackage(truck.hashTable.lookUp(9))
+            print(f"Package #9 has has a address correction.")
 
         # Prioritize packages with deadlines if available, else use the nearest neighbor approach
         if packagesWithDeadlines:
