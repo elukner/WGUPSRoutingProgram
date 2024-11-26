@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Finished code clean up with doc comments in CSV.py to get ready for submission.">
+    <list default="true" id="ac4623f8-a705-4ee1-afdf-52de70e6db95" name="Changes" comment="Fixed bug so that now address gets changed at 10:20.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSV.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,43 +48,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distanceBetween.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_loadAddressData.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_loadDistanceData.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_loadPackageData.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_min_distance_from.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testCSV.CSVTestCase.test_timeToDeliver.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testInsertMultipleItems.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testMain.MainTestCase.testLoadPackageData.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testPackage.PackageTestCase.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testPackage.PackageTestCase.test_str_method.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for testTruck.TruckTestCase.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in testHashTable.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in testPackage.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in tests.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for testCSV.CSVTestCase.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_distanceBetween.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_invalid_addresses.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_same_address.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_distance_between_valid_addresses.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_loadAddressData.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_loadDistanceData.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_loadPackageData.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_min_distance_from.executor": "Run",
+    "Python tests.Python tests for testCSV.CSVTestCase.test_timeToDeliver.executor": "Run",
+    "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertMultipleItems.executor": "Run",
+    "Python tests.Python tests for testHashTable.HashTableTestCase.testInsertNewItem.executor": "Run",
+    "Python tests.Python tests for testHashTable.HashTableTestCase.testLookUpExistingItem.executor": "Run",
+    "Python tests.Python tests for testHashTable.HashTableTestCase.testUpdateExistingItem.executor": "Run",
+    "Python tests.Python tests for testMain.MainTestCase.testLoadPackageData.executor": "Run",
+    "Python tests.Python tests for testPackage.PackageTestCase.executor": "Run",
+    "Python tests.Python tests for testPackage.PackageTestCase.test_str_method.executor": "Run",
+    "Python tests.Python tests for testTruck.TruckTestCase.executor": "Run",
+    "Python tests.Python tests in testHashTable.py.executor": "Run",
+    "Python tests.Python tests in testPackage.py.executor": "Run",
+    "Python tests.Python tests in tests.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/elukn/PycharmProjects/WGUPSRoutingProgram",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="WGUPSRoutingProgram" />
@@ -220,118 +223,7 @@
       <workItem from="1730937900135" duration="49580000" />
       <workItem from="1731604715378" duration="24685000" />
       <workItem from="1731679283622" duration="65396000" />
-    </task>
-    <task id="LOCAL-00085" summary="Started implementation of user choice 3 in main.py for the user ui still working on making sure time is functioning correctly.">
-      <option name="closed" value="true" />
-      <created>1732260649707</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1732260649707</updated>
-    </task>
-    <task id="LOCAL-00086" summary="Fixed distanceBetween bug were it was not finding distance between any order of the addresses on the route.">
-      <option name="closed" value="true" />
-      <created>1732261834111</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1732261834111</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Fixed user choice 3 time bug in main.py where it was not stopping on the user inputted time.">
-      <option name="closed" value="true" />
-      <created>1732262278204</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1732262278204</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Fixed formating for output data for user choices in main.py for the user ui.">
-      <option name="closed" value="true" />
-      <created>1732263203041</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1732263203041</updated>
-    </task>
-    <task id="LOCAL-00089" summary="Reformated printing and calculating total truck mileage to its on function in main.py instead of calling it twice.">
-      <option name="closed" value="true" />
-      <created>1732263627952</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1732263627952</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Completed implementation of choice 2 so that user can no input time when the package ID in main.py for the user ui.">
-      <option name="closed" value="true" />
-      <created>1732264869699</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1732264869699</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Added and implemented attributes in the constructor and new function for parsing special notes in Package.py">
-      <option name="closed" value="true" />
-      <created>1732267222118</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1732267222118</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Added and implemented new truckLoadPackages to take in currentTime in csv.py">
-      <option name="closed" value="true" />
-      <created>1732267807308</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1732267807308</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Refactored parsing function in package object class.">
-      <option name="closed" value="true" />
-      <created>1732269723545</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1732269723545</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Refactored parsing function in package object class so that am does not affect the special notes.">
-      <option name="closed" value="true" />
-      <created>1732270031800</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1732270031800</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the special notes with the package data given.">
-      <option name="closed" value="true" />
-      <created>1732270559224</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1732270559224</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Refactored truckLoadPackages function in CSV.py to start handling edge cases with the arrivalTime being different than the default packages that just get loaded.">
-      <option name="closed" value="true" />
-      <created>1732271847483</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1732271847483</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Refactored deliverTruckPackages and added new function returnToHubAndLoadDelayedPackages in CSV.py; deliverPackages and main functions in main.py so that they are handling delayed packages. The grouping of packages that have special notes is not handled yet.  .">
-      <option name="closed" value="true" />
-      <created>1732273651513</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1732273651513</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Refactored truckLoadPackages function in CSV.py to loop through packages to load all the packages that have special notes for specific trucks.">
-      <option name="closed" value="true" />
-      <created>1732274545032</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1732274545032</updated>
+      <workItem from="1732499470215" duration="33357000" />
     </task>
     <task id="LOCAL-00099" summary="Address for task 2 assumption is being correct now but the delivery time is not correct.">
       <option name="closed" value="true" />
@@ -613,7 +505,119 @@
       <option name="project" value="LOCAL" />
       <updated>1732368682413</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="Refactored functions">
+      <option name="closed" value="true" />
+      <created>1732499925588</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1732499925588</updated>
+    </task>
+    <task id="LOCAL-00135" summary="Refactored functions so that user choice 3 calls the same functions as user choice 1. Still working on feature that will deliver packages until.">
+      <option name="closed" value="true" />
+      <created>1732566834545</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1732566834545</updated>
+    </task>
+    <task id="LOCAL-00136" summary="Refactored code inside of deliverTruckPackages to make it easier to combine deliverTruckPackagesUntil functionalities.">
+      <option name="closed" value="true" />
+      <created>1732567648566</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1732567648566</updated>
+    </task>
+    <task id="LOCAL-00137" summary="Added in functionality of stop time into deliverTruckPackages in CSV.py.">
+      <option name="closed" value="true" />
+      <created>1732568123632</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1732568123632</updated>
+    </task>
+    <task id="LOCAL-00138" summary="Updated choices 1,3 to match new deliverTruckPackages in CSV. Continued to work on user choice 2.">
+      <option name="closed" value="true" />
+      <created>1732569291917</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1732569291917</updated>
+    </task>
+    <task id="LOCAL-00139" summary="Fixed bug where status was not correctly showing for all choices in the user interaction loop in Main.py">
+      <option name="closed" value="true" />
+      <created>1732570749822</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1732570749822</updated>
+    </task>
+    <task id="LOCAL-00140" summary="Continued to work on #9 package bug where it is getting loaded twice. Added print statements wherever it could possibly be loaded.">
+      <option name="closed" value="true" />
+      <created>1732572386209</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1732572386209</updated>
+    </task>
+    <task id="LOCAL-00141" summary="Continued to work on #9 package bug where it is getting loaded twice. Refactored so package 9 is not getting loaded at 8:00am.">
+      <option name="closed" value="true" />
+      <created>1732574033393</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1732574033393</updated>
+    </task>
+    <task id="LOCAL-00142" summary="Updated choice 2 so that it runs the same as choice 1 and 3.">
+      <option name="closed" value="true" />
+      <created>1732581032799</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1732581032799</updated>
+    </task>
+    <task id="LOCAL-00143" summary="Continued to work on bug where package#9 is getting delivered twice.">
+      <option name="closed" value="true" />
+      <created>1732584943569</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1732584943569</updated>
+    </task>
+    <task id="LOCAL-00144" summary="Fixed bug where package 9 was getting corrected twice. Continued to work on bug where package 9 is getting delivered before 10:20.">
+      <option name="closed" value="true" />
+      <created>1732587160094</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1732587160094</updated>
+    </task>
+    <task id="LOCAL-00145" summary="Continued to work on package 9 getting delivered after the address gets changed at 10:20.">
+      <option name="closed" value="true" />
+      <created>1732590367241</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1732590367241</updated>
+    </task>
+    <task id="LOCAL-00146" summary="Continued to work on package 9 getting delivered after the address gets changed at 10:20. Updated debugging print statements for package 9.">
+      <option name="closed" value="true" />
+      <created>1732603544768</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1732603544768</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Fixed bug so that now address gets changed at 10:20.">
+      <option name="closed" value="true" />
+      <created>1732607016017</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1732607016017</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,20 +635,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Continued implementation of truckLoadPackages now edge case packages are only getting added once. However, now package 6,25, 28, 32 are still being loaded even though they are not supposed to be loaded when the program is initialized due to their special notes." />
-    <MESSAGE value="Continued implementation of truckLoadPackages now edge case packages are only getting added once and delayedList are not being loaded now with program start." />
-    <MESSAGE value="Continued implementation of truckLoadPackages edge cases finished implementation of the group dependencies so that they are all on the correct trucks." />
-    <MESSAGE value="Completed new implementation of truckLoadPackages and fixed bug where packages were getting loaded twice." />
-    <MESSAGE value="Updated packageCSV.csv data to the correct package 9 wrong address." />
-    <MESSAGE value="Updated CSV.py correctAddressAt1020 function to have the address matching the correct address in the requirements of task 2." />
-    <MESSAGE value="Continued to work on correct implementation of loading delayed packages now that all other packages are loaded onto trucks." />
-    <MESSAGE value="Added new implementation of finding delayed packages in a findDelayedPackages instead." />
-    <MESSAGE value="Added new implementation of deliver delayed packages in main definition in main.py" />
-    <MESSAGE value="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Noticing now due to output that package is getting correct 3 times which is incorrect." />
-    <MESSAGE value="Added new implementation of loading packages with wrong address (package 9) to check the current time of truck first before loading. Fixed output that package is getting correct 3 times which is incorrect." />
-    <MESSAGE value="Removed initial loading of loading packages with wrong address (package 9) in truckLoadPackages function in CSV.py" />
-    <MESSAGE value="Added in functionality in deliverTruckPackages function to correct the address after the time threshold is met for package #9." />
-    <MESSAGE value="Found bug in delayed packages getting delivered on time. Package #25 is delivered after deadline. Started debugging this delayed packages delivery implementation." />
     <MESSAGE value="Continued to work on implementation to deliver Package 9." />
     <MESSAGE value="Started to implementation returning to Hub function usage in main.py for the delayed packages." />
     <MESSAGE value="Finished implementation to deliver package 9 now. Continuing working on bug where package 6 is not being delivered on time." />
@@ -656,10 +646,24 @@
     <MESSAGE value="Finished code clean up with doc comments in Package.py to get ready for submission." />
     <MESSAGE value="Finished code clean up with doc comments in main.py to get ready for submission." />
     <MESSAGE value="Finished code clean up with doc comments in CSV.py to get ready for submission." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished code clean up with doc comments in CSV.py to get ready for submission." />
+    <MESSAGE value="Refactored functions" />
+    <MESSAGE value="Refactored functions so that user choice 3 calls the same functions as user choice 1. Still working on feature that will deliver packages until." />
+    <MESSAGE value="Refactored code inside of deliverTruckPackages to make it easier to combine deliverTruckPackagesUntil functionalities." />
+    <MESSAGE value="Added in functionality of stop time into deliverTruckPackages in CSV.py." />
+    <MESSAGE value="Updated choices 1,3 to match new deliverTruckPackages in CSV. Continued to work on user choice 2." />
+    <MESSAGE value="Fixed bug where status was not correctly showing for all choices in the user interaction loop in Main.py" />
+    <MESSAGE value="Continued to work on #9 package bug where it is getting loaded twice. Added print statements wherever it could possibly be loaded." />
+    <MESSAGE value="Continued to work on #9 package bug where it is getting loaded twice. Refactored so package 9 is not getting loaded at 8:00am." />
+    <MESSAGE value="Updated choice 2 so that it runs the same as choice 1 and 3." />
+    <MESSAGE value="Continued to work on bug where package#9 is getting delivered twice." />
+    <MESSAGE value="Fixed bug where package 9 was getting corrected twice. Continued to work on bug where package 9 is getting delivered before 10:20." />
+    <MESSAGE value="Continued to work on package 9 getting delivered after the address gets changed at 10:20." />
+    <MESSAGE value="Continued to work on package 9 getting delivered after the address gets changed at 10:20. Updated debugging print statements for package 9." />
+    <MESSAGE value="Fixed bug so that now address gets changed at 10:20." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug so that now address gets changed at 10:20." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732368645572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$main.coverage" NAME="main Coverage Results" MODIFIED="1732612246537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WGUPSRoutingProgram$.coverage" NAME=" Coverage Results" MODIFIED="1732237063139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>
 </project>

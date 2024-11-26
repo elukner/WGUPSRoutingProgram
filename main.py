@@ -270,17 +270,33 @@ def runRouteUntil(stopTime):
         print(f"Package #9 has has a address correction in runRouteUntil.")
 
 
-    # Deliver delayed packages
-    for truck in truckList:
-        # returnToHubAndLoadDelayedPackages(truck, delayedPackages)
-        # Load delayed packages that are now available to be loaded
-        newlyAvailablePackages = [pkg for pkg in delayedPackages if pkg.arrivalTime <= truck.currentTime]
-        if newlyAvailablePackages:
-            for pkg in newlyAvailablePackages:
-                if len(truck.packages) < truck.capacity:
-                    truck.loadPackage(pkg)
-                    delayedPackages.remove(pkg)
+    delayedFlightArrivalTime = timedelta(hours=9, minutes=5)
+    if (stopTime >= delayedFlightArrivalTime):
+        # update time of any truck that hasn't made it to the delayedFlightArrivalTime yet before processing delayed packages
+        for truck in truckList:
+            if truck.currentTime < delayedFlightArrivalTime:
+                truck.currentTime = delayedFlightArrivalTime
 
+    # get the largest time from all the trucks (latest in the day)
+    latestTruckTime = max([truck.currentTime for truck in truckList])
+    print('latestTruckTime:', latestTruckTime) # TODO remove print
+    # Deliver delayed packages
+    # returnToHubAndLoadDelayedPackages(truck, delayedPackages)
+    # Load delayed packages that are now available to be loaded
+    newlyAvailablePackages = [pkg for pkg in delayedPackages if pkg.arrivalTime <= latestTruckTime]
+
+    if newlyAvailablePackages:
+        for index, pkg in enumerate(newlyAvailablePackages):
+            # spread the packages between each of the trucks
+            truckNumber=((index+2) % 3)+1 # start with truck 3 since it gets fewer packages
+            print(truckNumber)
+            truckToLoad = truckList[truckNumber-1]
+            # double check the truck isn't full before loading
+            if len(truckToLoad.packages) < truckToLoad.capacity:
+                truckToLoad.loadPackage(pkg)
+                delayedPackages.remove(pkg)
+
+    for truck in truckList:
         # Deliver the loaded delayed packages
         deliverTruckPackages(truck,stopTime)
 

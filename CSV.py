@@ -152,10 +152,10 @@ def truckLoadPackages(truck, packages):
 
 
     # Load delayed packages if their arrival time has passed
-    for package in delayedList:
-        if len(truck.packages) < truck.capacity:
-            truck.loadPackage(package)
-            packages.remove(package)
+    # for package in delayedList:
+    #     if len(truck.packages) < truck.capacity:
+    #         truck.loadPackage(package)
+    #         packages.remove(package)
             # if package.packageID == 9:
             #     print(f"Package 9 selected in delayedList and loaded onto Truck {truck.truckId}.")
 
@@ -175,6 +175,10 @@ def truckLoadPackages(truck, packages):
 
     while len(truck.packages) < truck.capacity and availablePackages:
         # Find the closest package from the current location
+        # if len(truck.packages)>0:
+        #     closestPackage = minDistanceFrom(truck.packages[0], availablePackages)
+        # else:
+        #     closestPackage = minDistanceFrom(truck.currentLocation, availablePackages)
         closestPackage = minDistanceFrom(truck.currentLocation, availablePackages)
 
         if closestPackage:
