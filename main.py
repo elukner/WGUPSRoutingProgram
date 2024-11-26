@@ -258,10 +258,18 @@ def runRouteUntil(stopTime):
     truckList = initializeTrucks(3, hashTable)
     # Load packages into trucks
     loadPackagesIntoTrucks(hashTable, truckList)
+
     # Find delayed packages
     delayedPackages = findDelayedPackages(hashTable)
     # Deliver packages for each truck that are not delayed packages
     deliverPackages(truckList,stopTime)
+
+    if (stopTime >= timedelta(hours=10, minutes=20)):
+        correctAddressAt1020(hashTable)  # Corrects package #9's address in the hash table
+        # truck.loadPackage(truck.hashTable.lookUp(9))
+        print(f"Package #9 has has a address correction in runRouteUntil.")
+
+
     # Deliver delayed packages
     for truck in truckList:
         # returnToHubAndLoadDelayedPackages(truck, delayedPackages)
@@ -275,6 +283,7 @@ def runRouteUntil(stopTime):
 
         # Deliver the loaded delayed packages
         deliverTruckPackages(truck,stopTime)
+
     return hashTable, truckList
 
 

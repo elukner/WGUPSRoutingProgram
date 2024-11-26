@@ -205,7 +205,7 @@ def deliverTruckPackages(truck,stopTime):
     correctPackage9 = False
 
     # Get packages that are currently available for delivery
-    availablePackages = [pkg for pkg in truck.packages if not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
+    availablePackages = [pkg for pkg in truck.packages if (not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime) and not pkg.addressCorrectionNeeded]
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
     while availablePackages:
@@ -272,7 +272,7 @@ def deliverTruckPackages(truck,stopTime):
 
         # Reevaluate available packages to ensure delayed packages with deadlines are delivered on time
         availablePackages = [pkg for pkg in truck.packages if
-                             not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime]
+                             (not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime) and not pkg.addressCorrectionNeeded]
         packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
 
