@@ -188,7 +188,7 @@ def deliverTruckPackages(truck, stopTime):
 
     # Get packages that are currently available for delivery
     availablePackages = [pkg for pkg in truck.packages if (
-                not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime) and not pkg.addressCorrectionNeeded]
+            not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime) and not pkg.addressCorrectionNeeded]
     packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
     while availablePackages:
@@ -241,7 +241,7 @@ def deliverTruckPackages(truck, stopTime):
         # Reevaluate available packages to ensure delayed packages with deadlines are delivered on time
         availablePackages = [pkg for pkg in truck.packages if
                              (
-                                         not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime) and not pkg.addressCorrectionNeeded]
+                                     not pkg.arrivalTime or pkg.arrivalTime <= truck.currentTime) and not pkg.addressCorrectionNeeded]
         packagesWithDeadlines = [pkg for pkg in availablePackages if pkg.deliveryDeadline != 'EOD']
 
 
@@ -285,30 +285,6 @@ def correctAddressAt1020(hashTable):
         package9.state = "UT"
         package9.zip = "84111"
         package9.addressCorrectionNeeded = False
-
-
-def returnToHubAndLoadDelayedPackages(truck, delayedPackages):
-    """
-    Returns the truck to the hub and loads the available delayed packages.
-
-    :param truck: Truck object that needs to return to the hub.
-    :param delayedPackages: List of delayed packages waiting at the hub.
-    :return: None
-    """
-    # The hub is address is "4001 South 700 East"
-    hubAddress = "4001 South 700 East"
-    distanceToHub = distanceBetween(truck.currentLocation, hubAddress)
-
-    # Update truck mileage and current location
-    truck.totalMileage += distanceToHub
-    truck.currentLocation = hubAddress
-    truck.currentTime += timedelta(hours=distanceToHub / 18)  # Assuming average speed of 18 mph
-
-    # Load available delayed packages
-    for pkg in list(delayedPackages):
-        if truck.currentTime >= pkg.arrivalTime:
-            truck.loadPackage(pkg)
-            delayedPackages.remove(pkg)
 
 
 def distanceBetween(address1, address2):
